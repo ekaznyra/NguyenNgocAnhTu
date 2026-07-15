@@ -2,7 +2,7 @@
  * @name: Snow / Epik AI Premium Unlock
  * @desc: Hỗ trợ cả 2 app: Snow (ảnh chụp AI) & Epik-AI (chỉnh sửa ảnh/video)
  * @author: Nguyễn Ngọc Anh Tú (z3rokaze)
- * @homepage: https://github.com/z3rokaze/NguyenNgocAnhTu
+ * @homepage: https://github.com/ekaznyra/NguyenNgocAnhTu
  * @date: 2026-05-09
  */
 

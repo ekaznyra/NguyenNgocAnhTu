@@ -1,5 +1,5 @@
 name: "👑 Nguyễn Ngọc Anh Tú 🌸 ⁕ Ultimate Premium (Egern) ⁕"
-description: "🚀 Mở khóa 250+ App VIP (Spotify, Locket...). 🛡️ Chặn sạch Ads & Tracking. ⚡ Tối ưu DNS, AI & Gaming. | v2.1.3-stable (2026-06-27)"
+description: "🚀 Mở khóa 70+ App VIP + bundle iTunes/RevenueCat (Spotify, Locket...). 🛡️ Chặn Ads & Tracking. ⚡ Tối ưu DNS, Banking, Streaming & Social. | v2.1.3-stable (2026-06-27)"
 author: "Nguyễn Ngọc Anh Tú (z3rokaze)"
 homepage: "https://github.com/ekaznyra/NguyenNgocAnhTu"
 icon: "lock.open.fill"
@@ -2632,13 +2632,7 @@ scriptings:
       script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/keep.js"
       body_required: true
       timeout: 10
-  # 🎨 Color Widgets (yfamilys)
-  - http_response:
-      name: "Color Widgets"
-      match: "^https?://api\\.revenuecat\\.com/v1/(receipts|subscribers)/.*"
-      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/main/colorwidget.js"
-      body_required: true
-      timeout: 10
+  # 🎨 Color Widgets → Đã gộp vào revenuecat_multi.js (generic fallback). Gỡ script riêng để tránh xung đột hostname với Locket Gold.
 
   # === iTRANSLATE PRO (dịch thuật) - 89996462 ===
   - http_request:

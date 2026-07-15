@@ -1,7 +1,7 @@
 /*
  * @name: Emby Premiere Unlock
  * @author: Nguyễn Ngọc Anh Tú (z3rokaze)
- * @homepage: https://github.com/z3rokaze/NguyenNgocAnhTu
+ * @homepage: https://github.com/ekaznyra/NguyenNgocAnhTu
  * @date: 2026-05-09
  */
 

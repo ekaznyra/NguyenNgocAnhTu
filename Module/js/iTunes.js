@@ -2,7 +2,7 @@
  * @name: iTunes Premium Unlock
  * @desc: Unlock 250+ apps via App Store buy.itunes.apple.com verifyReceipt hijack
  * @author: Nguyễn Ngọc Anh Tú (z3rokaze)
- * @homepage: https://github.com/z3rokaze/NguyenNgocAnhTu
+ * @homepage: https://github.com/ekaznyra/NguyenNgocAnhTu
  * @date: 2026-05-09 (auto-synced)
  */
 
@@ -428,7 +428,7 @@ if (!anchor) {
       "auto_renew_product_id": fallbackId,
       "auto_renew_status": "1"
     }];
-    console.log('❌ 未识别有效订阅，已使用备用方案🎉🎉🎉\n叮当猫の分享频道: https://github.com/z3rokaze/NguyenNgocAnhTu');
+    console.log('❌ 未识别有效订阅，已使用备用方案🎉🎉🎉\n叮当猫の分享频道: https://github.com/ekaznyra/NguyenNgocAnhTu');
   }
 }
 
