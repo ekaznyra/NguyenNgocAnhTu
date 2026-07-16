@@ -49,3 +49,20 @@ DOMAIN-SUFFIX,oceanbank.vn
 DOMAIN-SUFFIX,gpbank.com.vn
 DOMAIN-SUFFIX,tnex.vn
 DOMAIN-SUFFIX,sc.com
+# --- Bổ sung (07-2026): ngân hàng thiếu & fintech ---
+DOMAIN-SUFFIX,baca-bank.vn
+DOMAIN-SUFFIX,cimb.com.vn
+DOMAIN-SUFFIX,publicbank.com.vn
+DOMAIN-SUFFIX,ncb-bank.vn
+DOMAIN-SUFFIX,saigonbank.com.vn
+DOMAIN-SUFFIX,vietbank.com.vn
+DOMAIN-SUFFIX,cbbank.vn
+DOMAIN-SUFFIX,dongabank.com.vn
+DOMAIN-SUFFIX,pgbank.com.vn
+DOMAIN-SUFFIX,banviet.com.vn
+DOMAIN-SUFFIX,hsbc.com.vn
+DOMAIN-SUFFIX,citibank.com.vn
+DOMAIN-SUFFIX,standardchartered.com.vn
+DOMAIN-SUFFIX,vnpt-pay.vn
+DOMAIN-SUFFIX,vnptpay.vn
+DOMAIN-SUFFIX,appotapay.com

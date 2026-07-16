@@ -70,3 +70,17 @@ DOMAIN-SUFFIX,krea.ai
 DOMAIN-SUFFIX,ideogram.ai
 DOMAIN-SUFFIX,leonardo.ai
 DOMAIN-SUFFIX,civitai.com
+
+# --- AI Services mới nhất (07-2026) ---
+DOMAIN-SUFFIX,meta.ai
+DOMAIN-SUFFIX,llama.com
+DOMAIN-SUFFIX,lumalabs.ai
+DOMAIN-SUFFIX,flux.ai
+DOMAIN-SUFFIX,klingai.com
+DOMAIN-SUFFIX,recraft.ai
+DOMAIN-SUFFIX,napkin.ai
+DOMAIN-SUFFIX,gamma.app
+DOMAIN-SUFFIX,tome.app
+DOMAIN-SUFFIX,descript.com
+DOMAIN-SUFFIX,assemblyai.com
+DOMAIN-SUFFIX,glif.app

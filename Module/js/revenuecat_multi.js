@@ -3,7 +3,7 @@
 > Locket Gold + 车票票 VIP + Generic RC Apps
 > Original: z3rokaze (revenuecat_multi.js)
 > Updated: Nguyễn Ngọc Anh Tú (z3rokaze)
-> Date: 2026-04-21
+> Date: 2026-07-16 (v2.2.0-stable)
 ***********************************************/
 
 // ========= App ID Mapping ========= //

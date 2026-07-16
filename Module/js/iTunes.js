@@ -3,7 +3,7 @@
  * @desc: Unlock 250+ apps via App Store buy.itunes.apple.com verifyReceipt hijack
  * @author: Nguyễn Ngọc Anh Tú (z3rokaze)
  * @homepage: https://github.com/ekaznyra/NguyenNgocAnhTu
- * @date: 2026-05-09 (auto-synced)
+ * @date: 2026-07-16 (v2.2.0-stable)
  */
 
 (function () {

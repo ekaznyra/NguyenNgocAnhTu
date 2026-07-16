@@ -268,3 +268,19 @@ DOMAIN-SUFFIX,webminepool.com
 DOMAIN-SUFFIX,minero.cc
 DOMAIN-SUFFIX,jsecoin.com
 DOMAIN-SUFFIX,coinhive-manager.com
+
+# --- Ad Networks mới (07-2026) ---
+DOMAIN-SUFFIX,digitalturbine.com
+DOMAIN-SUFFIX,liftoff.io
+DOMAIN-SUFFIX,moloco.com
+DOMAIN-SUFFIX,inmobi.com
+DOMAIN-SUFFIX,chartboost.com
+DOMAIN-SUFFIX,fyber.com
+DOMAIN-SUFFIX,tapjoy.com
+DOMAIN-SUFFIX,ogury.com
+DOMAIN-SUFFIX,verve.com
+DOMAIN-SUFFIX,smaato.com
+DOMAIN-SUFFIX,pubmatic.com
+DOMAIN-SUFFIX,adcolony.com
+DOMAIN-KEYWORD,moatads
+DOMAIN-KEYWORD,inmobi

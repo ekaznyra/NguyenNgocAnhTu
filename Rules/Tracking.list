@@ -92,3 +92,18 @@ DOMAIN-SUFFIX,oimg.vivo.com.cn
 DOMAIN-SUFFIX,adsdk.dplaceholder.oppomobile.com
 DOMAIN-SUFFIX,bdapi.oppomobile.com
 DOMAIN-SUFFIX,iadsdk.apple.com
+
+# --- Tracking mới (07-2026) ---
+DOMAIN-SUFFIX,onesignal.com
+DOMAIN-SUFFIX,leanplum.com
+DOMAIN-SUFFIX,iterable.com
+DOMAIN-SUFFIX,posthog.com
+DOMAIN-SUFFIX,rudderstack.com
+DOMAIN-SUFFIX,moengage.com
+DOMAIN-SUFFIX,webengage.com
+DOMAIN-SUFFIX,batch.com
+DOMAIN-SUFFIX,customerio.com
+DOMAIN-SUFFIX,branch.io
+DOMAIN-SUFFIX,bnc.lt
+DOMAIN-SUFFIX,app.link
+DOMAIN-KEYWORD,telemetry
