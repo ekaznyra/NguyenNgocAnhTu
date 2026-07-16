@@ -1,6 +1,6 @@
 #!name=👑 Nguyễn Ngọc Anh Tú 🌸 ⁕ Ultimate Premium ⁕
 #!desc=🚀 Mở khóa 70+ App VIP + bundle iTunes/RevenueCat (Spotify, Locket...). 🛡️ Chặn Ads & Tracking. ⚡ Tối ưu DNS, Banking, Streaming & Social.
-#!version=2.1.4-stable
+#!version=2.2.0-stable
 #!date=2026-07-16
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
@@ -74,7 +74,8 @@ RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules
 
 # --- Chống Lừa đảo (Phishing/Scam) từ cộng đồng HostsVN ---
 # ⚠️ Pin theo commit (giảm rủi ro chuỗi cung ứng). Bump SHA định kỳ để nhận domain phishing mới. Banking_VN ở trên đã che rủi ro chặn nhầm host ngân hàng.
-RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/aba97e4b10231b0b12a280645a27fc652058a464/extensions/threat/surge-rule.conf,REJECT
+# 🔄 SHA bumped 2026-07-16 ← commit 2026-07-15 (BigDargon)
+RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/cd4d77094dd53290f24907711747cd977ee420ed/extensions/threat/surge-rule.conf,REJECT
 
 # --- Dịch vụ quốc tế (Game, Stream, Social, Dev) đi qua Proxy ---
 RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/Proxy.list,PROXY

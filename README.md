@@ -16,7 +16,7 @@
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&duration=3000&pause=500&color=00FF00&background=00000000&center=false&vCenter=true&repeat=true&width=450&height=100&lines=%5B+%2B+%5D+Initializing+Premium+Unlocker+v2.1.3-stable...;%5B+%2B+%5D+Bypassing+security+checks+and+receipts...;%5B+%2B+%5D+Injecting+premium+payload+via+MITM...;%5B+%2B+%5D+Success!+70%2B+Applications+Unlocked." alt="Terminal Simulation" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&duration=3000&pause=500&color=00FF00&background=00000000&center=false&vCenter=true&repeat=true&width=450&height=100&lines=%5B+%2B+%5D+Initializing+Premium+Unlocker+v2.2.0-stable...;%5B+%2B+%5D+Bypassing+security+checks+and+receipts...;%5B+%2B+%5D+Injecting+premium+payload+via+MITM...;%5B+%2B+%5D+Success!+70%2B+Applications+Unlocked." alt="Terminal Simulation" />
 </a>
 
 <br>
@@ -47,7 +47,7 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <!-- HÀNG 1 — THÔNG TIN DỰ ÁN -->
-<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/releases"><img src="https://img.shields.io/badge/%E2%9A%A1_PHI%C3%8AN_B%E1%BA%A2N-v2.1.3--stable-00F0FF?style=for-the-badge&labelColor=0D1117" alt="version"/></a>
+<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/releases"><img src="https://img.shields.io/badge/%E2%9A%A1_PHI%C3%8AN_B%E1%BA%A2N-v2.2.0--stable-00F0FF?style=for-the-badge&labelColor=0D1117" alt="version"/></a>
 &nbsp;
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/LICENSE"><img src="https://img.shields.io/badge/%F0%9F%93%9C_GI%E1%BA%A4Y_PH%C3%89P-AGPL--3.0-FF007F?style=for-the-badge&labelColor=0D1117" alt="license"/></a>
 &nbsp;
@@ -476,6 +476,7 @@
 
 | | Phiên bản | Ngày | Nội dung cập nhật | Số app |
 |:---:|:---:|:---:|:---|:---:|
+| 🏆 | **`v2.2.0-stable`** | `16.07.2026` | 🛡️ **Security & Sync Update**: Bump hostsVN phishing SHA → commit mới nhất (15/07) • Fix port 444→443 RevenueCat MITM (Premium) • Audit 200+ upstream scripts (MarScrpt, ycdz) — tất cả đã cover bởi generic handlers • Đồng bộ version 7/7 files. | **70+** |
 | 🏆 | **`v2.1.3-stable`** | `27.06.2026` | ⚡ **Tối ưu & Đồng bộ toàn diện**: Gỡ `bypass-system` gây warning • Fix Spotify header rewrite thêm `bootstrap/v1/bootstrap` chống 304 cache • Fix WPS hostname wildcard `*.account.wps.com` • Xoá duplicate `lcs-mobile-cops.adobe.io` trên 4/7 file • Đồng bộ version 7/7 proxy formats. | **70+** |
 | 🏆 | **`v2.1.1-stable`** | `23.06.2026` | 🔗 **Sửa link chết & gia cố script**: thay rule-set chống lừa đảo `hostsVN/filters/suspect.txt` (404) → `extensions/threat/surge-rule.conf` (Surge/Loon/LanceX/Premium) • Tắt lại `host-keyword phishing/malware` bị bật nhầm trong QuantumultX (tránh chặn nhầm site giáo dục) • Bọc `try/catch` fail-safe cho 16 script tự host (không treo request khi body lỗi) • Gỡ rule trùng `captive.apple.com` trong Direct.list. | **70+** |
 | 🏆 | **`v2.1.0-stable`** | `16.06.2026` | ✨ **Mở rộng & ổn định**: thêm CARROT Weather, Agenda, PDF Expert, Documents (Readdle), Sorted • Viết lại Photomath tự host (hạn 2099, thay bản `poh.js` đã chết) • Đồng bộ hostname MITM + cấu trúc script trên cả 7 chuẩn proxy. | **70+** |
@@ -822,7 +823,7 @@ graph TD
 </tr>
 </table>
 
-> **v2.1.3-stable status:** 7/7 formats synced / UTF-8 clean / Regex 0 errors / Active duplicates 0 / Script and raw URLs 66/66 live.
+> **v2.2.0-stable status:** 7/7 formats synced / UTF-8 clean / Regex 0 errors / Active duplicates 0 / Script and raw URLs 66/66 live.
 
 </div>
 
