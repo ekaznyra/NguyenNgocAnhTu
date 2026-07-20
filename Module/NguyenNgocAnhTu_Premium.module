@@ -1,6 +1,6 @@
 #!name=👑 Nguyễn Ngọc Anh Tú 🌸 ⁕ Ultimate Premium ⁕
 #!desc=🚀 Mở khóa 70+ App VIP + bundle iTunes/RevenueCat (Spotify, Locket...). 🛡️ Chặn Ads & Tracking. ⚡ Tối ưu DNS, Banking, Streaming & Social.
-#!version=2.4.1-stable
+#!version=2.4.2-stable
 #!date=2026-07-21
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
@@ -12,8 +12,15 @@
 # === Shadowrocket: bỏ qua traffic hệ thống (giảm trễ push notification & lỗi hệ thống) ===
 bypass-system = true
 
-dns-server = https://dns.adguard-dns.com/dns-query, https://freedns.controld.com/p3, https://cloudflare-dns.com/dns-query
-fallback-dns-server = system
+# === DNS (2.4.2) ===
+# Trước đây trộn 3 resolver (AdGuard + ControlD + Cloudflare): 2 loại lọc + 1 không lọc
+# -> kết quả không nhất quán & query bị fanout ra cả 3 nhà cung cấp.
+# Giờ: 1 primary + 1 fallback, CÙNG chính sách lọc (ads/tracking/malware), đều mã hóa.
+# Fallback không còn rơi về "system" (tránh rò rỉ DNS plaintext khi DoH lỗi).
+dns-server = https://dns.adguard-dns.com/dns-query
+fallback-dns-server = https://freedns.controld.com/p3
+# Ép mọi truy vấn cổng 53 đi qua resolver ở trên (chống app hardcode DNS -> leak)
+hijack-dns = *:53
 private-ip-answer = true
 icmp-auto-reply = true
 udp-policy-not-supported-behaviour = REJECT
@@ -57,7 +64,8 @@ DOMAIN-SUFFIX,log.spotify.com,REJECT
 DOMAIN-SUFFIX,creativeservice-production.scdn.co,REJECT
 
 # ===========================================================
-# === CHẶN QUẢNG CÁO + CỜ BẠC/CÁ ĐỘ TỔNG HỢP (API RULE-SET) ===
+# === CHẶN QUẢNG CÁO + CỜ BẠC/CÁ ĐỘ + LỪA ĐẢO (API RULE-SET) ===
+# === (2.4.2) Toàn bộ cụm chặn/bảo mật gom lên TRƯỚC mọi rule PROXY ===
 # ===========================================================
 
 # --- Ngân hàng & Ví điện tử VN (PIN DIRECT, đặt TRÊN mọi list cộng đồng để không bị chặn nhầm) ---
@@ -72,13 +80,16 @@ RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules
 # --- Chặn Cá độ / Cờ bạc ---
 RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/Gambling.list,REJECT
 
-# --- Định tuyến AI Services ---
-RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/AI_Proxy.list,PROXY
-
 # --- Chống Lừa đảo (Phishing/Scam) từ cộng đồng HostsVN ---
-# ⚠️ Pin theo commit (giảm rủi ro chuỗi cung ứng). Bump SHA định kỳ để nhận domain phishing mới. Banking_VN ở trên đã che rủi ro chặn nhầm host ngân hàng.
+# ⬆️ (2.4.2) ĐÃ CHUYỂN LÊN đây (trước AI_Proxy/Proxy) để rule REJECT bảo mật luôn thắng
+#    thay vì bị rule PROXY định tuyến chặn trước.
+# ⚠️ Pin theo commit (giảm rủi ro chuỗi cung ứng). Bump SHA định kỳ để nhận domain phishing mới.
+#    Banking_VN ở trên đã che rủi ro chặn nhầm host ngân hàng.
 # 🔄 SHA bumped 2026-07-16 ← commit 2026-07-15 (BigDargon)
 RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/cd4d77094dd53290f24907711747cd977ee420ed/extensions/threat/surge-rule.conf,REJECT
+
+# --- Định tuyến AI Services ---
+RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/AI_Proxy.list,PROXY
 
 # --- Dịch vụ quốc tế (Game, Stream, Social, Dev) đi qua Proxy ---
 RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/Proxy.list,PROXY
@@ -92,6 +103,7 @@ FINAL,DIRECT
 
 [Header Rewrite]
 # === YOUTUBE NONCE ===
+# ⚠️ (2.4.2) client-version hardcode có thể cũ dần; nếu youtube.response.js đã tự set version thì dòng này có thể gỡ.
 ^https?://www\.youtube\.com/youtubei/v1/player header-replace x-youtube-client-version 2.20240101.00.00
 # === REVENUECAT REMOVE ETAG (Locket Gold + all RC apps) ===
 ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del X-RevenueCat-ETag
@@ -115,6 +127,7 @@ FINAL,DIRECT
 [Script]
 # 🔒 SCRIPT BÊN THỨ BA ĐÃ GHIM COMMIT SHA (2026-07-20) — giảm rủi ro chuỗi cung ứng (mã tự cập nhật chạy trên traffic đã giải mã).
 #    Bump SHA định kỳ để nhận bản vá mới. Script tự host (ekaznyra/...) giữ nhánh master vì do bạn kiểm soát.
+#    ⚠️ (2.4.2) Khuyến nghị: tag release + pin SHA cho cả script nhà để nhất quán với chính sách chống chuỗi cung ứng.
 #    Ngoại lệ: caml.js (Calm) giữ ref gốc do chưa xác định được commit SHA ổn định.
 # 📦 Sub-Store (quản lý & chuyển đổi subscription proxy) — nguồn chính thức, tự cập nhật bản release mới nhất
 Sub-Store Core = type=http-request, pattern=^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))), script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js, requires-body=true, timeout=120
@@ -310,7 +323,7 @@ keep-response = type=http-response, pattern=^https:\/\/api\.gotokeep\.com, scrip
 invideo-response = type=http-response, pattern=^https?:\/\/payments\.invideo\.io\/(verify_purchase|subscription), script-path=https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/filmr.js, requires-body=1, max-size=0, timeout=10
 
 # === CARROT WEATHER PREMIUM - 89996462 (z3rokaze, 2026-06-15) ===
-# ⚠️ Backend nằm trên carrotweather.herokuapp.com (hạ tầng cũ) — kiểm tra app bản mới còn gọi host này không; nếu đổi domain phải cập nhật cả pattern lẫn [MITM] hostname.
+# ⚠️ Backend nằm trên carrotweather.herokuapp.com (hạ tầng cũ - Heroku free dyno đã bị khai tử) — KIỂM TRA app bản mới còn gọi host này không; nếu đổi domain phải cập nhật cả pattern lẫn [MITM] hostname.
 carrotweather-response = type=http-response, pattern=^https:\/\/carrotweather\.herokuapp\.com\/parse\/functions\/findSubscriptionsForUserId, script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/CARROTWeather.js, requires-body=1, max-size=0, timeout=10
 
 # === AGENDA PREMIUM - 89996462 (z3rokaze, 2026-06-15) ===
