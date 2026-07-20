@@ -5,6 +5,20 @@ Mọi thay đổi đáng chú ý của dự án được ghi lại tại đây.
 Định dạng dựa trên [Keep a Changelog](https://keepachangelog.com/vi/1.0.0/),
 và dự án tuân theo [Semantic Versioning](https://semver.org/lang/vi/).
 
+## [2.4.1-stable] — 2026-07-21
+
+### 🔥 Mở rộng thêm app hot quốc tế
+- `revenuecat_multi.js`: bổ sung thêm entitlement key phổ biến
+  (`member`, `membership`, `svip`, `vip_access`, `full_access`, `premium_yearly`,
+  `premium_lifetime`, `unlimited_access`, `paid`, `Unlock`) → phủ thêm nhiều app hot.
+- README: thêm mục hiển thị rõ danh sách app hot quốc tế được hỗ trợ qua RevenueCat
+  (Structured, Gentler Streak, OneTodo, Converter, Pillow, Planny, Usage, Grow, Happy,
+  Emote, Widget Art, Weather Apps…). Đã xác minh entitlement/product từ nguồn đã ghim SHA.
+- Đồng bộ version 7/7 → `2.4.1-stable`.
+
+> Ghi chú: các app này dùng entitlement phổ biến (`pro`/`premium`/`Pro`…) nên hầu hết
+> đã hoạt động từ v2.4.0; bản này mở rộng thêm key và **ghi rõ danh sách** cho minh bạch.
+
 ## [2.4.0-stable] — 2026-07-21
 
 ### 🔥 Mở rộng app hot quốc tế (RevenueCat)

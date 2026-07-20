@@ -1063,6 +1063,18 @@ https://github.com/ekaznyra/NguyenNgocAnhTu/tree/master/Module
 
 <br>
 
+<div align="center">
+
+> 🔥 **Bổ sung app hot quốc tế (RevenueCat) — v2.4.x**
+> Bộ xử lý RevenueCat đa-entitlement tự động mở khoá thêm nhiều app hot dùng RevenueCat,
+> **không cần cấu hình riêng**, gồm: **Structured • Gentler Streak • OneTodo • Converter •
+> Pillow • Planny • Usage • Grow • Happy • Emote • Widget Art • Weather Apps** và hầu hết
+> app RevenueCat quốc tế khác dùng entitlement phổ biến (`pro`/`premium`/`plus`/`vip`…).
+
+</div>
+
+<br>
+
 <details open>
 <summary>
 
