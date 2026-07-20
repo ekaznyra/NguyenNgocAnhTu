@@ -1,0 +1,34 @@
+name: ✨ Yêu cầu thêm app
+description: Đề xuất một ứng dụng mới cần mở khóa
+title: "[APP] "
+labels: ["enhancement"]
+body:
+  - type: input
+    id: app-name
+    attributes:
+      label: Tên ứng dụng
+      placeholder: "Ví dụ: CapCut"
+    validations:
+      required: true
+  - type: input
+    id: bundle
+    attributes:
+      label: Bundle ID (nếu biết)
+      placeholder: "com.lemon.lvoverseas"
+  - type: input
+    id: appstore
+    attributes:
+      label: Link App Store
+      placeholder: "https://apps.apple.com/app/id..."
+  - type: textarea
+    id: feature
+    attributes:
+      label: Tính năng premium cần mở
+      placeholder: "Ví dụ: gỡ watermark, xuất 4K, không quảng cáo..."
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Thông tin thêm
+      placeholder: "Endpoint xác thực subscription, nếu bạn biết (host/API)..."

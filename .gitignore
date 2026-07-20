@@ -1,0 +1,35 @@
+# === macOS ===
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+
+# === Windows ===
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# === Editors / IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# === Logs / temp ===
+*.log
+*.tmp
+tmp/
+.cache/
+
+# === Node (nếu dùng công cụ build/lint sau này) ===
+node_modules/
+package-lock.json
+npm-debug.log*
+
+# === Python (script kiểm tra) ===
+__pycache__/
+*.py[cod]
+.venv/
+venv/
