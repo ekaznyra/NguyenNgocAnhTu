@@ -20,6 +20,9 @@ và dự án tuân theo [Semantic Versioning](https://semver.org/lang/vi/).
 ### ✨ Nhất quán (Consistency)
 - **Đồng nhất phiên bản** tất cả module về `2.3.0-stable` (trước đây lệch giữa
   `2.2.0` và `2.2.1`).
+- **Shadowrocket (`Premium.module`)**: bổ sung **Sub-Store** cho đồng bộ tính năng
+  với Surge/Loon (đây là khác biệt tính năng thực sự duy nhất còn lại). Sub-Store
+  dùng nguồn release chính thức và không cần thêm host MITM.
 - Chuẩn hoá segment nhánh của URL WPS (`Master` → SHA) để tránh lỗi phân biệt
   hoa/thường của GitHub raw.
 
