@@ -5,6 +5,26 @@ Mọi thay đổi đáng chú ý của dự án được ghi lại tại đây.
 Định dạng dựa trên [Keep a Changelog](https://keepachangelog.com/vi/1.0.0/),
 và dự án tuân theo [Semantic Versioning](https://semver.org/lang/vi/).
 
+## [2.4.0-stable] — 2026-07-21
+
+### 🔥 Mở rộng app hot quốc tế (RevenueCat)
+- Nâng cấp script tự host `revenuecat_multi.js`:
+  - Fallback cho app chưa map giờ cấp quyền dưới **17 entitlement key phổ biến**
+    (`pro`, `premium`, `plus`, `Pro`, `Premium`, `Plus`, `vip`, `VIP`, `unlimited`,
+    `standard`, `gold`, `lifetime`, `all_access`, `premium_access`, `pro_access`,
+    `isPremium`, `premiumUser`) thay vì chỉ `pro`.
+  - Đồng thời **kích hoạt & gia hạn mọi entitlement mà server đã định nghĩa sẵn**
+    → phủ đúng cả các app dùng entitlement key riêng.
+  - Nhờ đó tự động mở khoá thêm nhiều app RevenueCat hot quốc tế (Structured,
+    Gentler Streak, Flighty, Retake…) **mà không cần thêm script riêng và không gây
+    xung đột endpoint** (mọi app RC đều đi qua cùng một handler).
+  - **Giữ nguyên 100%** hành vi Locket Gold (vẫn chỉ cấp entitlement `Gold`).
+- Vì tất cả 7 module đều tham chiếu cùng script này nên thay đổi có hiệu lực đồng bộ
+  trên cả 7 nền tảng.
+
+### ✨ Nhất quán
+- Đồng bộ phiên bản tất cả module lên `2.4.0-stable`.
+
 ## [2.3.0-stable] — 2026-07-21
 
 ### 🔒 Bảo mật (Security)

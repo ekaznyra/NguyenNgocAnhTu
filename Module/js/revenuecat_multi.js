@@ -3,15 +3,26 @@
 > Locket Gold + 车票票 VIP + Generic RC Apps
 > Original: z3rokaze (revenuecat_multi.js)
 > Updated: Nguyễn Ngọc Anh Tú (z3rokaze)
-> Date: 2026-07-16 (v2.2.0-stable)
+> Date: 2026-07-21 (v2.4.0-stable)
 ***********************************************/
 
 // ========= App ID Mapping ========= //
 // [entitlement, productIdentifier]. Khóa để dạng UTF-8 thường (KHÔNG percent-encode)
-// vì User-Agent chứa chuỗi thật. Các app RC khác không khớp -> rơi vào fallback "pro" bên dưới.
+// vì User-Agent chứa chuỗi thật. App có trong mapping -> cấp ĐÚNG entitlement key riêng.
+// App RC khác (đa số app hot quốc tế) -> rơi vào fallback đa-entitlement bên dưới.
 const mapping = {
   'Locket': ['Gold', 'locket_1600_1y']
 };
+
+// ========= Fallback entitlement keys ========= //
+// Các app RevenueCat hot quốc tế dùng nhiều tên entitlement khác nhau (pro/premium/plus...).
+// Cấp quyền dưới TẤT CẢ key phổ biến này để phủ tối đa mà không cần script riêng cho từng app
+// (tránh xung đột endpoint vì mọi app RC đều đi qua cùng handler này).
+const GENERIC_ENTITLEMENT_KEYS = [
+  "pro", "premium", "plus", "Pro", "Premium", "Plus", "vip", "VIP",
+  "unlimited", "standard", "gold", "lifetime", "all_access",
+  "premium_access", "pro_access", "isPremium", "premiumUser"
+];
 
 // =========  Core Logic  ========= //
 // =========  @z3rokaze  ========= //
@@ -52,15 +63,36 @@ var z3rokaze = {
       expires_date: "9999-07-18T10:10:14Z"
   };
 const match = Object.keys(mapping).find(e => uaDecoded.includes(e) || ua.includes(e));
-let entKey = "pro", prodKey = "locket_1600_1y";
+let prodKey = "locket_1600_1y";
+let entKeys;
 if (match) {
+  // App có trong mapping -> cấp đúng entitlement key riêng (GIỮ NGUYÊN hành vi Locket Gold)
   const [ent, prod] = mapping[match];
-  if (ent) entKey = ent;
   if (prod) prodKey = prod;
+  entKeys = [ent || "pro"];
+} else {
+  // App RC khác -> cấp quyền dưới nhiều entitlement key phổ biến (phủ nhiều app hot)
+  entKeys = GENERIC_ENTITLEMENT_KEYS;
 }
 locketGold.product_identifier = prodKey;
+obj.subscriber.subscriptions = obj.subscriber.subscriptions || {};
+obj.subscriber.entitlements = obj.subscriber.entitlements || {};
 // Merge (giữ field server có thể thêm mới) thay vì ghi đè cả object
 obj.subscriber.subscriptions[prodKey] = Object.assign({}, obj.subscriber.subscriptions[prodKey] || {}, z3rokaze);
-obj.subscriber.entitlements[entKey] = Object.assign({}, obj.subscriber.entitlements[entKey] || {}, locketGold);
+// Với app chưa map: gia hạn luôn mọi entitlement server đã định nghĩa sẵn (nếu có) -> phủ đúng key riêng của app
+if (!match) {
+  for (const k of Object.keys(obj.subscriber.entitlements)) {
+    obj.subscriber.entitlements[k] = Object.assign({}, obj.subscriber.entitlements[k], {
+      expires_date: locketGold.expires_date,
+      purchase_date: locketGold.purchase_date,
+      grace_period_expires_date: null,
+      product_identifier: (obj.subscriber.entitlements[k] && obj.subscriber.entitlements[k].product_identifier) || prodKey
+    });
+  }
+}
+// Cấp quyền dưới các entitlement key mục tiêu
+for (const k of entKeys) {
+  obj.subscriber.entitlements[k] = Object.assign({}, obj.subscriber.entitlements[k] || {}, locketGold);
+}
 $done({ body: JSON.stringify(obj) });
 }
