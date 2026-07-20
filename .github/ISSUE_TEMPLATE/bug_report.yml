@@ -1,0 +1,68 @@
+name: 🐛 Báo lỗi
+description: Báo cáo một unlock không hoạt động hoặc lỗi cấu hình
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Cảm ơn bạn đã báo lỗi! Vui lòng điền đầy đủ để chúng tôi tái hiện nhanh.
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Ứng dụng proxy
+      options:
+        - Shadowrocket
+        - Surge
+        - Loon
+        - Quantumult X
+        - Stash
+        - Egern
+        - LanceX
+    validations:
+      required: true
+  - type: input
+    id: app
+    attributes:
+      label: App bị lỗi
+      placeholder: "Ví dụ: YouTube Premium, Locket Gold, Spotify..."
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Mô tả lỗi
+      placeholder: Điều gì đã xảy ra? Bạn mong đợi điều gì?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Các bước tái hiện
+      placeholder: |
+        1. Cài module ...
+        2. Bật MITM ...
+        3. Mở app ...
+    validations:
+      required: true
+  - type: input
+    id: ios
+    attributes:
+      label: Phiên bản iOS
+      placeholder: "Ví dụ: iOS 18.5"
+  - type: input
+    id: version
+    attributes:
+      label: Phiên bản module
+      placeholder: "Ví dụ: 2.3.0-stable"
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Kiểm tra trước khi gửi
+      options:
+        - label: Tôi đã bật MITM và cài chứng chỉ CA đúng cách.
+          required: true
+        - label: Tôi đã kiểm tra host của app có trong danh sách MITM.
+          required: true
+        - label: Tôi đã tìm và không thấy issue trùng.
+          required: true

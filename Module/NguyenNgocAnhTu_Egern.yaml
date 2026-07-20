@@ -1,5 +1,5 @@
 name: "👑 Nguyễn Ngọc Anh Tú 🌸 ⁕ Ultimate Premium (Egern) ⁕"
-description: "🚀 Mở khóa 70+ App VIP + bundle iTunes/RevenueCat (Spotify, Locket...). 🛡️ Chặn Ads & Tracking. ⚡ Tối ưu DNS, Banking, Streaming & Social. | v2.2.0-stable (2026-07-16)"
+description: "🚀 Mở khóa 70+ App VIP + bundle iTunes/RevenueCat (Spotify, Locket...). 🛡️ Chặn Ads & Tracking. ⚡ Tối ưu DNS, Banking, Streaming & Social. | v2.3.0-stable (2026-07-21)"
 author: "Nguyễn Ngọc Anh Tú (z3rokaze)"
 homepage: "https://github.com/ekaznyra/NguyenNgocAnhTu"
 icon: "lock.open.fill"
@@ -2209,12 +2209,12 @@ scriptings:
   - http_request:
       name: "Spotify JSON"
       match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/(artistview/v1/artist|album-entity-view/v2/album)/"
-      script_url: "https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js"
+      script_url: "https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-json.js"
       timeout: 10
   - http_response:
       name: "Spotify Proto"
       match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/(bootstrap/v1/bootstrap|user-customization-service/v1/customize)$"
-      script_url: "https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js"
+      script_url: "https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-proto.js"
       body_required: true
       binary_body: true
       timeout: 10
@@ -2242,7 +2242,7 @@ scriptings:
   - http_response:
       name: "SoundCloud Go+"
       match: "^https?://api-mobile\\.soundcloud\\.com/configuration/ios"
-      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/main/soundcloud.js"
+      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/soundcloud.js"
       body_required: true
       timeout: 15
 
@@ -2262,7 +2262,7 @@ scriptings:
   - http_response:
       name: "PicsArt NobyDa"
       match: "^https?://api\\.(picsart|meiease)\\.c(n|om)/users/show/me\\.json"
-      script_url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/PicsArt.js"
+      script_url: "https://raw.githubusercontent.com/NobyDa/Script/7f8b309f8d943806b90c6ff25d8b8aa0c59b0c03/Surge/JS/PicsArt.js"
       body_required: true
       timeout: 60
 
@@ -2270,7 +2270,7 @@ scriptings:
   - http_response:
       name: "Lightroom Premium"
       match: "^https://photos\\.adobe\\.io/v2/accounts"
-      script_url: "https://raw.githubusercontent.com/litieyin/AD_VIP/main/Script/lightroom.js"
+      script_url: "https://raw.githubusercontent.com/litieyin/AD_VIP/df5c91a861bc68652958150281a655d9d71bed74/Script/lightroom.js"
       body_required: true
       timeout: 10
 
@@ -2342,7 +2342,7 @@ scriptings:
   - http_response:
       name: "Wink VIP"
       match: "^https?://api-sub\\.meitu\\.com/v2/user/vip_info_by_group\\.json"
-      script_url: "https://raw.githubusercontent.com/yqc007/QuantumultX/master/WinkForeverVipCrack.js"
+      script_url: "https://raw.githubusercontent.com/yqc007/QuantumultX/08eada498e940f8ec190fb4233a781d1628abc80/WinkForeverVipCrack.js"
       body_required: true
       timeout: 10
 
@@ -2390,7 +2390,7 @@ scriptings:
   - http_response:
       name: "B612 VIP"
       match: "^https?://user-kaji-api\\.b612kaji\\.com/v\\d/purchase/subscription/subscriber/status"
-      script_url: "https://raw.githubusercontent.com/deezertidal/private/master/js-backup/Crack/612.js"
+      script_url: "https://raw.githubusercontent.com/deezertidal/private/38b9581548b5070f2dc9c6bfa243cdacf0672d31/js-backup/Crack/612.js"
       body_required: true
       timeout: 60
 
@@ -2422,7 +2422,7 @@ scriptings:
   - http_response:
       name: "WPS Office"
       match: "^https?://.*?account\\.wps\\.(com|cn)(:\\d+)?/api/users/\\w+/overview$"
-      script_url: "https://raw.githubusercontent.com/I-am-R-E/Functional-Store-Hub/Master/WPSOffice/Script/WPS.js"
+      script_url: "https://raw.githubusercontent.com/I-am-R-E/Functional-Store-Hub/38f4fa9b9a963457d7ea5a93fdcd1cd44945a49e/WPSOffice/Script/WPS.js"
       body_required: true
       timeout: 10
 
@@ -2438,7 +2438,7 @@ scriptings:
   - http_response:
       name: "Alarmy Premium"
       match: "^https://ars\\.alar\\.my/api/v2/user/sync"
-      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/main/alarmy.js"
+      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/alarmy.js"
       body_required: true
       timeout: 10
 
@@ -2446,7 +2446,7 @@ scriptings:
   - http_response:
       name: "Grammarly Premium"
       match: "^https?://subscription\\.grammarly\\.com/api/v1/subscription$"
-      script_url: "https://raw.githubusercontent.com/yqc007/QuantumultX/master/GrammarlyPremiumCrack.js"
+      script_url: "https://raw.githubusercontent.com/yqc007/QuantumultX/08eada498e940f8ec190fb4233a781d1628abc80/GrammarlyPremiumCrack.js"
       body_required: true
       timeout: 10
 
@@ -2454,7 +2454,7 @@ scriptings:
   - http_response:
       name: "Notability Plus"
       match: "^https://notability\\.com/subscriptions"
-      script_url: "https://raw.githubusercontent.com/litieyin/AD_VIP/main/Script/notability.js"
+      script_url: "https://raw.githubusercontent.com/litieyin/AD_VIP/df5c91a861bc68652958150281a655d9d71bed74/Script/notability.js"
       body_required: true
       timeout: 10
 
@@ -2470,7 +2470,7 @@ scriptings:
   - http_response:
       name: "Smallpdf Pro"
       match: "^https?://pro\\.smallpdf\\.com/pro/account"
-      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/main/smallpdf.js"
+      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/smallpdf.js"
       body_required: true
       timeout: 10
 
@@ -2478,7 +2478,7 @@ scriptings:
   - http_response:
       name: "Peak Pro"
       match: "^https://billing\\.peakcloud\\.org/billing/2/user/me"
-      script_url: "https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/js/peak.js"
+      script_url: "https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/503cab549a2eae6004576481d3c54dd459a2b377/js/peak.js"
       body_required: true
       timeout: 10
 
@@ -2486,7 +2486,7 @@ scriptings:
   - http_response:
       name: "Polarr Pro"
       match: "^https://api\\.polaxiong\\.com/v1/payments/appleiap/receipts/confirmation"
-      script_url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Polarr.js"
+      script_url: "https://raw.githubusercontent.com/NobyDa/Script/7f8b309f8d943806b90c6ff25d8b8aa0c59b0c03/Surge/JS/Polarr.js"
       body_required: true
       timeout: 10
 
@@ -2494,7 +2494,7 @@ scriptings:
   - http_response:
       name: "MyFitnessPal Premium"
       match: "^https?://premium-api\\.myfitnesspal\\.com/v3/subscriptions/MFP/"
-      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/main/myFitnessPal.js"
+      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/myFitnessPal.js"
       body_required: true
       timeout: 10
 
@@ -2502,7 +2502,7 @@ scriptings:
   - http_response:
       name: "Musixmatch Premium"
       match: "^https?://apic\\.musixmatch\\.com/ws/1\\.1/config\\.get"
-      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/main/musixmatch.js"
+      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/musixmatch.js"
       body_required: true
       timeout: 10
 
@@ -2510,7 +2510,7 @@ scriptings:
   - http_response:
       name: "Fimo Camera"
       match: "^https://server\\.yoyiapp\\.com/fimo-user/user$"
-      script_url: "https://raw.githubusercontent.com/deezertidal/private/master/js-backup/Crack/fimo.js"
+      script_url: "https://raw.githubusercontent.com/deezertidal/private/38b9581548b5070f2dc9c6bfa243cdacf0672d31/js-backup/Crack/fimo.js"
       body_required: true
       timeout: 10
 
@@ -2518,7 +2518,7 @@ scriptings:
   - http_response:
       name: "Varlens Premium"
       match: "^https://mid\\.zineapi\\.com/@varlens/api/user/info/"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Varlens.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/Varlens.js"
       body_required: true
       timeout: 10
 
@@ -2531,7 +2531,7 @@ scriptings:
   - http_response:
       name: "Boom Equalizer"
       match: "^https://apimboom2\\.globaldelight\\.net/itunesreceipt_v2\\.php$"
-      script_url: "https://raw.githubusercontent.com/deezertidal/private/master/js-backup/Crack/boom.js"
+      script_url: "https://raw.githubusercontent.com/deezertidal/private/38b9581548b5070f2dc9c6bfa243cdacf0672d31/js-backup/Crack/boom.js"
       body_required: true
       timeout: 10
       timeout: 10
@@ -2539,97 +2539,97 @@ scriptings:
   - http_response:
       name: "Fantastical Premium"
       match: "^https://api\\.flexibits\\.com/(v1/auth/device|v1/account/details)"
-      script_url: "https://raw.githubusercontent.com/deezertidal/private/master/js-backup/Crack/fantastical.js"
+      script_url: "https://raw.githubusercontent.com/deezertidal/private/38b9581548b5070f2dc9c6bfa243cdacf0672d31/js-backup/Crack/fantastical.js"
       body_required: true
       timeout: 10
   # 📝 Craft Premium (yfamilys)
   - http_response:
       name: "Craft Premium"
       match: "^https://api\\.craft\\.do/auth/v2/profile"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Craft.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/Craft.js"
       body_required: true
       timeout: 10
   # 📓 Day One Premium (yfamilys)
   - http_response:
       name: "Day One Premium"
       match: "^https?://dayone\\.app/api/v2/users/(receipt|account-status)"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/dayone.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/dayone.js"
       body_required: true
       timeout: 10
   # 💬 Nicegram Premium (yfamilys)
   - http_request:
       name: "Nicegram Premium"
       match: "^https?://restore-access\\.indream\\.app/restoreAccess\\?id=\\w+$"
-      script_url: "https://raw.githubusercontent.com/I-am-R-E/Functional-Store-Hub/Master/Nicegram/Script/Nicegram.js"
+      script_url: "https://raw.githubusercontent.com/I-am-R-E/Functional-Store-Hub/38f4fa9b9a963457d7ea5a93fdcd1cd44945a49e/Nicegram/Script/Nicegram.js"
       timeout: 10
   # 📄 iLovePDF Premium (yfamilys)
   - http_response:
       name: "iLovePDF Premium"
       match: "^https?://service\\.ilovepdf\\.com/v1/user"
-      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/main/lovePdf.js"
+      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/lovePdf.js"
       body_required: true
       timeout: 10
   # 🌐 Mondly Premium (yfamilys)
   - http_response:
       name: "Mondly Premium"
       match: "^https://api\\.mondlylanguages\\.com/v3/ios/user/sync"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Mondly.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/Mondly.js"
       body_required: true
       timeout: 10
   # 🌐 Memrise Premium (yfamilys)
   - http_response:
       name: "Memrise Premium"
       match: "^https://api\\.memrise\\.com/v1\\.18"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Memrise.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/Memrise.js"
       body_required: true
       timeout: 10
   # 🌐 Aloha Browser (yfamilys)
   - http_response:
       name: "Aloha Browser"
       match: "^https?://api\\.alohaprofile\\.com/v1/profile_info"
-      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/main/aloha.js"
+      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/aloha.js"
       body_required: true
       timeout: 10
   # 🧘 Daily Yoga (yfamilys)
   - http_response:
       name: "Daily Yoga"
       match: "^https?://pre\\.dailyyoga\\.com/h2oapi/user/getUserDetail"
-      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/main/dailyYoga.js"
+      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/dailyYoga.js"
       body_required: true
       timeout: 10
   # 🌤 AccuWeather (yfamilys)
   - http_response:
       name: "AccuWeather Premium"
       match: "^https?://app-subscription-proxy\\.accuweather\\.com/subscriptions/v1/apple/validate"
-      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/main/accuWeather.js"
+      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/accuWeather.js"
       body_required: true
       timeout: 10
   # 😴 Endel (yfamilys)
   - http_response:
       name: "Endel Focus"
       match: "^https://api-production\\.endel\\.io/v4/call"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Endel.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/Endel.js"
       body_required: true
       timeout: 10
   # 📝 Flomo (yfamilys)
   - http_response:
       name: "Flomo Notes"
       match: "^https://flomoapp\\.com/api/v1/user/me"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/flomo.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/flomo.js"
       body_required: true
       timeout: 10
   # ✍ Drafts Pro (yfamilys)
   - http_response:
       name: "Drafts Pro"
       match: "^https://backend\\.getdrafts\\.com/api/v1/verification/verify_receipt"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Drafts.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/Drafts.js"
       body_required: true
       timeout: 10
   # 💪 Keep Fitness (yfamilys)
   - http_response:
       name: "Keep Fitness"
       match: "^https://api\\.gotokeep\\.com"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/keep.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/keep.js"
       body_required: true
       timeout: 10
   # 🎨 Color Widgets → Đã gộp vào revenuecat_multi.js (generic fallback). Gỡ script riêng để tránh xung đột hostname với Locket Gold.
@@ -2638,21 +2638,21 @@ scriptings:
   - http_request:
       name: "iTranslate Pro"
       match: "^https://ssl-api\\.itranslateapp\\.com/accounts/v\\d/subscriptions/verify/ios"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/iTranslate.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/iTranslate.js"
       body_required: true
       timeout: 10
   # === LINGVIST HỌC NGOẠI NGỮ - 89996462 ===
   - http_response:
       name: "Lingvist"
       match: "^https://payment-api\\.lingvist\\.com/.+/user/services"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Lingvist.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/Lingvist.js"
       body_required: true
       timeout: 10
   # === BENDING SPOONS BUNDLE (Splice, Remini, FilmicPro, Focos, 30DayFitness...) - 89996462 ===
   - http_response:
       name: "Bending Spoons Bundle"
       match: "^https?://.*\\.oracle\\.bendingspoonsapps\\.com/v\\d/(users/.+|purchases/verify)"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Focos.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/Focos.js"
       body_required: true
       timeout: 10
 
@@ -2660,56 +2660,56 @@ scriptings:
   - http_response:
       name: "Adobe Scan"
       match: "^https?://lcs-mobile-cops\\.adobe\\.io/(?!mobile_profile).+"
-      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/main/adobeScanPdf.js"
+      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/adobeScanPdf.js"
       body_required: true
       timeout: 10
   # === BILIBILI (CN Video Platform) - Marol62926 ✅ VERIFIED ===
   - http_response:
       name: "Bilibili"
       match: "^https?://app\\.bilibili\\.com/x/v2/account/myinfo"
-      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/main/bilibili.js"
+      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/bilibili.js"
       body_required: true
       timeout: 10
   # 🎬 InVideo Premium
   - http_response:
       name: "InVideo Premium"
       match: "^https?://payments\\.invideo\\.io/(verify_purchase|subscription)"
-      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/main/filmr.js"
+      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/filmr.js"
       body_required: true
       timeout: 10
   # 🥕 CARROT Weather Premium
   - http_response:
       name: "CARROT Weather"
       match: "^https://carrotweather\\.herokuapp\\.com/parse/functions/findSubscriptionsForUserId"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/CARROTWeather.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/CARROTWeather.js"
       body_required: true
       timeout: 10
   # 📅 Agenda Premium
   - http_response:
       name: "Agenda Premium"
       match: "^https://accounts\\.agenda\\.com/users/.*/license"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Agenda.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/Agenda.js"
       body_required: true
       timeout: 10
   # 📕 PDF Expert - Readdle (host riêng)
   - http_request:
       name: "PDF Expert"
       match: "^https://license\\.pdfexpert\\.com/api/2\\.0/pdfexpert6/subscription/refresh"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/PDFExpert.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/PDFExpert.js"
       body_required: true
       timeout: 10
   # 📁 Documents by Readdle
   - http_request:
       name: "Documents by Readdle"
       match: "^https://license\\.pdfexpert\\.com/api/2\\.0/documents/subscription/refresh"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/documents.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/documents.js"
       body_required: true
       timeout: 10
   # 📆 Sorted Calendar/Planner
   - http_response:
       name: "Sorted Planner"
       match: "^https://api\\.sortedapp\\.com/receipts/verify"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Sorted.js"
+      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/Sorted.js"
       body_required: true
       timeout: 10
 mitm:

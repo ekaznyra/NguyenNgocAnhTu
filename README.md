@@ -2,7 +2,7 @@
 
 <!-- HEADER -->
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:20003B&height=320&section=header&text=%20%E2%9A%A1%20PREMIUM%20UNLOCKER%20&fontSize=60&fontColor=FFFFFF&animation=twinkling&fontAlignY=35&desc=%E2%9C%A8%20Tinh%20Hoa%20M%E1%BB%9F%20Kho%C3%A1%20Premium%20%E2%80%A2%2070%2B%20%E1%BB%A8ng%20D%E1%BB%A5ng%20%E2%80%A2%208%20N%E1%BB%81n%20T%E1%BA%A3ng%20%E2%80%A2%20iOS%2015%2B&descAlignY=55&descSize=20&descColor=00F0FF&stroke=00F0FF&strokeWidth=2"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:20003B&height=320&section=header&text=%20%E2%9A%A1%20PREMIUM%20UNLOCKER%20&fontSize=60&fontColor=FFFFFF&animation=twinkling&fontAlignY=35&desc=%E2%9C%A8%20Tinh%20Hoa%20M%E1%BB%9F%20Kho%C3%A1%20Premium%20%E2%80%A2%2070%2B%20%E1%BB%A8ng%20D%E1%BB%A5ng%20%E2%80%A2%207%20N%E1%BB%81n%20T%E1%BA%A3ng%20%E2%80%A2%20iOS%2015%2B&descAlignY=55&descSize=20&descColor=00F0FF&stroke=00F0FF&strokeWidth=2"/>
 
 <br>
 
@@ -129,7 +129,7 @@
 <sub>Hỗ trợ & cập nhật</sub>
 </td>
 <td align="center" width="16.6%">
-<img src="https://img.shields.io/badge/8-7b5ea7?style=flat-square&labelColor=0D1117" alt=""/><br>
+<img src="https://img.shields.io/badge/7-7b5ea7?style=flat-square&labelColor=0D1117" alt=""/><br>
 <b>🖥️ Nền tảng</b><br>
 <sub>Proxy hỗ trợ</sub>
 </td>
@@ -1627,7 +1627,7 @@ https://github.com/ekaznyra/NguyenNgocAnhTu/tree/master/Module
 | 🐛 | **Báo lỗi** | [Issues](https://github.com/ekaznyra/NguyenNgocAnhTu/issues) | Gửi yêu cầu hoặc báo lỗi |
 | 📥 | **Phiên bản** | [Releases](https://github.com/ekaznyra/NguyenNgocAnhTu/releases) | Tải phiên bản mới nhất |
 | 👤 | **Tác giả** | [github.com/ekaznyra](https://github.com/ekaznyra) | Trang cá nhân tác giả |
-| 🔒 | **Bảo mật** | [SECURITY.md](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/SECURITY.md) | Chính sách bảo mật |
+| 📝 | **Nhật ký** | [CHANGELOG.md](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/CHANGELOG.md) | Lịch sử thay đổi phiên bản |
 | 🤝 | **Đóng góp** | [CONTRIBUTING.md](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/CONTRIBUTING.md) | Hướng dẫn đóng góp |
 | 📜 | **Quy tắc** | [CODE_OF_CONDUCT.md](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/CODE_OF_CONDUCT.md) | Quy tắc ứng xử cộng đồng |
 
@@ -1660,7 +1660,7 @@ https://github.com/ekaznyra/NguyenNgocAnhTu/tree/master/Module
 |:---:|:---|:---|
 | 🤝 | **[Hướng dẫn đóng góp](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/CONTRIBUTING.md)** | Cách thêm ứng dụng mới, quy ước commit, checklist PR |
 | 📜 | **[Quy tắc ứng xử](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/CODE_OF_CONDUCT.md)** | Quy tắc cộng đồng thân thiện, tôn trọng |
-| 🔒 | **[Chính sách bảo mật](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/SECURITY.md)** | Báo cáo lỗ hổng bảo mật có trách nhiệm |
+| 📝 | **[Nhật ký thay đổi](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/CHANGELOG.md)** | Lịch sử phiên bản & thay đổi |
 | 📜 | **[Giấy phép AGPL-3.0](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/LICENSE)** | Điều khoản sử dụng mã nguồn mở |
 
 </div>
