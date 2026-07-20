@@ -116,6 +116,11 @@ FINAL,DIRECT
 # 🔒 SCRIPT BÊN THỨ BA ĐÃ GHIM COMMIT SHA (2026-07-20) — giảm rủi ro chuỗi cung ứng (mã tự cập nhật chạy trên traffic đã giải mã).
 #    Bump SHA định kỳ để nhận bản vá mới. Script tự host (ekaznyra/...) giữ nhánh master vì do bạn kiểm soát.
 #    Ngoại lệ: caml.js (Calm) giữ ref gốc do chưa xác định được commit SHA ổn định.
+# 📦 Sub-Store (quản lý & chuyển đổi subscription proxy) — nguồn chính thức, tự cập nhật bản release mới nhất
+Sub-Store Core = type=http-request, pattern=^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))), script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js, requires-body=true, timeout=120
+Sub-Store Simple = type=http-request, pattern=^https?:\/\/sub\.store, script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-0.min.js, requires-body=true
+Sub-Store Sync = type=cron, cronexp=0 0 * * *, wake-system=1, timeout=120, script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/cron-sync-artifacts.min.js
+
 # === YOUTUBE PREMIUM - ekaznyra Version (2026-05-09) ===
 # Blocks all ads + enables background playback + PiP
 # (Đã gỡ handler youtube.request: script youtube.response.js chỉ xử lý $response — ở stage request nó throw rồi exit, chỉ tốn buffer.)
