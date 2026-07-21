@@ -11,45 +11,44 @@ if (!body) {
 } else {
     try {
         var obj = JSON.parse(body);
-        const farFuture = 32662137600; // 2099-12-31
 
-        const vipObj = {
-            "vip_type": 1,
-            "vip_status": 1,
-            "status": 1,
-            "in_trial": 0,
-            "expiry": farFuture,
-            "expire_time": farFuture,
-            "expire_date": "2099-12-31 23:59:59",
+        // Wink vip_info_by_group response structure
+        const winkVipData = {
+            "active_sub_type": 2,
+            "account_type": 1,
+            "sub_type_name": "续期",
+            "active_sub_order_id": "7069961436604422668",
+            "trial_period_invalid_time": "",
+            "current_order_invalid_time": "32662173600000",
+            "active_order_id": "7069961436340181123",
+            "limit_type": 0,
+            "active_sub_type_name": "续期",
+            "use_vip": true,
+            "have_valid_contract": true,
+            "derive_type_name": "Wink VIP",
+            "derive_type": 1,
+            "in_trial_period": false,
             "is_vip": true,
-            "is_auto_renew": true,
-            "product_id": "com.meitu.wink.vip.year",
-            "type": 1
+            "membership": {
+                "id": "4",
+                "display_name": "Wink VIP",
+                "gid": "1230010086"
+            },
+            "invalid_time": "32662173600000",
+            "sub_type": 2,
+            "period_type": 1,
+            "contract_status": 1
         };
 
-        if (obj.data) {
-            if (Array.isArray(obj.data.vip_info)) {
-                obj.data.vip_info = [vipObj];
-            } else if (typeof obj.data.vip_info === "object") {
-                obj.data.vip_info = vipObj;
+        if (obj && typeof obj === "object") {
+            if (obj.data && typeof obj.data === "object") {
+                Object.assign(obj.data, winkVipData);
             } else {
-                obj.data.vip_info = [vipObj];
+                obj.data = winkVipData;
             }
-            obj.data.is_vip = true;
-            obj.data.vip_type = 1;
-            obj.data.vip_status = 1;
-            obj.data.expire_time = farFuture;
+            obj.is_vip = true;
+            obj.use_vip = true;
         }
-
-        if (obj.vip_info) {
-            if (Array.isArray(obj.vip_info)) {
-                obj.vip_info = [vipObj];
-            } else {
-                obj.vip_info = vipObj;
-            }
-        }
-        obj.is_vip = true;
-        obj.vip_status = 1;
 
         $done({ body: JSON.stringify(obj) });
     } catch (e) {
