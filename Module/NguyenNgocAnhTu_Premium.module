@@ -183,8 +183,8 @@ headspace-response = type=http-response, pattern=^https:\/\/api\.prod\.headspace
 # === ALIGHT MOTION PRO - ekaznyra (2026-04-21) ===
 alightmotion-response = type=http-response, pattern=^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/AlightMotion.js, requires-body=1, max-size=0, timeout=10
 
-# === WINK FOREVER VIP - yqc007 / yfamilys (2026-05-19) ===
-wink-response = type=http-response, pattern=^https?:\/\/api-sub\.meitu\.com\/v2\/user\/vip_info_by_group\.json, requires-body=1, max-size=0, timeout=10, script-path=https://raw.githubusercontent.com/yqc007/QuantumultX/08eada498e940f8ec190fb4233a781d1628abc80/WinkForeverVipCrack.js
+# === WINK FOREVER VIP - ekaznyra (2026-07-21) ===
+wink-response = type=http-response, pattern=^https?:\/\/api-sub\.meitu\.com\/v\d\/user\/vip_info, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Wink.js, requires-body=1, max-size=0, timeout=10
 
 # === TRUECALLER PREMIUM - ekaznyra (2026-04-21) ===
 truecaller-response = type=http-response, pattern=^https:\/\/premium-(.+)\.truecaller\.com\/v\d\/(subscriptions|products\/apple), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/TrueCaller.js, requires-body=1, max-size=0, timeout=10

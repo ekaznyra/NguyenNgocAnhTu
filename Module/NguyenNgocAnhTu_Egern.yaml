@@ -2336,11 +2336,11 @@ scriptings:
       body_required: true
       timeout: 10
 
-  # 💄 Wink Forever VIP (yfamilys)
+  # 💄 Wink Forever VIP
   - http_response:
       name: "Wink VIP"
-      match: "^https?://api-sub\\.meitu\\.com/v2/user/vip_info_by_group\\.json"
-      script_url: "https://raw.githubusercontent.com/yqc007/QuantumultX/08eada498e940f8ec190fb4233a781d1628abc80/WinkForeverVipCrack.js"
+      match: "^https?://api-sub\\.meitu\\.com/v\\d/user/vip_info"
+      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Wink.js"
       body_required: true
       timeout: 10
 

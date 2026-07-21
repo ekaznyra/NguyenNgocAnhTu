@@ -1059,7 +1059,7 @@ script-providers:
     url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/AlightMotion.js
     interval: 86400
   wink-res:
-    url: https://raw.githubusercontent.com/yqc007/QuantumultX/08eada498e940f8ec190fb4233a781d1628abc80/WinkForeverVipCrack.js
+    url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Wink.js
     interval: 86400
   tc-res:
     url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/TrueCaller.js
@@ -1323,7 +1323,7 @@ scriptings:
       timeout: 10
   - http-response:
       name: wink-res
-      match: ^https?:\/\/api-sub\.meitu\.com\/v2\/user\/vip_info_by_group\.json
+      match: ^https?:\/\/api-sub\.meitu\.com\/v\d\/user\/vip_info
       script-provider: wink-res
       require-body: true
       timeout: 10
