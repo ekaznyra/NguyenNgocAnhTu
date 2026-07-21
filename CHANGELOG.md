@@ -5,6 +5,21 @@ Mọi thay đổi đáng chú ý của dự án được ghi lại tại đây.
 Định dạng dựa trên [Keep a Changelog](https://keepachangelog.com/vi/1.0.0/),
 và dự án tuân theo [Semantic Versioning](https://semver.org/lang/vi/).
 
+## [2.4.4-stable] — 2026-07-21
+
+### 🧹 Dọn dẹp (gỡ mã thừa)
+- **Egern**: gỡ script `deleteHeader.js` (một `http_request` chỉ để xóa header
+  `X-RevenueCat-ETag`). Header này **đã được xóa native** ở mục `header_rewrites`
+  cho **cả** `api.revenuecat.com` **và** `api.rc-backup.com` → script bị **trùng
+  lặp** và còn tốn 1 lần khởi động JS engine mỗi request RevenueCat.
+- **Xóa hẳn file `Module/js/deleteHeader.js`**: sau khi gỡ tham chiếu ở Egern,
+  file này không còn module nào dùng (dead code).
+- Kết quả: hành vi **không đổi** (ETag vẫn bị xóa native), nhưng nhẹ hơn và repo
+  sạch hơn.
+
+### ✨ Nhất quán
+- Đồng bộ phiên bản tất cả module **7/7 → `2.4.4-stable`**.
+
 ## [2.4.3-stable] — 2026-07-21
 
 ### 🔒 Đồng bộ chính sách DNS trên toàn bộ nền tảng khai báo DNS

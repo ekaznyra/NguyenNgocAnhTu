@@ -1,5 +1,5 @@
 name: "👑 Nguyễn Ngọc Anh Tú 🌸 ⁕ Ultimate Premium (Egern) ⁕"
-description: "🚀 Mở khóa 70+ App VIP + bundle iTunes/RevenueCat (Spotify, Locket...). 🛡️ Chặn Ads & Tracking. ⚡ Tối ưu DNS, Banking, Streaming & Social. | v2.4.3-stable (2026-07-21)"
+description: "🚀 Mở khóa 70+ App VIP + bundle iTunes/RevenueCat (Spotify, Locket...). 🛡️ Chặn Ads & Tracking. ⚡ Tối ưu DNS, Banking, Streaming & Social. | v2.4.4-stable (2026-07-21)"
 author: "Nguyễn Ngọc Anh Tú (z3rokaze)"
 homepage: "https://github.com/ekaznyra/NguyenNgocAnhTu"
 icon: "lock.open.fill"
@@ -2226,11 +2226,8 @@ scriptings:
       script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js"
       body_required: true
       timeout: 60
-  - http_request:
-      name: "RevenueCat Header"
-      match: "^https://api\\.revenuecat\\.com/.+/(receipts|subscribers)"
-      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/deleteHeader.js"
-      timeout: 60
+  # (2.4.4) Gỡ script deleteHeader.js: ETag X-RevenueCat-ETag đã được xóa native ở
+  #         mục header_rewrites (cho cả api.revenuecat.com & api.rc-backup.com) -> script trùng lặp.
   - http_response:
       name: "RevenueCat Backup"
       match: "^https://api\\.rc-backup\\.com/.+/(receipts$|subscribers/[^/]+$)"
