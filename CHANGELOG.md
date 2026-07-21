@@ -5,6 +5,27 @@ Mọi thay đổi đáng chú ý của dự án được ghi lại tại đây.
 Định dạng dựa trên [Keep a Changelog](https://keepachangelog.com/vi/1.0.0/),
 và dự án tuân theo [Semantic Versioning](https://semver.org/lang/vi/).
 
+## [2.4.3-stable] — 2026-07-21
+
+### 🔒 Đồng bộ chính sách DNS trên toàn bộ nền tảng khai báo DNS
+- Đưa **LanceX** và **Egern** về cùng triết lý DNS với `Premium.module`:
+  - Chuyển từ resolver **không lọc** (`dns.google` / `cloudflare-dns` / `quad9`)
+    sang **DoH có lọc** ads/tracking/malware: `dns.adguard-dns.com` +
+    `freedns.controld.com/**p2**`.
+  - **Bỏ fallback `system`** (trước đây nếu DoH lỗi sẽ rơi về resolver hệ thống
+    dạng plaintext → **rò rỉ DNS**). Nay mọi truy vấn đều mã hóa.
+  - Dùng ControlD **p2** (Malware + Ads/Trackers), **KHÔNG p3** vì p3 chặn thêm
+    Social (Facebook/Instagram/TikTok…) — mâu thuẫn mục tiêu "Tối ưu Social".
+- Các module không tự khai báo DNS (Surge/Loon/Stash/Quantumult X) **giữ nguyên**:
+  chúng dùng DNS của config chính do người dùng kiểm soát, không ép ghi đè.
+
+> Ghi chú: đây là thay đổi mang tính "quan điểm" nhưng thống nhất theo lựa chọn
+> tác giả đã áp dụng cho nền tảng chính (Shadowrocket). Nếu muốn ưu tiên tốc độ
+> hơn lọc, có thể đổi lại resolver — chỉ cần sửa 1 dòng ở mỗi module.
+
+### ✨ Nhất quán
+- Đồng bộ phiên bản tất cả module **7/7 → `2.4.3-stable`**.
+
 ## [2.4.2-stable] — 2026-07-21
 
 ### 🔒 DNS & định tuyến an toàn hơn

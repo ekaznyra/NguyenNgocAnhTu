@@ -1,6 +1,6 @@
 #!name=👑 Nguyễn Ngọc Anh Tú 🌸 ⁕ Ultimate Premium (LanceX) ⁕
 #!desc=🚀 Mở khóa 70+ App VIP + bundle iTunes/RevenueCat (Spotify, Locket...). 🛡️ Chặn Ads & Tracking. ⚡ Tối ưu DNS, Banking, Streaming & Social.
-#!version=2.4.2-stable
+#!version=2.4.3-stable
 #!date=2026-07-21
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
@@ -14,8 +14,11 @@ skip-proxy = 127.0.0.1, 100.64.0.0/10, 17.0.0.0/8, 192.168.0.0/16, 10.0.0.0/8, 1
 tun-excluded-routes = 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.0.0.0/24, 192.0.2.0/24, 192.88.99.0/24, 192.168.0.0/16, 198.51.100.0/24, 203.0.113.0/24, 224.0.0.0/4, 255.255.255.255/32, 239.255.255.250/32
 force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443
 always-real-ip = *.srv.nintendo.net, *.stun.playstation.net, xbox.*.microsoft.com, *.xboxlive.com, *.turn.apple.com, *.stun.services.mozilla.com, *.stun.l.google.com
-# === DNS MÃ HÓA (DoH) - Pomelo520 ===
-dns-server = https://dns.google/dns-query, https://cloudflare-dns.com/dns-query, https://dns.quad9.net/dns-query, system
+# === DNS (2.4.3) — đồng bộ triết lý DNS với Premium.module ===
+# DoH có lọc (ads/tracking/malware) + KHÔNG rơi về "system" (tránh rò rỉ DNS plaintext khi DoH lỗi).
+# Fallback ControlD dùng p2 (Malware + Ads/Trackers) — KHÔNG dùng p3 vì p3 chặn thêm Social
+# (Facebook/Instagram/TikTok…) sẽ mâu thuẫn mục tiêu "Tối ưu Social".
+dns-server = https://dns.adguard-dns.com/dns-query, https://freedns.controld.com/p2
 
 [Rule]
 # === BLOCK QUIC FOR YOUTUBE MITM ===
