@@ -2339,7 +2339,7 @@ scriptings:
   # 💄 Wink Forever VIP
   - http_response:
       name: "Wink VIP"
-      match: "^https?://api-sub\\.meitu\\.com/v\\d/user/vip_info"
+      match: "^https?://(api|api-sub)\\.meitu\\.com/.*vip"
       script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Wink.js"
       body_required: true
       timeout: 10

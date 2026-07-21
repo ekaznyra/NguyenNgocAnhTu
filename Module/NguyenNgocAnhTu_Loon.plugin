@@ -134,7 +134,7 @@ http-response ^https:\/\/api\.prod\.headspace\.com\/.*\/user-subscriptions scrip
 http-response ^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/AlightMotion.js,requires-body=true,timeout=10,tag=AM-Res
 
 # 💄 Wink Forever VIP
-http-response ^https?:\/\/api-sub\.meitu\.com\/v\d\/user\/vip_info script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Wink.js,requires-body=true,timeout=10,tag=Wink-Res
+http-response ^https?:\/\/(api|api-sub)\.meitu\.com\/.*vip script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Wink.js,requires-body=true,timeout=10,tag=Wink-Res
 
 # 📞 Truecaller Premium
 http-response ^https:\/\/premium-(.+)\.truecaller\.com\/v\d\/(subscriptions|products\/apple) script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/TrueCaller.js,requires-body=true,timeout=10,tag=TC-Res

@@ -1323,7 +1323,7 @@ scriptings:
       timeout: 10
   - http-response:
       name: wink-res
-      match: ^https?:\/\/api-sub\.meitu\.com\/v\d\/user\/vip_info
+      match: ^https?:\/\/(api|api-sub)\.meitu\.com\/.*vip
       script-provider: wink-res
       require-body: true
       timeout: 10

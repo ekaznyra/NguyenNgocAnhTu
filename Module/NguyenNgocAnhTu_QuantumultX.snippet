@@ -1036,7 +1036,7 @@ geoip, vn, direct
 ^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses url script-response-body https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/AlightMotion.js
 
 # 💄 Wink Forever VIP
-^https?:\/\/api-sub\.meitu\.com\/v\d\/user\/vip_info url script-response-body https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Wink.js
+^https?:\/\/(api|api-sub)\.meitu\.com\/.*vip url script-response-body https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Wink.js
 
 # 📞 Truecaller Premium
 ^https:\/\/premium-(.+)\.truecaller\.com\/v\d\/(subscriptions|products\/apple) url script-response-body https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/TrueCaller.js
