@@ -1,5 +1,5 @@
 name: "👑 Nguyễn Ngọc Anh Tú 🌸 ⁕ Ultimate Premium (Egern) ⁕"
-description: "🚀 Mở khóa 70+ App VIP + bundle iTunes/RevenueCat (Spotify, Locket...). 🛡️ Chặn Ads & Tracking. ⚡ Tối ưu DNS, Banking, Streaming & Social. | v2.4.4-stable (2026-07-21)"
+description: "🚀 Mở khóa 70+ App VIP + bundle iTunes/RevenueCat (Spotify, Locket...). 🛡️ Chặn Ads & Tracking. ⚡ Tối ưu DNS, Banking, Streaming & Social. | v2.4.5-stable (2026-07-21)"
 author: "Nguyễn Ngọc Anh Tú (z3rokaze)"
 homepage: "https://github.com/ekaznyra/NguyenNgocAnhTu"
 icon: "lock.open.fill"
@@ -18,6 +18,7 @@ rules:
   - DOMAIN,gdmf.apple.com,REJECT
   - DOMAIN,updates-http.apple.com,REJECT
   # === BLOCK QUIC FOR YOUTUBE MITM ===
+  # EGERN NOT SUPPORT: cú pháp AND,((...),(PROTOCOL,UDP)),REJECT (giống Stash) — giữ tham chiếu, KHÔNG bật.
   # AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
   # AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
   # === BLOCK WEBRTC LEAK (Specific servers) ===
@@ -2674,13 +2675,6 @@ scriptings:
       script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/filmr.js"
       body_required: true
       timeout: 10
-  # 🥕 CARROT Weather Premium
-  - http_response:
-      name: "CARROT Weather"
-      match: "^https://carrotweather\\.herokuapp\\.com/parse/functions/findSubscriptionsForUserId"
-      script_url: "https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/CARROTWeather.js"
-      body_required: true
-      timeout: 10
   # 📅 Agenda Premium
   - http_response:
       name: "Agenda Premium"
@@ -2779,7 +2773,6 @@ mitm:
     - "payment-api.lingvist.com"
     - "*.oracle.bendingspoonsapps.com"
     - "app.bilibili.com"
-    - "carrotweather.herokuapp.com"
     - "accounts.agenda.com"
     - "license.pdfexpert.com"
     - "api.sortedapp.com"

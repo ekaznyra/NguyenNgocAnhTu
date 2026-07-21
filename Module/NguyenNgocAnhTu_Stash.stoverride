@@ -1,5 +1,5 @@
 name: ⚡ Anh Tú Premium - Stash
-desc: "🚀 Mở khóa 70+ App VIP + bundle iTunes/RevenueCat (Spotify, Locket...). 🛡️ Chặn Ads & Tracking. ⚡ Tối ưu DNS, Banking, Streaming & Social. | v2.4.4-stable (2026-07-21)"
+desc: "🚀 Mở khóa 70+ App VIP + bundle iTunes/RevenueCat (Spotify, Locket...). 🛡️ Chặn Ads & Tracking. ⚡ Tối ưu DNS, Banking, Streaming & Social. | v2.4.5-stable (2026-07-21)"
 author: Nguyễn Ngọc Anh Tú
 homepage: https://github.com/ekaznyra/NguyenNgocAnhTu
 icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
@@ -988,7 +988,6 @@ mitm:
   - "payment-api.lingvist.com"
   - "*.oracle.bendingspoonsapps.com"
   - "app.bilibili.com"
-  - "carrotweather.herokuapp.com"
   - "accounts.agenda.com"
   - "license.pdfexpert.com"
   - "api.sortedapp.com"
@@ -1190,9 +1189,6 @@ script-providers:
     interval: 86400
   bilibili-response:
     url: https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/bilibili.js
-    interval: 86400
-  carrotweather-response:
-    url: https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/CARROTWeather.js
     interval: 86400
   agenda-response:
     url: https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/Agenda.js
@@ -1586,12 +1582,6 @@ scriptings:
       name: bilibili-response
       match: ^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo
       script-provider: bilibili-response
-      require-body: true
-      timeout: 10
-  - http-response:
-      name: carrotweather-response
-      match: ^https:\/\/carrotweather\.herokuapp\.com\/parse\/functions\/findSubscriptionsForUserId
-      script-provider: carrotweather-response
       require-body: true
       timeout: 10
   - http-response:

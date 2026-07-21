@@ -5,6 +5,22 @@ Mọi thay đổi đáng chú ý của dự án được ghi lại tại đây.
 Định dạng dựa trên [Keep a Changelog](https://keepachangelog.com/vi/1.0.0/),
 và dự án tuân theo [Semantic Versioning](https://semver.org/lang/vi/).
 
+## [2.4.5-stable] — 2026-07-21
+
+### 🧹 Gỡ app chết + dọn cấu hình
+- **Gỡ hoàn toàn CARROT Weather** khỏi **cả 7 module** (handler/script + host
+  `[MITM]`). Backend chạy trên `carrotweather.herokuapp.com` — hạ tầng Heroku free
+  dyno đã bị khai tử → handler này là **mã chết**. Số host MITM: 75 → 74.
+- **Dọn `always-real-ip`**: gỡ `*.stun.l.google.com` (Premium/Surge/LanceX). Mẫu
+  này **không khớp** STUN server thật của Google (dạng `stunN.l.google.com`) nên
+  vô tác dụng, lại còn ngược ý với các rule `REJECT` chống rò rỉ WebRTC ở trên.
+- **Egern**: ghi rõ QUIC-block cho YouTube **không được hỗ trợ** (cú pháp
+  `AND,((…),(PROTOCOL,UDP))`, giống ghi chú đã có ở Stash) để tránh hiểu nhầm là
+  thiếu sót — thay vì để dòng comment trống mập mờ.
+
+### ✨ Nhất quán
+- Đồng bộ phiên bản tất cả module **7/7 → `2.4.5-stable`**.
+
 ## [2.4.4-stable] — 2026-07-21
 
 ### 🧹 Dọn dẹp (gỡ mã thừa)

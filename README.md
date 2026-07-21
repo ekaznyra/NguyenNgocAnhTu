@@ -16,7 +16,7 @@
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&duration=3000&pause=500&color=00FF00&background=00000000&center=false&vCenter=true&repeat=true&width=450&height=100&lines=%5B+%2B+%5D+Initializing+Premium+Unlocker+v2.4.4-stable...;%5B+%2B+%5D+Bypassing+security+checks+and+receipts...;%5B+%2B+%5D+Injecting+premium+payload+via+MITM...;%5B+%2B+%5D+Success!+70%2B+Applications+Unlocked." alt="Terminal Simulation" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&duration=3000&pause=500&color=00FF00&background=00000000&center=false&vCenter=true&repeat=true&width=450&height=100&lines=%5B+%2B+%5D+Initializing+Premium+Unlocker+v2.4.5-stable...;%5B+%2B+%5D+Bypassing+security+checks+and+receipts...;%5B+%2B+%5D+Injecting+premium+payload+via+MITM...;%5B+%2B+%5D+Success!+70%2B+Applications+Unlocked." alt="Terminal Simulation" />
 </a>
 
 <br>
@@ -47,7 +47,7 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <!-- HÀNG 1 — THÔNG TIN DỰ ÁN -->
-<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/releases"><img src="https://img.shields.io/badge/%E2%9A%A1_PHI%C3%8AN_B%E1%BA%A2N-v2.4.4--stable-00F0FF?style=for-the-badge&labelColor=0D1117" alt="version"/></a>
+<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/releases"><img src="https://img.shields.io/badge/%E2%9A%A1_PHI%C3%8AN_B%E1%BA%A2N-v2.4.5--stable-00F0FF?style=for-the-badge&labelColor=0D1117" alt="version"/></a>
 &nbsp;
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/LICENSE"><img src="https://img.shields.io/badge/%F0%9F%93%9C_GI%E1%BA%A4Y_PH%C3%89P-AGPL--3.0-FF007F?style=for-the-badge&labelColor=0D1117" alt="license"/></a>
 &nbsp;
@@ -476,6 +476,7 @@
 
 | | Phiên bản | Ngày | Nội dung cập nhật | Số app |
 |:---:|:---:|:---:|:---|:---:|
+| 🏆 | **`v2.4.5-stable`** | `21.07.2026` | 🧹 **Gỡ app chết + dọn cấu hình**: gỡ hẳn **CARROT Weather** khỏi 7/7 module (backend `herokuapp.com` đã khai tử → mã chết; MITM 75→74) • Dọn `always-real-ip` (`*.stun.l.google.com` không khớp STUN thật + ngược rule chống WebRTC leak) • Ghi rõ Egern không hỗ trợ QUIC-block • Đồng bộ version 7/7. | **70+** |
 | 🏆 | **`v2.4.4-stable`** | `21.07.2026` | 🧹 **Dọn mã thừa**: gỡ script `deleteHeader.js` khỏi Egern (ETag `X-RevenueCat-ETag` đã được xóa **native** cho cả `revenuecat.com` & `rc-backup.com` → script trùng lặp) và **xóa hẳn file** dead-code • Hành vi không đổi, nhẹ hơn • Đồng bộ version 7/7. | **70+** |
 | 🏆 | **`v2.4.3-stable`** | `21.07.2026` | 🔒 **Đồng bộ DNS toàn nền tảng**: LanceX + Egern chuyển từ resolver **không lọc** (google/cloudflare/quad9) sang **DoH có lọc** ads/tracking/malware (AdGuard + ControlD `p2`) • **Bỏ fallback `system`** (chống rò rỉ DNS plaintext) • Dùng `p2` chứ không `p3` (p3 chặn nhầm **Social**) • Đồng bộ version 7/7. | **70+** |
 | 🏆 | **`v2.4.2-stable`** | `21.07.2026` | 🔒 **DNS & định tuyến an toàn hơn**: Shadowrocket gom DNS về **1 primary + 1 fallback đều mã hóa (DoH)**, bỏ fallback `system` (chống rò rỉ DNS plaintext) + thêm `hijack-dns` • Fix fallback ControlD `p3→p2` (p3 chặn nhầm **Social** Facebook/IG/TikTok) • Chuyển rule chống lừa đảo (`REJECT`) **lên trước** rule định tuyến (`PROXY`) trên Surge/Loon/LanceX để bảo mật luôn thắng • Đồng bộ version 7/7. | **70+** |
