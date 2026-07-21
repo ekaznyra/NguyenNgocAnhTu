@@ -17,8 +17,11 @@ bypass-system = true
 # -> kết quả không nhất quán & query bị fanout ra cả 3 nhà cung cấp.
 # Giờ: 1 primary + 1 fallback, CÙNG chính sách lọc (ads/tracking/malware), đều mã hóa.
 # Fallback không còn rơi về "system" (tránh rò rỉ DNS plaintext khi DoH lỗi).
+# ⚠️ Fallback dùng ControlD p2 (Malware + Ads/Trackers) CHỨ KHÔNG dùng p3:
+#    p3 chặn thêm Social (Facebook/Instagram/TikTok…) -> mâu thuẫn mục tiêu "Tối ưu Social"
+#    của module & sẽ chặn nhầm app mạng xã hội mỗi khi primary lỗi và rơi xuống fallback.
 dns-server = https://dns.adguard-dns.com/dns-query
-fallback-dns-server = https://freedns.controld.com/p3
+fallback-dns-server = https://freedns.controld.com/p2
 # Ép mọi truy vấn cổng 53 đi qua resolver ở trên (chống app hardcode DNS -> leak)
 hijack-dns = *:53
 private-ip-answer = true

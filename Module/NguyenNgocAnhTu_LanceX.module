@@ -1,6 +1,6 @@
 #!name=👑 Nguyễn Ngọc Anh Tú 🌸 ⁕ Ultimate Premium (LanceX) ⁕
 #!desc=🚀 Mở khóa 70+ App VIP + bundle iTunes/RevenueCat (Spotify, Locket...). 🛡️ Chặn Ads & Tracking. ⚡ Tối ưu DNS, Banking, Streaming & Social.
-#!version=2.4.1-stable
+#!version=2.4.2-stable
 #!date=2026-07-21
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
@@ -64,12 +64,16 @@ RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules
 # --- Chặn Cá độ / Cờ bạc ---
 RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/Gambling.list,REJECT
 
-# --- Định tuyến AI Services ---
-RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/AI_Proxy.list,PROXY
-
 # --- Chống Lừa đảo (Phishing/Scam) từ cộng đồng HostsVN ---
+# ⬆️ (2.4.2) ĐÃ CHUYỂN LÊN trước AI_Proxy/Proxy để rule REJECT bảo mật luôn thắng
+#    thay vì bị rule PROXY định tuyến chặn trước (đồng bộ thứ tự với Premium.module).
+# ⚠️ Pin theo commit (giảm rủi ro chuỗi cung ứng). Bump SHA định kỳ để nhận domain phishing mới.
+#    Banking_VN ở trên đã che rủi ro chặn nhầm host ngân hàng.
 # 🔄 SHA bumped 2026-07-16 ← commit 2026-07-15 (BigDargon)
 RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/cd4d77094dd53290f24907711747cd977ee420ed/extensions/threat/surge-rule.conf,REJECT
+
+# --- Định tuyến AI Services ---
+RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/AI_Proxy.list,PROXY
 
 # --- Dịch vụ quốc tế (Game, Stream, Social, Dev) đi qua Proxy ---
 RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/Proxy.list,PROXY

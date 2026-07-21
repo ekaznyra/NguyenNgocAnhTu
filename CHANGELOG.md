@@ -5,6 +5,27 @@ Mọi thay đổi đáng chú ý của dự án được ghi lại tại đây.
 Định dạng dựa trên [Keep a Changelog](https://keepachangelog.com/vi/1.0.0/),
 và dự án tuân theo [Semantic Versioning](https://semver.org/lang/vi/).
 
+## [2.4.2-stable] — 2026-07-21
+
+### 🔒 DNS & định tuyến an toàn hơn
+- **Shadowrocket (`Premium.module`)** — gom DNS về **1 primary + 1 fallback**, cùng
+  chính sách lọc (ads/tracking/malware) và **đều mã hóa (DoH)**:
+  - Primary `dns.adguard-dns.com`, fallback `freedns.controld.com/**p2**`.
+  - Bỏ fallback `system` (tránh **rò rỉ DNS plaintext** khi DoH lỗi) và bỏ việc
+    trộn 3 resolver (2 lọc + 1 không lọc) gây kết quả không nhất quán + fanout.
+  - Thêm `hijack-dns = *:53` để chống app hardcode DNS gây leak.
+  - **Fix:** dùng ControlD `p2` thay vì `p3`. `p3` chặn thêm **Social**
+    (Facebook/Instagram/TikTok…) → mâu thuẫn với mục tiêu "Tối ưu Social" và sẽ
+    chặn nhầm app mạng xã hội mỗi khi rơi xuống fallback. `p2` chỉ lọc
+    Malware + Ads/Trackers, đúng chính sách đã ghi trong comment.
+- **Thứ tự rule (bảo mật thắng định tuyến):** chuyển rule-set chống lừa đảo
+  (`hostsVN/threat`, `REJECT`) **lên trước** `AI_Proxy`/`Proxy` (`PROXY`) trên
+  **Surge, Loon, LanceX** — đồng bộ với `Premium.module`. Nhờ đó domain độc hại
+  luôn bị `REJECT` thay vì bị rule `PROXY` định tuyến chặn trước.
+
+### ✨ Nhất quán
+- Đồng bộ phiên bản tất cả module **7/7 → `2.4.2-stable`**.
+
 ## [2.4.1-stable] — 2026-07-21
 
 ### 🔥 Mở rộng thêm app hot quốc tế
