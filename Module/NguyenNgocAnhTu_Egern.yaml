@@ -2705,6 +2705,7 @@ scriptings:
       timeout: 10
 mitm:
   hostnames:
+    - "sub.store"
     - "*.googlevideo.com"
     - "youtubei.googleapis.com"
     - "www.youtube.com"
