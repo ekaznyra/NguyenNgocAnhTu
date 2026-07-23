@@ -24,33 +24,35 @@ if (!obj || typeof obj !== "object" || !obj.subscriber) {
 } else {
   var PRODUCT_ID = "locket_1600_1y";
   var ENTITLEMENT = "Gold";
+  // Một mốc "vĩnh viễn" DUY NHẤT dùng chung cho cả subscription lẫn entitlement
+  // -> nhất quán, RevenueCat luôn tính là còn hạn (active).
+  var FOREVER = "9999-12-31T23:59:59Z";
+  var PURCHASED_AT = "2005-07-18T10:10:14Z";
 
   obj.Attention = "Chúc mừng bạn! Vui lòng không bán hoặc chia sẻ cho người khác!";
 
+  // Khớp schema thật của RevenueCat cho subscriptions.<product_id>
   var subscription = {
     auto_resume_date: null,
     billing_issues_detected_at: null,
-    display_name: PRODUCT_ID,
-    expires_date: "9999-01-09T10:10:14Z",
+    expires_date: FOREVER,
     grace_period_expires_date: null,
-    is_sandbox: true,
-    management_url: "https://apps.apple.com/account/subscriptions",
-    original_purchase_date: "2005-07-18T10:10:15Z",
+    is_sandbox: false,
+    original_purchase_date: PURCHASED_AT,
     ownership_type: "PURCHASED",
     period_type: "normal",
-    price: { amount: 399000.0, currency: "VND" },
-    purchase_date: "2005-07-18T10:10:14Z",
+    purchase_date: PURCHASED_AT,
     refunded_at: null,
     store: "app_store",
-    store_transaction_id: "2000001108724193",
     unsubscribe_detected_at: null
   };
 
+  // Khớp schema thật của RevenueCat cho entitlements.<key> (đúng 4 field)
   var entitlement = {
-    expires_date: "9999-07-18T10:10:14Z",
+    expires_date: FOREVER,
     grace_period_expires_date: null,
     product_identifier: PRODUCT_ID,
-    purchase_date: "2005-07-18T10:10:14Z"
+    purchase_date: PURCHASED_AT
   };
 
   obj.subscriber.subscriptions = obj.subscriber.subscriptions || {};
