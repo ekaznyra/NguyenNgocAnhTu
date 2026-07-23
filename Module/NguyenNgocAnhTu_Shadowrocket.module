@@ -13,9 +13,14 @@
 force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443
 
 [Header Rewrite]
-# Gỡ ETag để RevenueCat không trả 304 (không body) -> script luôn có body để tiêm Gold
+# Gỡ ETag + cache validators ở REQUEST -> RevenueCat luôn trả body đầy đủ (không 304),
+# script mới có body để tiêm Gold (kể cả khi app đã cache trạng thái free trước đó).
 ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del X-RevenueCat-ETag
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del x-revenuecat-etag
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-Modified-Since
 ^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del X-RevenueCat-ETag
+^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del x-revenuecat-etag
+^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-Modified-Since
 
 [Script]
 # 🔐 Locket Gold — script tự host (ekaznyra), cập nhật trên nhánh master
