@@ -1,5 +1,5 @@
-#!name=🌸 Anh Tú • Locket Gold
-#!desc=🔓 Mở khóa Locket Gold (RevenueCat) trên Shadowrocket. Module chuẩn mới — khởi đầu tối giản chỉ Locket, cấu trúc sạch để mở rộng dần từng app.
+#!name=🌸 Anh Tú • Locket Gold + YouTube Premium
+#!desc=🔓 Mở khóa Locket Gold (RevenueCat) + 📺 YouTube Premium (chặn quảng cáo, phát nền, PiP) trên Shadowrocket. Module chuẩn mới — cấu trúc sạch, mở rộng dần từng app.
 #!version=2.4.5-stable
 #!date=2026-07-24
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
@@ -12,7 +12,20 @@
 # Ép RevenueCat đi qua HTTP engine (bắt buộc để MITM + script sửa được response)
 force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443
 
+[Rule]
+# === CHẶN QUIC (HTTP/3) CHO YOUTUBE ===
+# YouTube ưu tiên QUIC trên UDP/443 -> traffic đi UDP KHÔNG qua được MITM (chỉ MITM được TCP/TLS).
+# REJECT UDP để ép YouTube tụt về TCP/443 -> Shadowrocket mới giải mã & chạy script chặn ads được.
+AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
+
 [Header Rewrite]
+# === YOUTUBE NONCE ===
+# Đồng bộ client-version để một số endpoint player không trả layout quảng cáo mới.
+# (Nếu youtube.response.js đã tự set version thì dòng này có thể gỡ sau.)
+^https?://www\.youtube\.com/youtubei/v1/player header-replace x-youtube-client-version 2.20240101.00.00
+
+# === REVENUECAT: GỠ CACHE VALIDATOR (Locket Gold) ===
 # Gỡ TẤT CẢ cache validator ở REQUEST -> RevenueCat luôn trả body 200 đầy đủ (không 304),
 # script luôn có body để tiêm Gold (kể cả khi app đã cache trạng thái free/ETag trước đó).
 #   • X-RevenueCat-ETag : ETag riêng của RevenueCat SDK — thủ phạm chính gây 304
@@ -27,11 +40,28 @@ force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443
 ^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-None-Match
 ^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-Modified-Since
 
+[URL Rewrite]
+# === YOUTUBE ADS (chặn quảng cáo trước/giữa video + tracking) ===
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad _ reject-200
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads _ reject-200
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) _ reject-200
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext _ reject-200
+# Gỡ tham số ctier=L (đánh dấu luồng có chèn quảng cáo) rồi 302 về URL sạch
+(^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
+
+[Map Local]
+# === YOUTUBE - Chặn preroll ad ở initplayback (trả body rỗng 200) ===
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data="" status-code=200
+
 [Script]
-# 🔐 Locket Gold — script tự host (ekaznyra), cập nhật trên nhánh master
+# 📺 YOUTUBE PREMIUM — script tự host (ekaznyra), chặn ads + phát nền + PiP.
+# Chỉ xử lý ở stage $response (script không có nhánh request) nên KHÔNG khai báo handler request để tránh tốn buffer.
+youtube.response = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch), requires-body=1, max-size=-1, binary-body-mode=1, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/youtube.response.js, argument={"lyricLang":"vi","captionLang":"vi","blockUpload":false,"blockImmersive":false,"blockShorts":false,"debug":false}, timeout=30
+
+# 🔐 LOCKET GOLD — script tự host (ekaznyra), cập nhật trên nhánh master
 Locket Gold = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^\/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Locket.js, requires-body=1, max-size=-1, timeout=60
 Locket Gold (backup) = type=http-response, pattern=^https:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers\/[^\/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Locket.js, requires-body=1, max-size=-1, timeout=60
 
 [MITM]
 enable = true
-hostname = %APPEND% api.revenuecat.com, api.rc-backup.com
+hostname = %APPEND% -redirector*.googlevideo.com, *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, api.revenuecat.com, api.rc-backup.com
