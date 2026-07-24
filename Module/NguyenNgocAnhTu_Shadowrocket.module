@@ -1,6 +1,6 @@
 #!name=🌸 Anh Tú • Locket Gold & YouTube Premium
 #!desc=🔓 Mở khóa Locket Gold (RevenueCat) & YouTube Premium (Chặn QC 100%, phát nền, PiP, Vietsub) trên Shadowrocket.
-#!version=2.4.8-stable
+#!version=2.4.9-stable
 #!date=2026-07-24
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
@@ -9,19 +9,15 @@
 #!category=🌸 Anh Tú Premium
 
 [General]
-# Ép RevenueCat & YouTube API đi qua HTTP engine (loại trừ stream googlevideo để video load mượt 100%)
+# Ép RevenueCat & YouTube API đi qua HTTP engine (loại trừ video stream để load siêu nhanh)
 force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443, youtubei.googleapis.com:443, www.youtube.com:443
 
 [Rule]
-# === BLOCK QUIC (UDP) CHO YOUTUBE MITM ===
+# === BLOCK QUIC (UDP) FOR YOUTUBE MITM ===
 AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
 
 [Header Rewrite]
-# === YOUTUBE NONCE & NO-CACHE ===
-^https?:\/\/(www|youtubei)\.googleapis\.com\/youtubei\/v1\/player header-replace x-youtube-client-version 2.20240101.00.00
-^https?:\/\/(www|youtubei)\.googleapis\.com\/youtubei\/v1\/(player|browse|next) header-del if-none-match
-
 # === REVENUECAT REMOVE ETAG ===
 ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del X-RevenueCat-ETag
 ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del x-revenuecat-etag
@@ -33,11 +29,11 @@ AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
 ^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-Modified-Since
 
 [URL Rewrite]
-# === YOUTUBE ADS REJECT & PIP ===
-^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad _ reject-200
-^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads _ reject-200
-^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) _ reject-200
-^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext _ reject-200
+# === YOUTUBE ADS REJECT ===
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad reject-200
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads reject-200
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) reject-200
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext reject-200
 (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
 
 [Map Local]
