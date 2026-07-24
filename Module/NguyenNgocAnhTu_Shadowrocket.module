@@ -1,6 +1,6 @@
 #!name=🌸 Anh Tú • Locket Gold, YouTube & Spotify Premium + TikTok & TestFlight
 #!desc=🚀 Mở khóa Locket Gold, YouTube Premium, Spotify Premium (Chặn QC 100%, Next bài, PiP, Vietsub) + Mở khóa TikTok chuyển vùng & Sửa lỗi TestFlight tối ưu cho Shadowrocket.
-#!version=1.3.1
+#!version=1.4.1
 #!date=2026-07-24
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
@@ -12,19 +12,10 @@
 force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443, youtubei.googleapis.com:443, www.youtube.com:443, s.youtube.com:443, spclient.wg.spotify.com:443, gads.current.spotify.com:443, testflight.apple.com:443
 
 [Rule]
-# === SPOTIFY DIRECT DOMAINS (PREVENT AUDIO DISCONNECT & STREAMING LAG) ===
-DOMAIN,accounts.spotify.com,DIRECT
-DOMAIN,login5.spotify.com,DIRECT
-DOMAIN,auth.spotify.com,DIRECT
-DOMAIN,apresolve.spotify.com,DIRECT
-DOMAIN-SUFFIX,scdn.co,DIRECT
-DOMAIN-SUFFIX,spotifycdn.net,DIRECT
-DOMAIN-SUFFIX,spotifycdn.com,DIRECT
-
 # === BLOCK QUIC FOR YOUTUBE & SPOTIFY MITM ===
-AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
-AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
-AND,((DOMAIN-KEYWORD,spotify), (PROTOCOL,UDP)),REJECT
+AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN-KEYWORD,spotify),(PROTOCOL,UDP)),REJECT
 
 # === BLOCK SPOTIFY ADS & TRACKERS ===
 DOMAIN-SUFFIX,ads-fa.spotify.com,REJECT
@@ -43,14 +34,11 @@ DOMAIN-KEYWORD,spotify-ads,REJECT
 ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-Modified-Since
 ^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del X-RevenueCat-ETag
 ^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del x-revenuecat-etag
-^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-None-Match
-^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-Modified-Since
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-None-Match
+^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-Modified-Since
 
-# === SPOTIFY REMOVE CACHE HEADERS (OFFICIAL APP2SMILE PATTERN) ===
+# === SPOTIFY REMOVE CACHE HEADERS ===
 ^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del If-None-Match
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-modified-since
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del If-Modified-Since
 
 [URL Rewrite]
 # === YOUTUBE ADS ===
@@ -82,7 +70,7 @@ Locket_Gold_Backup = type=http-response, pattern=^https:\/\/api\.rc-backup\.com\
 # 📺 YouTube Premium — Full Response Handler (Chặn QC 100% + Nghe nhạc nền + PiP + Phụ đề Tiếng Việt)
 YouTube_Premium = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch), requires-body=1, max-size=-1, binary-body-mode=1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/youtube.response.js, argument={"lyricLang":"vi","captionLang":"vi","blockUpload":false,"blockImmersive":false,"blockShorts":false,"debug":false}
 
-# 🎵 Spotify Premium (THEO MẪU GẤU LỎZ CUTO TÚ GỬI & AUTO UPDATE SCRIPT)
+# 🎵 Spotify Premium (CHỈ ÁP DỤNG ĐÚNG MẪU SPOTIFY TÚ GỬI)
 Spotify_JSON = type=http-request, pattern=^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/, requires-body=0, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js
 Spotify_Proto = type=http-response, pattern=^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$, requires-body=1, binary-body-mode=1, max-size=0, script-update-interval=0, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js
 
