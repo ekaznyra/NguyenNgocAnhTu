@@ -1,6 +1,6 @@
-#!name=🌸 Anh Tú • Locket Gold, YouTube & Spotify Premium
-#!desc=🚀 Mở khóa Locket Gold, YouTube Premium & Spotify Premium (Chặn QC 100%, Mất tab Premium, Next bài mượt mà không nhảy bài, PiP, Vietsub) tối ưu chuẩn nhất cho Shadowrocket.
-#!version=1.2.9
+#!name=🌸 Anh Tú • Locket Gold, YouTube & Spotify Premium + TikTok & TestFlight
+#!desc=🚀 Mở khóa Locket Gold, YouTube Premium, Spotify Premium (Chặn QC 100%, Next bài, PiP, Vietsub) + Mở khóa TikTok chuyển vùng & Sửa lỗi TestFlight tối ưu cho Shadowrocket.
+#!version=1.3.1
 #!date=2026-07-24
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
@@ -9,7 +9,7 @@
 #!category=🌸 Anh Tú Premium
 
 [General]
-force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443, youtubei.googleapis.com:443, www.youtube.com:443, s.youtube.com:443, spclient.wg.spotify.com:443, gads.current.spotify.com:443
+force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443, youtubei.googleapis.com:443, www.youtube.com:443, s.youtube.com:443, spclient.wg.spotify.com:443, gads.current.spotify.com:443, testflight.apple.com:443
 
 [Rule]
 # === SPOTIFY DIRECT DOMAINS (PREVENT AUDIO DISCONNECT & STREAMING LAG) ===
@@ -64,6 +64,12 @@ DOMAIN-KEYWORD,spotify-ads,REJECT
 ^https?:\/\/spclient\.wg\.spotify\.com\/ad-logic\/ - reject-200
 ^https?:\/\/spclient\.wg\.spotify\.com\/ads\/ - reject-200
 
+# === TIKTOK UNLOCK (BYPASS SIM & REGION LOCK) ===
+(?<=_region=)CN(?=&) TW 307
+(?<=&mcc_mnc=)4 2 307
+^(https?:\/\/(tnc|dm)[\w-]+\.\w+\.com\/.+)(\?)(.+) $1$3 302
+(^https?:\/\/*\.\w{4}okv.com\/.+&.+)(\d{2}\.3\.\d)(.+) $118.0$3 302
+
 [Map Local]
 # === YOUTUBE - Block initplayback preroll ads ===
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data="" status-code=200
@@ -76,10 +82,13 @@ Locket_Gold_Backup = type=http-response, pattern=^https:\/\/api\.rc-backup\.com\
 # 📺 YouTube Premium — Full Response Handler (Chặn QC 100% + Nghe nhạc nền + PiP + Phụ đề Tiếng Việt)
 YouTube_Premium = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch), requires-body=1, max-size=-1, binary-body-mode=1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/youtube.response.js, argument={"lyricLang":"vi","captionLang":"vi","blockUpload":false,"blockImmersive":false,"blockShorts":false,"debug":false}
 
-# 🎵 Spotify Premium (OFFICIAL APP2SMILE PATTERN - SỬA LỖI SKIP BÀI)
+# 🎵 Spotify Premium (THEO MẪU GẤU LỎZ CUTO TÚ GỬI & AUTO UPDATE SCRIPT)
 Spotify_JSON = type=http-request, pattern=^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/, requires-body=0, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js
-Spotify_Proto = type=http-response, pattern=^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$, requires-body=1, binary-body-mode=1, max-size=0, timeout=30, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js
+Spotify_Proto = type=http-response, pattern=^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$, requires-body=1, binary-body-mode=1, max-size=0, script-update-interval=0, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js
+
+# 🚀 TestFlight Download Fix — NobyDa
+TestFlight_Fix = type=http-request, pattern=^https?:\/\/testflight\.apple\.com\/v\d\/accounts\/.+?\/install$, requires-body=1, max-size=0, timeout=30, script-path=https://gist.githubusercontent.com/NobyDa/9be418b93afc5e9c8a8f4d28ae403cf2/raw/TF_Download.js
 
 [MITM]
 enable = true
-hostname = %APPEND% api.revenuecat.com, api.rc-backup.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, spclient.wg.spotify.com, *-spclient.spotify.com, gads.current.spotify.com
+hostname = %APPEND% api.revenuecat.com, api.rc-backup.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, spclient.wg.spotify.com, *-spclient.spotify.com, gads.current.spotify.com, testflight.apple.com, *.byteoversea.com, *.tiktokv.com, *.tik-tokapi.com
