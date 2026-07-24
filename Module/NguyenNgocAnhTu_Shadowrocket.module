@@ -1,6 +1,6 @@
 #!name=🌸 Anh Tú • Locket Gold, YouTube & Spotify Premium
 #!desc=🚀 Mở khóa Locket Gold, YouTube Premium & Spotify Premium (Chặn QC 100%, Phát nền, PiP, Vietsub, Next bài không giới hạn) tối ưu chuẩn nhất cho Shadowrocket.
-#!version=1.2.0
+#!version=1.2.2
 #!date=2026-07-24
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
@@ -12,21 +12,25 @@
 force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443, youtubei.googleapis.com:443, www.youtube.com:443, s.youtube.com:443, spclient.wg.spotify.com:443, gads.current.spotify.com:443
 
 [Rule]
+# === SPOTIFY LOGIN & AUDIO STREAMING (DIRECT FOR SMOOTH PLAYBACK & LOGIN) ===
+DOMAIN,accounts.spotify.com,DIRECT
+DOMAIN,login5.spotify.com,DIRECT
+DOMAIN,auth.spotify.com,DIRECT
+DOMAIN,apresolve.spotify.com,DIRECT
+DOMAIN-SUFFIX,scdn.co,DIRECT
+DOMAIN-SUFFIX,spotifycdn.net,DIRECT
+DOMAIN-SUFFIX,spotifycdn.com,DIRECT
+
 # === BLOCK QUIC FOR YOUTUBE & SPOTIFY MITM ===
 AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
 AND,((DOMAIN-KEYWORD,spotify), (PROTOCOL,UDP)),REJECT
 
-# === BLOCK SPOTIFY ADS & TRACKERS ===
+# === BLOCK SPOTIFY ADS & TRACKERS ONLY (DO NOT BLOCK AUDIO CDNs) ===
 DOMAIN-SUFFIX,ads-fa.spotify.com,REJECT
-DOMAIN-SUFFIX,audio-fa.spotify.com,REJECT
 DOMAIN-SUFFIX,analytics.spotify.com,REJECT
 DOMAIN-SUFFIX,adeventtracker.spotify.com,REJECT
 DOMAIN-SUFFIX,log.spotify.com,REJECT
-DOMAIN-SUFFIX,audio-ak-spotify-com.akamaized.net,REJECT
-DOMAIN-SUFFIX,audio4-ak-spotify-com.akamaized.net,REJECT
-DOMAIN-SUFFIX,heads-ak-spotify-com.akamaized.net,REJECT
-DOMAIN-SUFFIX,heads4-ak-spotify-com.akamaized.net,REJECT
 DOMAIN-SUFFIX,creativeservice-production.scdn.co,REJECT
 DOMAIN-KEYWORD,spotify-ads,REJECT
 
@@ -44,6 +48,8 @@ DOMAIN-KEYWORD,spotify-ads,REJECT
 # === SPOTIFY REMOVE CACHE HEADERS ===
 ^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(?:user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap)$ header-del if-none-match
 ^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(?:user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap)$ header-del if-modified-since
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(?:user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap)$ header-del If-None-Match
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(?:user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap)$ header-del If-Modified-Since
 
 [URL Rewrite]
 # === YOUTUBE ADS ===
@@ -63,15 +69,15 @@ DOMAIN-KEYWORD,spotify-ads,REJECT
 
 [Script]
 # 🔐 Locket Gold — script tự host (ekaznyra)
-Locket Gold = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^\/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Locket.js, requires-body=1, max-size=-1, timeout=60
-Locket Gold (backup) = type=http-response, pattern=^https:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers\/[^\/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Locket.js, requires-body=1, max-size=-1, timeout=60
+Locket_Gold = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^\/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Locket.js, requires-body=1, max-size=-1, timeout=60
+Locket_Gold_Backup = type=http-response, pattern=^https:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers\/[^\/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Locket.js, requires-body=1, max-size=-1, timeout=60
 
 # 📺 YouTube Premium — Full Response Handler (Chặn QC 100% + Nghe nhạc nền + PiP + Phụ đề Tiếng Việt)
 YouTube_Premium = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch), requires-body=1, max-size=-1, binary-body-mode=1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/youtube.response.js, argument={"lyricLang":"vi","captionLang":"vi","blockUpload":false,"blockImmersive":false,"blockShorts":false,"debug":false}
 
 # 🎵 Spotify Premium (app2smile) — Chặn QC audio/banner + Mở chuyển bài không giới hạn
-Spotify_JSON = type=http-request, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/, requires-body=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-json.js
-Spotify_Proto = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$, requires-body=1, binary-body-mode=1, max-size=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-proto.js
+Spotify_JSON = type=http-request, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/, requires-body=0, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js
+Spotify_Proto = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$, requires-body=1, binary-body-mode=1, max-size=-1, timeout=30, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js
 
 [MITM]
 enable = true
