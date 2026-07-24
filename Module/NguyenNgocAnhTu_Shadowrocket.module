@@ -1,6 +1,6 @@
 #!name=🌸 Anh Tú • Locket Gold, YouTube & Spotify Premium
-#!desc=🚀 Mở khóa Locket Gold, YouTube Premium & Spotify Premium (Chặn QC 100%, Mở khóa giao diện Premium, Next bài mượt mà, PiP, Vietsub) tối ưu chuẩn nhất cho Shadowrocket.
-#!version=1.2.4
+#!desc=🚀 Mở khóa Locket Gold, YouTube Premium & Spotify Premium (Chặn QC 100%, Next bài mượt mà, PiP, Vietsub) tối ưu chuẩn nhất cho Shadowrocket.
+#!version=1.2.5
 #!date=2026-07-24
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
@@ -12,7 +12,7 @@
 force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443, youtubei.googleapis.com:443, www.youtube.com:443, s.youtube.com:443, spclient.wg.spotify.com:443, gads.current.spotify.com:443
 
 [Rule]
-# === SPOTIFY LOGIN & AUDIO STREAMING (DIRECT FOR SMOOTH PLAYBACK & LOGIN) ===
+# === SPOTIFY DIRECT DOMAINS (PREVENT VPN BLOCK / DISCONNECT) ===
 DOMAIN,accounts.spotify.com,DIRECT
 DOMAIN,login5.spotify.com,DIRECT
 DOMAIN,auth.spotify.com,DIRECT
@@ -45,11 +45,9 @@ DOMAIN-KEYWORD,spotify-ads,REJECT
 ^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-None-Match
 ^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-Modified-Since
 
-# === SPOTIFY REMOVE CACHE HEADERS (FIX HTTP 304 EMPTY RESPONSE WITH QUERY PARAMS) ===
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(?:user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap).* header-del if-none-match
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(?:user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap).* header-del if-modified-since
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(?:user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap).* header-del If-None-Match
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(?:user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap).* header-del If-Modified-Since
+# === SPOTIFY REMOVE CACHE HEADERS (OFFICIAL APP2SMILE PATTERN) ===
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del If-None-Match
 
 [URL Rewrite]
 # === YOUTUBE ADS ===
@@ -75,9 +73,9 @@ Locket_Gold_Backup = type=http-response, pattern=^https:\/\/api\.rc-backup\.com\
 # 📺 YouTube Premium — Full Response Handler (Chặn QC 100% + Nghe nhạc nền + PiP + Phụ đề Tiếng Việt)
 YouTube_Premium = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch), requires-body=1, max-size=-1, binary-body-mode=1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/youtube.response.js, argument={"lyricLang":"vi","captionLang":"vi","blockUpload":false,"blockImmersive":false,"blockShorts":false,"debug":false}
 
-# 🎵 Spotify Premium (app2smile) — Chặn QC audio/banner + Unlock giao diện Premium + Mở hiển thị Album/Artist
+# 🎵 Spotify Premium (OFFICIAL APP2SMILE PATTERN) — Chặn QC audio/banner + Mở hiển thị Album/Artist & Next bài
 Spotify_JSON = type=http-request, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/, requires-body=0, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js
-Spotify_Proto = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)(\?.*)?$, requires-body=1, binary-body-mode=1, max-size=-1, timeout=30, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js
+Spotify_Proto = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$, requires-body=1, binary-body-mode=1, max-size=0, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js
 
 [MITM]
 enable = true
