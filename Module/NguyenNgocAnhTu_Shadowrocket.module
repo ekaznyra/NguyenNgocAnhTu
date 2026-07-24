@@ -1,6 +1,6 @@
 #!name=🌸 Anh Tú • Locket Gold, YouTube & Spotify Premium
-#!desc=🚀 Mở khóa Locket Gold, YouTube Premium & Spotify Premium (Chặn QC 100%, Mở khóa giao diện Premium, Next bài, PiP, Vietsub) tối ưu chuẩn nhất cho Shadowrocket.
-#!version=1.2.8
+#!desc=🚀 Mở khóa Locket Gold, YouTube Premium & Spotify Premium (Chặn QC 100%, Mất tab Premium, Next bài mượt mà không nhảy bài, PiP, Vietsub) tối ưu chuẩn nhất cho Shadowrocket.
+#!version=1.2.9
 #!date=2026-07-24
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
@@ -46,7 +46,7 @@ DOMAIN-KEYWORD,spotify-ads,REJECT
 ^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-None-Match
 ^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-Modified-Since
 
-# === SPOTIFY REMOVE CACHE HEADERS (APP2SMILE PATTERN) ===
+# === SPOTIFY REMOVE CACHE HEADERS (OFFICIAL APP2SMILE PATTERN) ===
 ^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
 ^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del If-None-Match
 ^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$ header-del if-modified-since
@@ -76,9 +76,9 @@ Locket_Gold_Backup = type=http-response, pattern=^https:\/\/api\.rc-backup\.com\
 # 📺 YouTube Premium — Full Response Handler (Chặn QC 100% + Nghe nhạc nền + PiP + Phụ đề Tiếng Việt)
 YouTube_Premium = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch), requires-body=1, max-size=-1, binary-body-mode=1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/youtube.response.js, argument={"lyricLang":"vi","captionLang":"vi","blockUpload":false,"blockImmersive":false,"blockShorts":false,"debug":false}
 
-# 🎵 Spotify Premium (FULL PATTERN BAO GỒM BOOTSTRAP THEO YÊU CẦU CỦA TÚ)
+# 🎵 Spotify Premium (OFFICIAL APP2SMILE PATTERN - SỬA LỖI SKIP BÀI)
 Spotify_JSON = type=http-request, pattern=^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/, requires-body=0, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js
-Spotify_Proto = type=http-response, pattern=^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$, requires-body=1, binary-body-mode=1, max-size=0, timeout=30, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js
+Spotify_Proto = type=http-response, pattern=^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/user-customization-service\/v1\/customize$, requires-body=1, binary-body-mode=1, max-size=0, timeout=30, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js
 
 [MITM]
 enable = true
