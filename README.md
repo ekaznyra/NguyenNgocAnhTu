@@ -186,9 +186,9 @@
 | [`03`](#-cập-nhật-mới-nhất) | 🆕 **Cập nhật mới nhất** | Lịch sử thay đổi theo dòng thời gian |
 | [`04`](#️-yêu-cầu-trước-khi-cài) | 🛠️ **Yêu cầu trước khi cài** | Chuẩn bị trước khi bắt đầu |
 | [`05`](#-nguyên-lý-hoạt-động) | 🧠 **Nguyên lý hoạt động** | Hiểu cách module vận hành |
-| [`06`](#-chọn-ứng-dụng-proxy) | 📥 **Chọn ứng dụng proxy** | So sánh 7 ứng dụng chi tiết |
+| [`06`](#-chọn-ứng-dụng-proxy) | 📥 **Chọn ứng dụng proxy** | So sánh 8 ứng dụng chi tiết |
 | [`07`](#-cách-sử-dụng--hướng-dẫn-cài-đặt-chi-tiết) | 📖 **Cách sử dụng & Cài đặt** | Từng bước cực kỳ chi tiết |
-| [`08`](#-danh-sách-68-ứng-dụng-hỗ-trợ) | 📱 **Danh sách 70+ ứng dụng** | Tất cả app được hỗ trợ |
+| [`08`](#-danh-sách-68-ứng-dụng-hỗ-trợ) | 📱 **Danh sách 320+ ứng dụng** | Tất cả app được hỗ trợ |
 | [`09`](#-locket-gold-dns--giữ-gold-vĩnh-viễn) | 🔒 **Locket Gold DNS** | Giữ Gold không cần proxy |
 | [`10`](#️-tuỳ-chỉnh-youtube-nâng-cao) | ⚙️ **Tuỳ chỉnh YouTube** | Đổi ngôn ngữ, ẩn nút |
 | [`11`](#-xử-lý-sự-cố--faq) | ❓ **Xử lý sự cố & FAQ** | Gặp lỗi? Xem đây |
@@ -825,14 +825,14 @@ graph TD
 
 <table align="center">
 <tr>
-<td align="center" width="25%"><img src="https://img.shields.io/badge/VALIDATION-7%2F7%20CLEAN-00F0FF?style=for-the-badge&labelColor=0D1117" alt="validation"/><br><b>7 proxy formats</b><br><sub>Shadowrocket / LanceX / Egern / Surge / Loon / QX / Stash</sub></td>
+<td align="center" width="25%"><img src="https://img.shields.io/badge/VALIDATION-8%2F8%20CLEAN-00F0FF?style=for-the-badge&labelColor=0D1117" alt="validation"/><br><b>8 proxy formats</b><br><sub>Shadowrocket / Premium / LanceX / Egern / Surge / Loon / QX / Stash</sub></td>
 <td align="center" width="25%"><img src="https://img.shields.io/badge/REGEX-0%20ERROR-00FF88?style=for-the-badge&labelColor=0D1117" alt="regex"/><br><b>Clean syntax</b><br><sub>No regex errors or active duplicates</sub></td>
 <td align="center" width="25%"><img src="https://img.shields.io/badge/URL-66%2F66%20LIVE-FFD166?style=for-the-badge&labelColor=0D1117" alt="url"/><br><b>Live links</b><br><sub>Script and raw URLs verified</sub></td>
 <td align="center" width="25%"><img src="https://img.shields.io/badge/UTF--8-CLEAN-FF007F?style=for-the-badge&labelColor=0D1117" alt="utf8"/><br><b>Clean UTF-8</b><br><sub>No mojibake or replacement chars</sub></td>
 </tr>
 </table>
 
-> **v2.2.0-stable status:** 7/7 formats synced / UTF-8 clean / Regex 0 errors / Active duplicates 0 / Script and raw URLs 66/66 live.
+> **v2.7.0-stable status:** 8/8 formats synced / UTF-8 clean / Regex 0 errors / Active duplicates 0 / Script and raw URLs verified live.
 
 </div>
 
