@@ -1,8 +1,8 @@
 /*
- * @name: VSCO X Premium Unlock
+ * @name: VSCO X Premium Unlock (Shadowrocket)
  * @author: Nguyễn Ngọc Anh Tú (z3rokaze)
  * @homepage: https://github.com/ekaznyra/NguyenNgocAnhTu
- * @date: 2026-05-09
+ * @date: 2026-07-25
  */
 
 var objc;

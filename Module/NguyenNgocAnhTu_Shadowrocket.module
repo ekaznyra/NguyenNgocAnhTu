@@ -1,7 +1,7 @@
-#!name=🌸 Anh Tú • Locket Gold, YouTube & Spotify Premium
-#!desc=🚀 Mở khóa Locket Gold, YouTube Premium & Spotify Premium (Chặn QC 100%, Phát nền, PiP, Vietsub, Next bài không giới hạn) tối ưu chuẩn nhất cho Shadowrocket.
-#!version=1.2.1
-#!date=2026-07-24
+#!name=🌸 Anh Tú • Ultimate VIP Bundle (Locket, Spotify, YouTube, iTunes 250+ & 70+ Apps Premium)
+#!desc=🚀 Mở khóa Locket Gold, YouTube Premium, Spotify (Chặn QC 100%), SoundCloud Go+, WPS Office VIP, Darkroom Pro, OldRoll, Fimo Camera, Calm Premium, iTunes 250+ Apps VIP, CamScanner, VSCO, Meitu, Wink, BeautyPlus, Snow, Truecaller, Photomath, Alight Motion, KineMaster, XMind, Busuu, djay, Headspace, PicsArt, Photoshop, Emby & 70+ App RevenueCat. 🛡️ Tích hợp Pure AdBlock & Bảo vệ Ngân hàng VN.
+#!version=1.8.0
+#!date=2026-07-25
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/VIP.png
@@ -9,35 +9,50 @@
 #!category=🌸 Anh Tú Premium
 
 [General]
-force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443, youtubei.googleapis.com:443, www.youtube.com:443, s.youtube.com:443, spclient.wg.spotify.com:443, gads.current.spotify.com:443
+force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443, buy.itunes.apple.com:443, api.intsig.net:443, api-cs.intsig.net:443, vsco.co:443, h5.xiuxiu.meitu.com:443, api.xiuxiu.meitu.com:443, api-sub.meitu.com:443, user-snow-api.snow.me:443, api.mr.pixocial.com:443, newbeee-api.beautyplus.com:443, premium-api.truecaller.com:443, lapi.photomath.net:443, us-central1-alight-creative.cloudfunctions.net:443, api-account.kinemasters.com:443, www.xmind.app:443, www.xmind.net:443, www.xmind.cn:443, api.funimate.com:443, api.busuu.com:443, app.algoriddim.com:443, api.prod.headspace.com:443, api.picsart.com:443, lcs-mobile-cops.adobe.io:443, mb3admin.com:443, api-mobile.soundcloud.com:443, account.wps.com:443, account.wps.cn:443, v1.darkroom.co:443, server.yoyiapp.com:443, api.calm.com:443, youtubei.googleapis.com:443, www.youtube.com:443, s.youtube.com:443, spclient.wg.spotify.com:443, gads.current.spotify.com:443
 
 [Rule]
-# === SPOTIFY LOGIN & AUTHENTICATION (DIRECT FOR SMOOTH LOGIN) ===
+# === SPOTIFY DIRECT DOMAINS (PERFECT PLAYBACK - NO AUDIO DROP) ===
 DOMAIN,accounts.spotify.com,DIRECT
 DOMAIN,login5.spotify.com,DIRECT
 DOMAIN,auth.spotify.com,DIRECT
 DOMAIN,apresolve.spotify.com,DIRECT
+DOMAIN-SUFFIX,scdn.co,DIRECT
+DOMAIN-SUFFIX,spotifycdn.net,DIRECT
+DOMAIN-SUFFIX,spotifycdn.com,DIRECT
 
-# === BLOCK QUIC FOR YOUTUBE & SPOTIFY MITM ===
+# === BLOCK QUIC FOR YOUTUBE & SPOTIFY ===
 AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
 AND,((DOMAIN-KEYWORD,spotify), (PROTOCOL,UDP)),REJECT
 
-# === BLOCK SPOTIFY ADS & TRACKERS ===
+# === BLOCK SPOTIFY ADS & TRACKERS 100% ===
 DOMAIN-SUFFIX,ads-fa.spotify.com,REJECT
-DOMAIN-SUFFIX,audio-fa.spotify.com,REJECT
 DOMAIN-SUFFIX,analytics.spotify.com,REJECT
 DOMAIN-SUFFIX,adeventtracker.spotify.com,REJECT
 DOMAIN-SUFFIX,log.spotify.com,REJECT
-DOMAIN-SUFFIX,audio-ak-spotify-com.akamaized.net,REJECT
-DOMAIN-SUFFIX,audio4-ak-spotify-com.akamaized.net,REJECT
-DOMAIN-SUFFIX,heads-ak-spotify-com.akamaized.net,REJECT
-DOMAIN-SUFFIX,heads4-ak-spotify-com.akamaized.net,REJECT
 DOMAIN-SUFFIX,creativeservice-production.scdn.co,REJECT
+DOMAIN-SUFFIX,gads.current.spotify.com,REJECT
 DOMAIN-KEYWORD,spotify-ads,REJECT
 
+# === ADBLOCK & THREAT PROTECTION (PURE ADBLOCK + BANKING PROTECT) ===
+# 1. Ngân hàng & Ví điện tử VN (DIRECT)
+RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/Banking_VN.list,DIRECT
+
+# 2. Chặn Quảng Cáo (Ad Block)
+RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/Ads.list,REJECT-DROP
+
+# 3. Chặn Tracking & Analytics
+RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/Tracking.list,REJECT
+
+# 4. Chặn Cá độ / Cờ bạc
+RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/Gambling.list,REJECT
+
+# 5. Chống Lừa đảo & Phishing từ HostsVN
+RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/cd4d77094dd53290f24907711747cd977ee420ed/extensions/threat/surge-rule.conf,REJECT
+
 [Header Rewrite]
-# === REVENUECAT REMOVE ETAG ===
+# === REVENUECAT REMOVE ETAG (APPLIES TO LOCKET + 70+ REVENUECAT APPS) ===
 ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del X-RevenueCat-ETag
 ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del x-revenuecat-etag
 ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-None-Match
@@ -47,11 +62,13 @@ DOMAIN-KEYWORD,spotify-ads,REJECT
 ^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-None-Match
 ^https?:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers(\/.*)?\/?) header-del If-Modified-Since
 
-# === SPOTIFY REMOVE CACHE HEADERS ===
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(?:user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap)$ header-del if-none-match
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(?:user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap)$ header-del if-modified-since
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(?:user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap)$ header-del If-None-Match
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(?:user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap)$ header-del If-Modified-Since
+# === ITUNES REMOVE CACHE HEADERS ===
+^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ header-del If-None-Match
+^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ header-del If-Modified-Since
+
+# === VSCO REMOVE CACHE HEADERS ===
+^https?:\/\/vsco\.co\/api\/subscriptions\/ header-del If-None-Match
+^https?:\/\/vsco\.co\/api\/subscriptions\/ header-del If-Modified-Since
 
 [URL Rewrite]
 # === YOUTUBE ADS ===
@@ -61,7 +78,7 @@ DOMAIN-KEYWORD,spotify-ads,REJECT
 ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject-200
 (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
 
-# === SPOTIFY ADS REJECT ===
+# === SPOTIFY ADS REJECT (100% PURE ADBLOCK) ===
 ^https?:\/\/spclient\.wg\.spotify\.com\/ad-logic\/ - reject-200
 ^https?:\/\/spclient\.wg\.spotify\.com\/ads\/ - reject-200
 
@@ -70,17 +87,88 @@ DOMAIN-KEYWORD,spotify-ads,REJECT
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data="" status-code=200
 
 [Script]
-# 🔐 Locket Gold — script tự host (ekaznyra)
-Locket_Gold = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^\/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Locket.js, requires-body=1, max-size=-1, timeout=60
-Locket_Gold_Backup = type=http-response, pattern=^https:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers\/[^\/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Locket.js, requires-body=1, max-size=-1, timeout=60
+# 👑 RevenueCat Multi-App Unlocker (Locket Gold + 70+ App VIP Quốc tế & Việt Nam)
+RevenueCat_Multi = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^\/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js, requires-body=1, max-size=-1, timeout=60
+RevenueCat_Multi_Backup = type=http-response, pattern=^https:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers\/[^\/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js, requires-body=1, max-size=-1, timeout=60
 
 # 📺 YouTube Premium — Full Response Handler (Chặn QC 100% + Nghe nhạc nền + PiP + Phụ đề Tiếng Việt)
 YouTube_Premium = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch), requires-body=1, max-size=-1, binary-body-mode=1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/youtube.response.js, argument={"lyricLang":"vi","captionLang":"vi","blockUpload":false,"blockImmersive":false,"blockShorts":false,"debug":false}
 
-# 🎵 Spotify Premium (app2smile) — Chặn QC audio/banner + Mở chuyển bài không giới hạn
-Spotify_JSON = type=http-request, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/, requires-body=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-json.js
-Spotify_Proto = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$, requires-body=1, binary-body-mode=1, max-size=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-proto.js
+# 🛒 iTunes Premium Unlocker (Mở khóa 250+ App iOS mua gói In-App Purchase: Duolingo, Dazz Cam, Craft, Termius...)
+iTunes_Premium = type=http-response, pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/itunes.js, requires-body=1, max-size=-1, timeout=60
+
+# 📄 CamScanner Premium (Quét tài liệu HD, OCR nhận diện chữ Tiếng Việt, xuất Word/Excel/PDF VIP)
+CamScanner_Premium = type=http-response, pattern=^https:\/\/(api|api-cs.*)\.intsig\.net\/(purchase\/cs\/query_prop|queryProperty|getPrivilegeItem), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/camscanner.js, requires-body=1, max-size=0, timeout=15
+
+# 📸 VSCO Membership (Mở khóa 200+ bộ lọc màu phim Preset VIP & công cụ chỉnh màu video)
+VSCO_Membership = type=http-response, pattern=^https:\/\/vsco\.co\/api\/subscriptions\/2\.1\/user-subscriptions, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/vsco.js, requires-body=1, timeout=10, max-size=131072
+
+# 👑 Meitu XiuXiu VIP (Trang điểm AI, mịn da 4K, chỉnh vóc dáng chuẩn VIP)
+Meitu_VIP = type=http-response, pattern=^https?:\/\/(h5|api)\.xiuxiu\.meitu\.com\/v\d\/(h\d\/vip|vip|user)\/, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/meitu.js, requires-body=1, max-size=0, timeout=60
+
+# 🎬 Wink Forever VIP (Làm nét video 4K 60fps, xóa watermark, làm đẹp video)
+Wink_VIP = type=http-response, pattern=^https?:\/\/api-sub\.meitu\.com\/.*vip, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/wink.js, requires-body=1, max-size=0, timeout=10
+
+# ❄️ SNOW / EPIK VIP (Filter & Sticker trang điểm VIP)
+Snow_VIP = type=http-response, pattern=^https?:\/\/user-snow-api\.snow\.me\/v\d\/purchase\/subscription\/subscriber\/status, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/snow.js, requires-body=1, max-size=-1, timeout=60
+
+# 💄 BeautyPlus Premium (Mỹ Đồ làm đẹp Pro)
+BeautyPlus_Premium = type=http-response, pattern=^https:\/\/(api\.mr\.pixocial\.com\/v1\/manual_unlock|newbeee-api\.beautyplus\.com\/api\/v1\/asset\/balance), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/beautyplus.js, requires-body=1, timeout=60, max-size=0
+
+# 📞 Truecaller Gold (Chặn cuộc gọi rác & lừa đảo, nhận diện tên người gọi)
+Truecaller_Gold = type=http-response, pattern=^https:\/\/premium-(.+)\.truecaller\.com\/v\d\/(subscriptions|products\/apple), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/truecaller.js, requires-body=1, max-size=0, timeout=10
+
+# 🧮 Photomath Plus (Quét đề toán, giải chi tiết từng bước 2099)
+Photomath_Plus = type=http-response, pattern=^https?:\/\/lapi\.photomath\.net\/v4\/me, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/photomath.js, requires-body=1, max-size=0, timeout=10
+
+# 🎬 Alight Motion Pro (Edit video Motion Graphics, hiệu ứng Pro 4K)
+AlightMotion_Pro = type=http-response, pattern=^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/alightmotion.js, requires-body=1, max-size=0, timeout=10
+
+# 🎬 KineMaster Premium (Biên tập video 4K nhiều lớp, xóa logo KineMaster)
+KineMaster_Premium = type=http-response, pattern=^https:\/\/api-account\.kinemasters\.com\/v\d\/user\/subscribe$, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/kinemaster.js, requires-body=1, timeout=10, max-size=0
+
+# 🧠 XMind Pro (Sơ đồ tư duy Mindmap Pro, xuất PDF HD)
+XMind_Pro = type=http-response, pattern=^https?:\/\/www\.xmind\.(cn|net|app)\/_res\/devices, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/xmind.js, requires-body=1, max-size=0, timeout=10
+
+# 🎬 Funimate Pro (Hiệu ứng video độc quyền TikTok/Reels)
+Funimate_Pro = type=http-response, pattern=^https:\/\/api\.funimate\.com\/users\/me, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/funimate.js, requires-body=1, timeout=10, max-size=131072
+
+# 📖 Busuu Premium (Học ngoại ngữ Anh/Nhật/Trung/Hàn & nhận chứng chỉ)
+Busuu_Premium = type=http-response, pattern=^https:\/\/api\.busuu\.com\/users\/me, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/busuu.js, requires-body=1, timeout=10, max-size=0
+
+# 🎵 djay Pro AI (Mix nhạc DJ chuyên nghiệp, Neural Mix tách nhạc AI)
+djay_Pro = type=http-response, pattern=^https:\/\/app\.algoriddim\.com\/api\/v1\/validate-receipt, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/djay.js, requires-body=1, timeout=10, max-size=0
+
+# 🧘 Headspace Plus (Thiền giảm stress & nhạc ru ngủ sâu)
+Headspace_Plus = type=http-response, pattern=^https:\/\/api\.prod\.headspace\.com\/.*\/user-subscriptions, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/headspace.js, requires-body=1, timeout=10, max-size=131072
+
+# 🎨 PicsArt Gold (Tách nền AI, sticker & font chữ Gold)
+PicsArt_Gold = type=http-response, pattern=^https:\/\/api\.picsart\.com\/gw-v2\/shop\/subscription\/apple\/purchases, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/picsart.js, requires-body=1, timeout=60, max-size=0
+
+# 🎨 Adobe Photoshop Express Premium (Chỉnh ảnh chuyên nghiệp, xóa nhiễu noise)
+Photoshop_Express = type=http-response, pattern=^https:\/\/lcs-mobile-cops\.adobe\.io\/mobile_profile, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/photoshop.js, requires-body=1, timeout=10, max-size=0
+
+# 🎬 Emby Premiere (Phát phim & streaming media Premiere)
+Emby_Premiere = type=http-response, pattern=^https?:\/\/mb3admin\.com\/admin\/service\/registration\/validateDevice, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/emby.js, requires-body=1, timeout=10, max-size=0
+
+# 🎧 SoundCloud Go+ (Nghe nhạc Lossless chất lượng cao, không QC, tải nhạc offline)
+SoundCloud_Go = type=http-response, pattern=^https?:\/\/api-mobile\.soundcloud\.com\/configuration\/ios, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/soundcloud.js, requires-body=1, timeout=15
+
+# 📝 WPS Office Super VIP (Mở khóa toàn bộ tính năng VIP xem/chỉnh sửa Word, Excel, PowerPoint & PDF)
+WPS_Office = type=http-response, pattern=^https?:\/\/.*?account\.wps\.(com|cn)(:\d+)?\/api\/users\/\w+\/overview$, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/wps.js, requires-body=1, timeout=10
+
+# 🎨 Darkroom Pro (Chỉnh sửa ảnh màu phim chuyên nghiệp tốt nhất iOS)
+Darkroom_Pro = type=http-response, pattern=^https:\/\/v1\.darkroom\.co\/v1\/receipts\/apple, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/darkroom.js, requires-body=1, timeout=10
+
+# 📷 OldRoll Camera VIP (Bộ máy ảnh phim cổ điển CCD/Leica/Y2K hot trend)
+OldRoll_Camera = type=http-response, pattern=^https?:\/\/com\.zijayrate\.analogcam\/vipforever10, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/oldroll.js, requires-body=1, timeout=10
+
+# 📷 Fimo Camera VIP (Máy ảnh phim retro vintage)
+Fimo_Camera = type=http-response, pattern=^https:\/\/server\.yoyiapp\.com\/fimo-user\/user$, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/fimo.js, requires-body=1, timeout=10
+
+# 🧘 Calm Premium (Hướng dẫn thiền định & âm thanh giấc ngủ số 1 thế giới)
+Calm_Premium = type=http-response, pattern=^https?:\/\/api\.calm\.com\/(me|device|ios\/receipt), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/calm.js, requires-body=1, timeout=10
 
 [MITM]
 enable = true
-hostname = %APPEND% api.revenuecat.com, api.rc-backup.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, spclient.wg.spotify.com, *-spclient.spotify.com, gads.current.spotify.com
+hostname = %APPEND% api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api.intsig.net, api-cs.intsig.net, vsco.co, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, api-sub.meitu.com, user-snow-api.snow.me, api.mr.pixocial.com, newbeee-api.beautyplus.com, *.truecaller.com, lapi.photomath.net, us-central1-alight-creative.cloudfunctions.net, api-account.kinemasters.com, www.xmind.app, www.xmind.net, www.xmind.cn, api.funimate.com, api.busuu.com, app.algoriddim.com, api.prod.headspace.com, api.picsart.com, lcs-mobile-cops.adobe.io, mb3admin.com, api-mobile.soundcloud.com, account.wps.com, account.wps.cn, v1.darkroom.co, server.yoyiapp.com, api.calm.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, spclient.wg.spotify.com, *-spclient.spotify.com, gads.current.spotify.com

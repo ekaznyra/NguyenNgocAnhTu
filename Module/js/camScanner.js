@@ -1,8 +1,8 @@
 /*
- * @name: CamScanner Premium Unlock
+ * @name: CamScanner Premium Unlock (Shadowrocket)
  * @author: Nguyễn Ngọc Anh Tú (z3rokaze)
  * @homepage: https://github.com/ekaznyra/NguyenNgocAnhTu
- * @date: 2026-04-21
+ * @date: 2026-07-25
  */
 
 var banhsbao;
