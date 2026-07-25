@@ -2,7 +2,7 @@
 
 <!-- HEADER -->
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:20003B&height=320&section=header&text=%20%E2%9A%A1%20PREMIUM%20UNLOCKER%20&fontSize=60&fontColor=FFFFFF&animation=twinkling&fontAlignY=35&desc=%E2%9C%A8%20Tinh%20Hoa%20M%E1%BB%9F%20Kho%C3%A1%20Premium%20%E2%80%A2%2070%2B%20%E1%BB%A8ng%20D%E1%BB%A5ng%20%E2%80%A2%207%20N%E1%BB%81n%20T%E1%BA%A3ng%20%E2%80%A2%20iOS%2015%2B&descAlignY=55&descSize=20&descColor=00F0FF&stroke=00F0FF&strokeWidth=2"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:20003B&height=320&section=header&text=%20%E2%9A%A1%20PREMIUM%20UNLOCKER%20&fontSize=60&fontColor=FFFFFF&animation=twinkling&fontAlignY=35&desc=%E2%9C%A8%20Tinh%20Hoa%20M%E1%BB%9F%20Kho%C3%A1%20Premium%20%E2%80%A2%20320%2B%20%E1%BB%A8ng%20D%E1%BB%A5ng%20%E2%80%A2%208%20N%E1%BB%81n%20T%E1%BA%A3ng%20%E2%80%A2%20iOS%2015%2B&descAlignY=55&descSize=20&descColor=00F0FF&stroke=00F0FF&strokeWidth=2"/>
 
 <br>
 
@@ -16,7 +16,7 @@
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&duration=3000&pause=500&color=00FF00&background=00000000&center=false&vCenter=true&repeat=true&width=450&height=100&lines=%5B+%2B+%5D+Initializing+Premium+Unlocker+v2.4.5-stable...;%5B+%2B+%5D+Bypassing+security+checks+and+receipts...;%5B+%2B+%5D+Injecting+premium+payload+via+MITM...;%5B+%2B+%5D+Success!+70%2B+Applications+Unlocked." alt="Terminal Simulation" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&duration=3000&pause=500&color=00FF00&background=00000000&center=false&vCenter=true&repeat=true&width=450&height=100&lines=%5B+%2B+%5D+Initializing+Premium+Unlocker+v2.7.0-stable...;%5B+%2B+%5D+Bypassing+security+checks+and+receipts...;%5B+%2B+%5D+Injecting+premium+payload+via+MITM...;%5B+%2B+%5D+Success!+320%2B+Applications+Unlocked." alt="Terminal Simulation" />
 </a>
 
 <br>
@@ -24,7 +24,7 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu">
-<img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=700&size=26&duration=3500&pause=1200&color=00F0FF&background=0D111700&center=true&vCenter=true&repeat=true&width=800&height=70&lines=%F0%9F%8F%86+Ch%E1%BA%A1m+T%E1%BB%9Bi+%C4%90%E1%BB%89nh+Cao+Tr%E1%BA%A3i+Nghi%E1%BB%87m+Premium;%F0%9F%92%8E+B%E1%BB%A9t+Ph%C3%A1+Gi%E1%BB%9Bi+H%E1%BA%A1n+%E2%80%94+%C4%90%E1%BA%B3ng+C%E1%BA%A5p+Kh%C3%A1c+Bi%E1%BB%87t;%E2%9A%A1+70%2B+%E1%BB%A8ng+D%E1%BB%A5ng+%E2%80%A2+8+N%E1%BB%81n+T%E1%BA%A3ng+%E2%80%A2+Mi%E1%BB%85n+Ph%C3%AD+Tr%E1%BB%8Dn+%C4%90%E1%BB%9Di;%F0%9F%94%90+Kh%C3%B4ng+Jailbreak+%E2%80%A2+M%C3%A3+Ngu%E1%BB%93n+M%E1%BB%9F+%E2%80%A2+T%E1%BB%91i+%C6%AFu+Tuy%E1%BB%87t+%C4%90%E1%BB%91i" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=700&size=26&duration=3500&pause=1200&color=00F0FF&background=0D111700&center=true&vCenter=true&repeat=true&width=800&height=70&lines=%F0%9F%8F%86+Ch%E1%BA%A1m+T%E1%BB%9Bi+%C4%90%E1%BB%89nh+Cao+Tr%E1%BA%A3i+Nghi%E1%BB%87m+Premium;%F0%9F%92%8E+B%E1%BB%A9t+Ph%C3%A1+Gi%E1%BB%9Bi+H%E1%BA%A1n+%E2%80%94+%C4%90%E1%BA%B3ng+C%E1%BA%A5p+Kh%C3%A1c+Bi%E1%BB%87t;%E2%9A%A1+320%2B+%E1%BB%A8ng+D%E1%BB%A5ng+%E2%80%A2+8+N%E1%BB%81n+T%E1%BA%A3ng+%E2%80%A2+Mi%E1%BB%85n+Ph%C3%AD+Tr%E1%BB%8Dn+%C4%90%E1%BB%9Di;%F0%9F%94%90+Kh%C3%B4ng+Jailbreak+%E2%80%A2+M%C3%A3+Ngu%E1%BB%93n+M%E1%BB%9F+%E2%80%A2+T%E1%BB%91i+%C6%AFu+Tuy%E1%BB%87t+%C4%90%E1%BB%9D" alt="Typing SVG" />
 </a>
 
 <br>
@@ -47,7 +47,7 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <!-- HÀNG 1 — THÔNG TIN DỰ ÁN -->
-<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/releases"><img src="https://img.shields.io/badge/%E2%9A%A1_PHI%C3%8AN_B%E1%BA%A2N-v2.4.5--stable-00F0FF?style=for-the-badge&labelColor=0D1117" alt="version"/></a>
+<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/releases"><img src="https://img.shields.io/badge/%E2%9A%A1_PHI%C3%8AN_B%E1%BA%A2N-v2.7.0--stable-00F0FF?style=for-the-badge&labelColor=0D1117" alt="version"/></a>
 &nbsp;
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/LICENSE"><img src="https://img.shields.io/badge/%F0%9F%93%9C_GI%E1%BA%A4Y_PH%C3%89P-AGPL--3.0-FF007F?style=for-the-badge&labelColor=0D1117" alt="license"/></a>
 &nbsp;
@@ -124,12 +124,12 @@
 <table>
 <tr>
 <td align="center" width="16.6%">
-<img src="https://img.shields.io/badge/70+-c9a84c?style=flat-square&labelColor=0D1117" alt=""/><br>
+<img src="https://img.shields.io/badge/320+-c9a84c?style=flat-square&labelColor=0D1117" alt=""/><br>
 <b>📱 Ứng dụng</b><br>
 <sub>Hỗ trợ & cập nhật</sub>
 </td>
 <td align="center" width="16.6%">
-<img src="https://img.shields.io/badge/7-7b5ea7?style=flat-square&labelColor=0D1117" alt=""/><br>
+<img src="https://img.shields.io/badge/8-7b5ea7?style=flat-square&labelColor=0D1117" alt=""/><br>
 <b>🖥️ Nền tảng</b><br>
 <sub>Proxy hỗ trợ</sub>
 </td>
@@ -476,6 +476,8 @@
 
 | | Phiên bản | Ngày | Nội dung cập nhật | Số app |
 |:---:|:---:|:---:|:---|:---:|
+| 👑 | **`v2.7.0-stable`** | `25.07.2026` | 🚀 **Đồng bộ YFamily Standards & Mở rộng 320+ Apps VIP**: Sửa triệt để MITM OldRoll Camera (`com.zijayrate.analogcam`), mở rộng Remini, PhotoRoom, ELSA Speak, Bazaart • Khai tử cú pháp Surge-only trong Shadowrocket • Đồng bộ 8/8 client proxy formats lên `v2.7.0-stable`. | **320+** |
+| 👑 | **`v2.6.0-stable`** | `25.07.2026` | 💎 **Tích hợp 27 Standalone Scripts & DoH DNS**: Thêm 27 script tự host độc lập (CamScanner, VSCO, Meitu, Wink, BeautyPlus, Truecaller, Photomath, Alight Motion, KineMaster, XMind, Busuu, djay Pro, Headspace, PicsArt, Photoshop, Emby, SoundCloud, WPS Office, Darkroom, Fimo, Calm...). | **320+** |
 | 🏆 | **`v2.4.5-stable`** | `21.07.2026` | 🧹 **Gỡ app chết + dọn cấu hình**: gỡ hẳn **CARROT Weather** khỏi 7/7 module (backend `herokuapp.com` đã khai tử → mã chết; MITM 75→74) • Dọn `always-real-ip` (`*.stun.l.google.com` không khớp STUN thật + ngược rule chống WebRTC leak) • Ghi rõ Egern không hỗ trợ QUIC-block • Đồng bộ version 7/7. | **70+** |
 | 🏆 | **`v2.4.4-stable`** | `21.07.2026` | 🧹 **Dọn mã thừa**: gỡ script `deleteHeader.js` khỏi Egern (ETag `X-RevenueCat-ETag` đã được xóa **native** cho cả `revenuecat.com` & `rc-backup.com` → script trùng lặp) và **xóa hẳn file** dead-code • Hành vi không đổi, nhẹ hơn • Đồng bộ version 7/7. | **70+** |
 | 🏆 | **`v2.4.3-stable`** | `21.07.2026` | 🔒 **Đồng bộ DNS toàn nền tảng**: LanceX + Egern chuyển từ resolver **không lọc** (google/cloudflare/quad9) sang **DoH có lọc** ads/tracking/malware (AdGuard + ControlD `p2`) • **Bỏ fallback `system`** (chống rò rỉ DNS plaintext) • Dùng `p2` chứ không `p3` (p3 chặn nhầm **Social**) • Đồng bộ version 7/7. | **70+** |
