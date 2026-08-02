@@ -207,6 +207,21 @@ DOMAIN-SUFFIX,adnetwork.vn
 DOMAIN-SUFFIX,mcads.vn
 DOMAIN-SUFFIX,blueseed.tv
 
+# --- QC In-App Việt Nam bổ sung (08-2026) ---
+DOMAIN-SUFFIX,ads.zalo.me
+DOMAIN-SUFFIX,sp.zalo.me
+DOMAIN-SUFFIX,ads.mp3.zing.vn
+DOMAIN-SUFFIX,log.baomoi.com
+DOMAIN-SUFFIX,c.baomoi.com
+DOMAIN-SUFFIX,ads.vnexpress.net
+DOMAIN-SUFFIX,adx.vnexpress.net
+DOMAIN-SUFFIX,log.kenh14.vn
+DOMAIN-SUFFIX,tracking.zing.vn
+DOMAIN-SUFFIX,ads.24h.com.vn
+DOMAIN-SUFFIX,ads.dantri.com.vn
+DOMAIN-SUFFIX,ads.thanhnien.vn
+DOMAIN-SUFFIX,ads.tuoitre.vn
+
 # --- PHẦN 4: POPUP / REDIRECT / SCAM ---
 DOMAIN-SUFFIX,popads.net
 DOMAIN-SUFFIX,popcash.net
@@ -268,3 +283,16 @@ DOMAIN-SUFFIX,webminepool.com
 DOMAIN-SUFFIX,minero.cc
 DOMAIN-SUFFIX,jsecoin.com
 DOMAIN-SUFFIX,coinhive-manager.com
+
+# --- Spotify Podcast Ads (08-2026) ---
+DOMAIN,audio-sp-sto.pscdn.co
+DOMAIN,audio-sp-ash.pscdn.co
+DOMAIN,audio-sp-dca.pscdn.co
+DOMAIN,audio-sp-lon.pscdn.co
+DOMAIN,podcastads.spotify.com
+
+# --- Meta / Facebook Ads bổ sung (08-2026) ---
+DOMAIN,graph.facebook.com
+DOMAIN-SUFFIX,fbsbx.com
+DOMAIN,web.facebook.com
+DOMAIN-SUFFIX,facebook-dns.com

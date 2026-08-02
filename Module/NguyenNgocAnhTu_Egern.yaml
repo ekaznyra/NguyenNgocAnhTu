@@ -1,5 +1,5 @@
 name: "👑 Nguyễn Ngọc Anh Tú 🌸 ⁕ Ultimate Premium (Egern) ⁕"
-description: "🚀 Mở khóa 320+ App VIP (Locket Gold, Spotify, YouTube, Remini, PhotoRoom, ELSA, OldRoll, iTunes 250+). 🛡️ Chặn Ads & Tracking. ⚡ Tối ưu DNS, Banking, Streaming & Social. | v2.7.0-stable (2026-07-25)"
+description: "🚀 Mở khóa 320+ App VIP (Locket Gold, Spotify, YouTube, Remini, PhotoRoom, ELSA, OldRoll, iTunes 250+). 🛡️ Chặn Ads & Tracking. 🎮 Gaming DIRECT. 📺 Streaming PROXY. ⚡ Tối ưu DNS, Banking, GeoIP VN & Privacy. | v2.8.0-stable (2026-08-03)"
 author: "Nguyễn Ngọc Anh Tú (z3rokaze)"
 homepage: "https://github.com/ekaznyra/NguyenNgocAnhTu"
 icon: "lock.open.fill"
@@ -13,10 +13,17 @@ dns:
     - "https://freedns.controld.com/p2"
 
 rules:
-  # --- Block iOS OTA Updates ---
+  # --- Block iOS OTA Updates (Triệt để) ---
   - DOMAIN,mesu.apple.com,REJECT
   - DOMAIN,gdmf.apple.com,REJECT
   - DOMAIN,updates-http.apple.com,REJECT
+  - DOMAIN,appldnld.apple.com,REJECT
+  - DOMAIN,swcdn.apple.com,REJECT
+  - DOMAIN,xp.apple.com,REJECT
+  # --- Block App Store Search Ads ---
+  - DOMAIN,searchads.apple.com,REJECT
+  - DOMAIN,iad.apple.com,REJECT
+  - DOMAIN,iadsdk.apple.com,REJECT
   # === BLOCK QUIC FOR YOUTUBE MITM ===
   # EGERN NOT SUPPORT: cú pháp AND,((...),(PROTOCOL,UDP)),REJECT (giống Stash) — giữ tham chiếu, KHÔNG bật.
   # AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
@@ -71,6 +78,22 @@ rules:
       policy: REJECT
   - domain_suffix:
       match: "creativeservice-production.scdn.co"
+      policy: REJECT
+  # --- Spotify Podcast Ads & Canvas (v2.8.0) ---
+  - domain:
+      match: "audio-sp-sto.pscdn.co"
+      policy: REJECT
+  - domain:
+      match: "audio-sp-ash.pscdn.co"
+      policy: REJECT
+  - domain:
+      match: "audio-sp-dca.pscdn.co"
+      policy: REJECT
+  - domain:
+      match: "audio-sp-lon.pscdn.co"
+      policy: REJECT
+  - domain:
+      match: "podcastads.spotify.com"
       policy: REJECT
   # ===========================================================
   # === CHáº¶N QUáº¢NG CÃO + Cá»œ Báº C/CÃ Äá»˜ Tá»”NG Há»¢P (Ad Block) ===

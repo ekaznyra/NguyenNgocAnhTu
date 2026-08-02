@@ -105,3 +105,19 @@ DOMAIN-SUFFIX,branch.io
 DOMAIN-SUFFIX,bnc.lt
 DOMAIN-SUFFIX,app.link
 DOMAIN-KEYWORD,telemetry
+
+# --- Firebase / Google Tracking bổ sung (08-2026) ---
+DOMAIN,firebaseinstallations.googleapis.com
+DOMAIN,firebaselogging-pa.googleapis.com
+DOMAIN-SUFFIX,firebaseio.com
+
+# --- Apple Advertising & Telemetry bổ sung (08-2026) ---
+DOMAIN,advertising.apple.com
+DOMAIN,api-adservices.apple.com
+DOMAIN,banners.itunes.apple.com
+DOMAIN,iad.apple.com
+DOMAIN,apple-finance.query.yahoo.com
+
+# --- Amazon Device Tracking (08-2026) ---
+DOMAIN,device-metrics-us.amazon.com
+DOMAIN,device-metrics-us-2.amazon.com

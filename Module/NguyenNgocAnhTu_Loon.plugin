@@ -1,7 +1,7 @@
 #!name=⚡ Anh Tú Premium - Loon
-#!desc=🚀 Mở khóa 320+ App VIP (Locket Gold, Spotify, YouTube, Remini, PhotoRoom, ELSA, OldRoll, iTunes 250+). 🛡️ Chặn Ads & Tracking. ⚡ Tối ưu DNS, Banking, Streaming & Social.
-#!version=2.7.0-stable
-#!date=2026-07-25
+#!desc=🚀 Mở khóa 320+ App VIP (Locket Gold, Spotify, YouTube, Remini, PhotoRoom, ELSA, OldRoll, iTunes 250+). 🛡️ Chặn Ads & Tracking. 🎮 Gaming DIRECT. 📺 Streaming PROXY. ⚡ Tối ưu DNS, Banking, GeoIP VN & Privacy.
+#!version=2.8.0-stable
+#!date=2026-08-03
 #!author=Nguyễn Ngọc Anh Tú
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
@@ -17,10 +17,18 @@ AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
 
 # === BLOCK WEBRTC LEAK (Specific servers) ===
 # Note: Generic KEYWORD stun/turn removed — breaks VoIP (FaceTime, WhatsApp, Zoom)
-# --- Block iOS OTA Updates ---
+# --- Block iOS OTA Updates (Triệt để) ---
 DOMAIN,mesu.apple.com,REJECT
 DOMAIN,gdmf.apple.com,REJECT
 DOMAIN,updates-http.apple.com,REJECT
+DOMAIN,appldnld.apple.com,REJECT
+DOMAIN,swcdn.apple.com,REJECT
+DOMAIN,xp.apple.com,REJECT
+
+# === BLOCK APP STORE SEARCH ADS ===
+DOMAIN,searchads.apple.com,REJECT
+DOMAIN,iad.apple.com,REJECT
+DOMAIN,iadsdk.apple.com,REJECT
 
 DOMAIN-SUFFIX,stun.l.google.com,REJECT
 DOMAIN-SUFFIX,stun1.l.google.com,REJECT
@@ -44,7 +52,12 @@ DOMAIN-SUFFIX,adeventtracker.spotify.com,REJECT
 DOMAIN-SUFFIX,log.spotify.com,REJECT
 DOMAIN-SUFFIX,creativeservice-production.scdn.co,REJECT
 
-# ===========================================================
+# === BLOCK SPOTIFY PODCAST ADS & CANVAS ===
+DOMAIN,audio-sp-sto.pscdn.co,REJECT
+DOMAIN,audio-sp-ash.pscdn.co,REJECT
+DOMAIN,audio-sp-dca.pscdn.co,REJECT
+DOMAIN,audio-sp-lon.pscdn.co,REJECT
+DOMAIN,podcastads.spotify.com,REJECT
 # === CHẶN QUẢNG CÁO + CỜ BẠC/CÁ ĐỘ TỔNG HỢP (API RULE-SET) ===
 # ===========================================================
 
@@ -71,11 +84,17 @@ RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/cd4d77094dd53290f24
 # --- Định tuyến AI Services ---
 RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/AI_Proxy.list,PROXY
 
+# --- Streaming quốc tế đi qua Proxy (Netflix, Disney+, HBO...) ---
+RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/Streaming_Proxy.list,PROXY
+
 # --- Dịch vụ quốc tế (Game, Stream, Social, Dev) đi qua Proxy ---
 RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/Proxy.list,PROXY
 
 # --- Dịch vụ nội địa (Ngân hàng, App VN, Apple CDN) kết nối trực tiếp ---
 RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/Direct.list,DIRECT
+
+# --- Gaming DIRECT (Giảm ping, không qua Proxy) ---
+RULE-SET,https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Rules/Gaming_Direct.list,DIRECT
 
 # --- Vietnam Local Network & GeoIP fallback ---
 GEOIP,VN,DIRECT

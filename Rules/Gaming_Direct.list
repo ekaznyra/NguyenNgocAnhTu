@@ -1,0 +1,78 @@
+# === GAMING DIRECT — Giảm Ping, Không Qua Proxy ===
+# Tạo bởi Nguyễn Ngọc Anh Tú (z3rokaze)
+# Phiên bản: 2026-08-03
+
+# --- Garena / VNG (Game Việt Nam) ---
+DOMAIN-SUFFIX,garena.com
+DOMAIN-SUFFIX,garena.vn
+DOMAIN-SUFFIX,garenacdn.com
+DOMAIN-SUFFIX,garenanow.com
+DOMAIN-SUFFIX,playfps.vn
+DOMAIN-SUFFIX,lienquan.garena.vn
+DOMAIN-SUFFIX,freefire.garena.com
+
+# --- PUBG Mobile / Krafton ---
+DOMAIN-SUFFIX,pubgmobile.com
+DOMAIN-SUFFIX,igamecj.com
+DOMAIN-SUFFIX,proximabeta.com
+DOMAIN-SUFFIX,battlegroundsmobileindia.com
+DOMAIN-SUFFIX,krafton.com
+
+# --- Genshin Impact / HoYoverse ---
+DOMAIN-SUFFIX,mihoyo.com
+DOMAIN-SUFFIX,hoyoverse.com
+DOMAIN-SUFFIX,hoyolab.com
+DOMAIN-SUFFIX,yuanshen.com
+DOMAIN-SUFFIX,starrails.com
+
+# --- Mobile Legends / Moonton ---
+DOMAIN-SUFFIX,mobilelegends.com
+DOMAIN-SUFFIX,moonton.com
+
+# --- Roblox ---
+DOMAIN-SUFFIX,roblox.com
+DOMAIN-SUFFIX,rbxcdn.com
+DOMAIN-SUFFIX,roblox.qq.com
+
+# --- Call of Duty Mobile / Activision ---
+DOMAIN-SUFFIX,activision.com
+DOMAIN-SUFFIX,callofduty.com
+DOMAIN-SUFFIX,demonware.net
+
+# --- Fortnite / Epic Games ---
+DOMAIN-SUFFIX,epicgames.com
+DOMAIN-SUFFIX,epicgames.dev
+DOMAIN-SUFFIX,unrealengine.com
+DOMAIN-SUFFIX,fortnite.com
+
+# --- Supercell (Clash of Clans, Clash Royale, Brawl Stars) ---
+DOMAIN-SUFFIX,supercell.com
+DOMAIN-SUFFIX,supercell.net
+
+# --- Riot Games (Wild Rift / Valorant Mobile) ---
+DOMAIN-SUFFIX,riotgames.com
+DOMAIN-SUFFIX,leagueoflegends.com
+DOMAIN-SUFFIX,riotcdn.net
+
+# --- Steam ---
+DOMAIN-SUFFIX,steampowered.com
+DOMAIN-SUFFIX,steamcommunity.com
+DOMAIN-SUFFIX,steamcontent.com
+DOMAIN-SUFFIX,steamstatic.com
+
+# --- Nintendo ---
+DOMAIN-SUFFIX,nintendo.com
+DOMAIN-SUFFIX,nintendo.net
+
+# --- Tencent Games ---
+DOMAIN-SUFFIX,qq.com
+DOMAIN-SUFFIX,tencent.com
+DOMAIN-SUFFIX,wegame.com
+
+# --- Game Platforms Khác ---
+DOMAIN-SUFFIX,ea.com
+DOMAIN-SUFFIX,ubisoft.com
+DOMAIN-SUFFIX,playstationnetwork.com
+DOMAIN-SUFFIX,xboxlive.com
+DOMAIN-SUFFIX,netease.com
+DOMAIN-SUFFIX,neteasegames.com

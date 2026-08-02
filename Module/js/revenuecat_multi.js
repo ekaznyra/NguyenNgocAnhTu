@@ -11,7 +11,18 @@
 // vì User-Agent chứa chuỗi thật. App có trong mapping -> cấp ĐÚNG entitlement key riêng.
 // App RC khác (đa số app hot quốc tế) -> rơi vào fallback đa-entitlement bên dưới.
 const mapping = {
-  'Locket': ['Gold', 'locket_1600_1y']
+  'Locket': ['Gold', 'locket_1600_1y'],
+  'Remini': ['premium', 'com.bigwinepot.nwdn.revive.sub.yearly'],
+  'PhotoRoom': ['pro', 'photoroom_pro_yearly'],
+  'ELSA': ['premium', 'elsa_premium_1y'],
+  'Bazaart': ['pro', 'bazaart_pro_yearly'],
+  'Splice': ['pro', 'splice_pro_yearly'],
+  'Facetune': ['VIP', 'facetune_vip_yearly'],
+  'Mojo': ['pro', 'mojo_pro_yearly'],
+  'Prequel': ['premium', 'prequel_premium_yearly'],
+  '24FPS': ['pro', 'twentyfourfps_pro_yearly'],
+  'Unfold': ['plus', 'unfold_plus_yearly'],
+  'Videoleap': ['pro', 'videoleap_pro_yearly']
 };
 
 // ========= Fallback entitlement keys ========= //

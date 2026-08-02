@@ -16,7 +16,7 @@
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&duration=3000&pause=500&color=00FF00&background=00000000&center=false&vCenter=true&repeat=true&width=450&height=100&lines=%5B+%2B+%5D+Initializing+Premium+Unlocker+v2.7.0-stable...;%5B+%2B+%5D+Bypassing+security+checks+and+receipts...;%5B+%2B+%5D+Injecting+premium+payload+via+MITM...;%5B+%2B+%5D+Success!+320%2B+Applications+Unlocked." alt="Terminal Simulation" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&duration=3000&pause=500&color=00FF00&background=00000000&center=false&vCenter=true&repeat=true&width=450&height=100&lines=%5B+%2B+%5D+Initializing+Premium+Unlocker+v2.8.0-stable...;%5B+%2B+%5D+Bypassing+security+checks+and+receipts...;%5B+%2B+%5D+Injecting+premium+payload+via+MITM...;%5B+%2B+%5D+Success!+320%2B+Applications+Unlocked." alt="Terminal Simulation" />
 </a>
 
 <br>
@@ -47,7 +47,7 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <!-- HÀNG 1 — THÔNG TIN DỰ ÁN -->
-<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/releases"><img src="https://img.shields.io/badge/%E2%9A%A1_PHI%C3%8AN_B%E1%BA%A2N-v2.7.0--stable-00F0FF?style=for-the-badge&labelColor=0D1117" alt="version"/></a>
+<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/releases"><img src="https://img.shields.io/badge/%E2%9A%A1_PHI%C3%8AN_B%E1%BA%A2N-v2.8.0--stable-00F0FF?style=for-the-badge&labelColor=0D1117" alt="version"/></a>
 &nbsp;
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/LICENSE"><img src="https://img.shields.io/badge/%F0%9F%93%9C_GI%E1%BA%A4Y_PH%C3%89P-AGPL--3.0-FF007F?style=for-the-badge&labelColor=0D1117" alt="license"/></a>
 &nbsp;
@@ -476,6 +476,7 @@
 
 | | Phiên bản | Ngày | Nội dung cập nhật | Số app |
 |:---:|:---:|:---:|:---|:---:|
+| 👑 | **`v2.8.0-stable`** | `03.08.2026` | 🎮 **Gaming DIRECT, Streaming PROXY & Enhanced Blocking**: Thêm `Gaming_Direct.list` (20+ game/platform đi DIRECT giảm ping) • Thêm `Streaming_Proxy.list` (Netflix, Disney+, HBO, Prime Video, Hulu, Crunchyroll) • Mở rộng chặn iOS OTA (appldnld, swcdn, xp.apple.com) • Chặn App Store Search Ads • Chặn Spotify Podcast Ads & Canvas • Thêm 13 domain QC app VN (Zalo, Báo Mới, VnExpress, Zing, Kenh14...) • 11 RevenueCat app mapping cụ thể • Đồng bộ 8/8 module lên v2.8.0. | **320+** |
 | 👑 | **`v2.7.0-stable`** | `25.07.2026` | 🚀 **Đồng bộ YFamily Standards & Mở rộng 320+ Apps VIP**: Sửa triệt để MITM OldRoll Camera (`com.zijayrate.analogcam`), mở rộng Remini, PhotoRoom, ELSA Speak, Bazaart • Khai tử cú pháp Surge-only trong Shadowrocket • Đồng bộ 8/8 client proxy formats lên `v2.7.0-stable`. | **320+** |
 | 👑 | **`v2.6.0-stable`** | `25.07.2026` | 💎 **Tích hợp 27 Standalone Scripts & DoH DNS**: Thêm 27 script tự host độc lập (CamScanner, VSCO, Meitu, Wink, BeautyPlus, Truecaller, Photomath, Alight Motion, KineMaster, XMind, Busuu, djay Pro, Headspace, PicsArt, Photoshop, Emby, SoundCloud, WPS Office, Darkroom, Fimo, Calm...). | **320+** |
 | 🏆 | **`v2.4.5-stable`** | `21.07.2026` | 🧹 **Gỡ app chết + dọn cấu hình**: gỡ hẳn **CARROT Weather** khỏi 7/7 module (backend `herokuapp.com` đã khai tử → mã chết; MITM 75→74) • Dọn `always-real-ip` (`*.stun.l.google.com` không khớp STUN thật + ngược rule chống WebRTC leak) • Ghi rõ Egern không hỗ trợ QUIC-block • Đồng bộ version 7/7. | **70+** |

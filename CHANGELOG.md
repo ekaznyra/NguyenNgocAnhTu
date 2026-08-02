@@ -4,6 +4,26 @@ Tất cả những thay đổi quan trọng của dự án sẽ được ghi nh�
 
 ---
 
+## [2.8.0-stable] - 2026-08-03
+### 🎮 Added
+- **Gaming DIRECT Rule-Set:** Tạo `Rules/Gaming_Direct.list` với 20+ game/platform (Garena, Liên Quân, Free Fire, PUBG Mobile, Genshin Impact, Mobile Legends, Roblox, COD Mobile, Steam, Epic Games, Riot Games...) → kết nối DIRECT giảm ping.
+- **Streaming PROXY Rule-Set:** Tạo `Rules/Streaming_Proxy.list` hỗ trợ Netflix, Disney+, HBO Max, Amazon Prime Video, Hulu, Crunchyroll, Apple TV+ → đi qua PROXY để xem nội dung vùng khác.
+- **GeoIP VN DIRECT:** Thêm `GEOIP,VN,DIRECT` — tất cả traffic đến server Việt Nam kết nối trực tiếp.
+- **Spotify Podcast Ads & Canvas Blocking:** Chặn 4 domain podcast ads CDN (`audio-sp-*.pscdn.co`) + `podcastads.spotify.com`. Thêm URL Rewrite chặn Spotify Canvas & Storylines.
+- **iOS OTA Update Blocking (Triệt để):** Bổ sung `appldnld.apple.com`, `swcdn.apple.com`, `xp.apple.com` — chặn triệt để thông báo cập nhật iOS.
+- **App Store Search Ads Blocking:** Chặn `searchads.apple.com`, `iad.apple.com`, `iadsdk.apple.com`.
+- **VN In-App Ads Blocking:** Thêm 13 domain QC in-app Việt Nam (Zalo, Báo Mới, VnExpress, Zing, Kenh14, 24h, Dân Trí, Thanh Niên, Tuổi Trẻ).
+- **RevenueCat App Mapping:** Thêm 11 app mapping cụ thể (Remini, PhotoRoom, ELSA, Bazaart, Splice, Facetune, Mojo, Prequel, 24FPS, Unfold, Videoleap) cho entitlement delivery chính xác hơn.
+- **Firebase/Apple/Amazon Tracking:** Bổ sung 15+ domain tracking mới (Firebase Installations, Apple Advertising, Amazon Device Metrics...).
+
+### 🔄 Synced
+- **All 8 Clients Synced:** Đồng bộ tất cả module lên v2.8.0-stable (Premium.module, Loon.plugin, Surge.sgmodule, LanceX.module, Stash.stoverride, Egern.yaml, QuantumultX.snippet).
+
+### ⚡ Performance
+- Không thêm hostname MITM mới — tất cả rule mới đều là REJECT/DIRECT (zero overhead).
+
+---
+
 ## [2.7.0-stable] - 2026-07-25
 ### 🚀 Added & Improved
 - **YFamily Standards Integration:** Đồng bộ 100% tiêu chuẩn từ YFamily (`https://yfamilys.com/` - `deezertidal`).

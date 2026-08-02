@@ -1,0 +1,47 @@
+# === STREAMING SERVICES → PROXY (Xem nội dung vùng khác) ===
+# Tạo bởi Nguyễn Ngọc Anh Tú (z3rokaze)
+# Phiên bản: 2026-08-03
+
+# --- Netflix ---
+DOMAIN-SUFFIX,netflix.com
+DOMAIN-SUFFIX,netflix.net
+DOMAIN-SUFFIX,nflxvideo.net
+DOMAIN-SUFFIX,nflximg.net
+DOMAIN-SUFFIX,nflximg.com
+DOMAIN-SUFFIX,nflxext.com
+DOMAIN-SUFFIX,nflxso.net
+
+# --- Disney+ ---
+DOMAIN-SUFFIX,disneyplus.com
+DOMAIN-SUFFIX,disney-plus.net
+DOMAIN-SUFFIX,dssott.com
+DOMAIN-SUFFIX,bamgrid.com
+DOMAIN-SUFFIX,disney.api.edge.bamgrid.com
+DOMAIN-SUFFIX,cdn.registerdisney.go.com
+
+# --- Amazon Prime Video ---
+DOMAIN-SUFFIX,primevideo.com
+DOMAIN-SUFFIX,amazonvideo.com
+DOMAIN-SUFFIX,media-amazon.com
+DOMAIN-SUFFIX,aiv-cdn.net
+DOMAIN-SUFFIX,aiv-delivery.net
+
+# --- HBO Max / Max ---
+DOMAIN-SUFFIX,hbomax.com
+DOMAIN-SUFFIX,max.com
+DOMAIN-SUFFIX,hbo.com
+
+# --- Apple TV+ ---
+DOMAIN-SUFFIX,tv.apple.com
+
+# --- Hulu ---
+DOMAIN-SUFFIX,hulu.com
+DOMAIN-SUFFIX,hulustream.com
+DOMAIN-SUFFIX,huluim.com
+
+# --- Crunchyroll ---
+DOMAIN-SUFFIX,crunchyroll.com
+DOMAIN-SUFFIX,vrv.co
+
+# --- Spotify (Streaming qua Proxy nếu cần) ---
+DOMAIN-SUFFIX,spotify.com
