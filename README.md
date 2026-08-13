@@ -16,7 +16,7 @@
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&duration=3000&pause=500&color=00FF00&background=00000000&center=false&vCenter=true&repeat=true&width=450&height=100&lines=%5B+%2B+%5D+Initializing+Premium+Unlocker+v2.8.0-stable...;%5B+%2B+%5D+Bypassing+security+checks+and+receipts...;%5B+%2B+%5D+Injecting+premium+payload+via+MITM...;%5B+%2B+%5D+Success!+320%2B+Applications+Unlocked." alt="Terminal Simulation" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&duration=3000&pause=500&color=00FF00&background=00000000&center=false&vCenter=true&repeat=true&width=450&height=100&lines=%5B+%2B+%5D+Initializing+Premium+Unlocker+v2.8.1-stable...;%5B+%2B+%5D+Bypassing+security+checks+and+receipts...;%5B+%2B+%5D+Injecting+premium+payload+via+MITM...;%5B+%2B+%5D+Success!+350%2B+Applications+Unlocked." alt="Terminal Simulation" />
 </a>
 
 <br>
@@ -24,7 +24,7 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu">
-<img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=700&size=26&duration=3500&pause=1200&color=00F0FF&background=0D111700&center=true&vCenter=true&repeat=true&width=800&height=70&lines=%F0%9F%8F%86+Ch%E1%BA%A1m+T%E1%BB%9Bi+%C4%90%E1%BB%89nh+Cao+Tr%E1%BA%A3i+Nghi%E1%BB%87m+Premium;%F0%9F%92%8E+B%E1%BB%A9t+Ph%C3%A1+Gi%E1%BB%9Bi+H%E1%BA%A1n+%E2%80%94+%C4%90%E1%BA%B3ng+C%E1%BA%A5p+Kh%C3%A1c+Bi%E1%BB%87t;%E2%9A%A1+320%2B+%E1%BB%A8ng+D%E1%BB%A5ng+%E2%80%A2+8+N%E1%BB%81n+T%E1%BA%A3ng+%E2%80%A2+Mi%E1%BB%85n+Ph%C3%AD+Tr%E1%BB%8Dn+%C4%90%E1%BB%9Di;%F0%9F%94%90+Kh%C3%B4ng+Jailbreak+%E2%80%A2+M%C3%A3+Ngu%E1%BB%93n+M%E1%BB%9F+%E2%80%A2+T%E1%BB%91i+%C6%AFu+Tuy%E1%BB%87t+%C4%90%E1%BB%9D" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=700&size=26&duration=3500&pause=1200&color=00F0FF&background=0D111700&center=true&vCenter=true&repeat=true&width=800&height=70&lines=%F0%9F%8F%86+Ch%E1%BA%A1m+T%E1%BB%9Bi+%C4%90%E1%BB%89nh+Cao+Tr%E1%BA%A3i+Nghi%E1%BB%87m+Premium;%F0%9F%92%8E+B%E1%BB%A9t+Ph%C3%A1+Gi%E1%BB%9Bi+H%E1%BA%A1n+%E2%80%94+%C4%90%E1%BA%B3ng+C%E1%BA%A5p+Kh%C3%A1c+Bi%E1%BB%87t;%E2%9A%A1+350%2B+%E1%BB%A8ng+D%E1%BB%A5ng+%E2%80%A2+8+N%E1%BB%81n+T%E1%BA%A3ng+%E2%80%A2+Mi%E1%BB%85n+Ph%C3%AD+Tr%E1%BB%8Dn+%C4%90%E1%BB%9Di;%F0%9F%94%90+Kh%C3%B4ng+Jailbreak+%E2%80%A2+M%E1%BB%9F+Ngu%E1%BB%99n+M%E1%BB%9F+%E2%80%A2+T%E1%BB%91i+%C6%AFu+Tuy%E1%BB%87t+%C4%90%E1%BB%9D" alt="Typing SVG" />
 </a>
 
 <br>
@@ -47,7 +47,7 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <!-- HÀNG 1 — THÔNG TIN DỰ ÁN -->
-<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/releases"><img src="https://img.shields.io/badge/%E2%9A%A1_PHI%C3%8AN_B%E1%BA%A2N-v2.8.0--stable-00F0FF?style=for-the-badge&labelColor=0D1117" alt="version"/></a>
+<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/releases"><img src="https://img.shields.io/badge/%E2%9A%A1_PHI%C3%8AN_B%E1%BA%A2N-v2.8.1--stable-00F0FF?style=for-the-badge&labelColor=0D1117" alt="version"/></a>
 &nbsp;
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/LICENSE"><img src="https://img.shields.io/badge/%F0%9F%93%9C_GI%E1%BA%A4Y_PH%C3%89P-AGPL--3.0-FF007F?style=for-the-badge&labelColor=0D1117" alt="license"/></a>
 &nbsp;

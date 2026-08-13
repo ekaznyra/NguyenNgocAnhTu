@@ -3,7 +3,7 @@
 > Locket Gold + 车票票 VIP + Generic RC Apps
 > Original: z3rokaze (revenuecat_multi.js)
 > Updated: Nguyễn Ngọc Anh Tú (z3rokaze)
-> Date: 2026-07-21 (v2.4.5-stable)
+> Date: 2026-08-13 (v2.4.6-stable)
 ***********************************************/
 
 // ========= App ID Mapping ========= //
@@ -22,7 +22,18 @@ const mapping = {
   'Prequel': ['premium', 'prequel_premium_yearly'],
   '24FPS': ['pro', 'twentyfourfps_pro_yearly'],
   'Unfold': ['plus', 'unfold_plus_yearly'],
-  'Videoleap': ['pro', 'videoleap_pro_yearly']
+  'Videoleap': ['pro', 'videoleap_pro_yearly'],
+  'Captions': ['pro', 'captions_pro_yearly'],
+  'iScreen': ['VIP', 'iscreen_vip_yearly'],
+  'MDVinyl': ['pro', 'mdvinyl_pro_yearly'],
+  'MD Vinyl': ['pro', 'mdvinyl_pro_yearly'],
+  'Structured': ['pro', 'structured_pro_lifetime'],
+  'Moises': ['premium', 'moises_premium_yearly'],
+  'Lensa': ['pro', 'lensa_pro_yearly'],
+  'AIMirror': ['premium', 'aimirror_premium_yearly'],
+  'AI Mirror': ['premium', 'aimirror_premium_yearly'],
+  'Widgetsmith': ['Premium', 'widgetsmith_premium_yearly'],
+  'Pixelup': ['pro', 'pixelup_pro_yearly']
 };
 
 // ========= Fallback entitlement keys ========= //
@@ -31,7 +42,7 @@ const mapping = {
 // (tránh xung đột endpoint vì mọi app RC đều đi qua cùng handler này).
 const GENERIC_ENTITLEMENT_KEYS = [
   "pro", "premium", "plus", "Pro", "Premium", "Plus", "vip", "VIP",
-  "unlimited", "standard", "gold", "lifetime", "all_access",
+  "unlimited", "standard", "gold", "Gold", "lifetime", "all_access",
   "premium_access", "pro_access", "isPremium", "premiumUser",
   "member", "membership", "svip", "vip_access", "full_access",
   "premium_yearly", "premium_lifetime", "unlimited_access", "paid", "Unlock"
@@ -51,7 +62,7 @@ obj.Attention = "Chúc mừng bạn! Vui lòng không bán hoặc chia sẻ cho 
 var z3rokaze = {
       auto_resume_date: null,
       display_name: "locket_1600_1y",
-      is_sandbox: true,
+      is_sandbox: false,
       ownership_type: "PURCHASED",
       billing_issues_detected_at: null,
       management_url: "https://apps.apple.com/account/subscriptions",
@@ -64,7 +75,7 @@ var z3rokaze = {
       grace_period_expires_date: null,
       refunded_at: null,
       unsubscribe_detected_at: null,
-      original_purchase_date: "2005-07-18T10:10:15Z",
+      original_purchase_date: "2005-07-18T10:10:14Z",
       purchase_date: "2005-07-18T10:10:14Z",
       store: "app_store",
       store_transaction_id: "2000001108724193",
@@ -82,7 +93,7 @@ if (match) {
   // App có trong mapping -> cấp đúng entitlement key riêng (GIỮ NGUYÊN hành vi Locket Gold)
   const [ent, prod] = mapping[match];
   if (prod) prodKey = prod;
-  entKeys = [ent || "pro"];
+  entKeys = (match === 'Locket') ? ['Gold', 'gold'] : [ent || "pro"];
 } else {
   // App RC khác -> cấp quyền dưới nhiều entitlement key phổ biến (phủ nhiều app hot)
   entKeys = GENERIC_ENTITLEMENT_KEYS;
