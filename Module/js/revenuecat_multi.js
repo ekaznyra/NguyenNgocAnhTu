@@ -9,7 +9,7 @@
 > - FIX: expires_date mismatch giữa subscription/entitlement (Critical)
 > - FIX: Xóa non-standard fields (display_name, price) khỏi subscription
 > - FIX: Di chuyển management_url về đúng subscriber level
-> - FIX: purchase_date cập nhật hợp lý (2024 thay vì 2005)
+> - FIX: purchase_date thống nhất 2005-07-18 (Thành viên kể từ)
 > - FIX: Thêm product_plan_identifier cho SDK v5+
 > - FIX: Init non_subscriptions tránh crash
 ***********************************************/
@@ -58,7 +58,7 @@ const GENERIC_ENTITLEMENT_KEYS = [
 
 // ========= Unified Constants (CRITICAL: dates MUST match) ========= //
 const EXPIRES    = "9999-07-18T10:10:14Z";
-const PURCHASED  = "2024-08-01T00:00:00Z";
+const PURCHASED  = "2005-07-18T10:10:14Z";
 const MGMT_URL   = "https://apps.apple.com/account/subscriptions";
 
 // =========  Core Logic  ========= //
