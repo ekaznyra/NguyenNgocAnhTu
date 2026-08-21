@@ -1,7 +1,7 @@
 #!name=👑 Nguyễn Ngọc Anh Tú 🌸 ⁕ Ultimate Premium & Best AdBlock ⁕
 #!desc=🚀 Mở khóa 350+ App VIP (Locket Gold, Spotify, YouTube Premium, Captions AI, iScreen, MD Vinyl, Moises, Structured, iTunes 250+, SoundCloud, WPS, Darkroom, OldRoll, Fimo, Calm, Remini, PhotoRoom, ELSA...). 🛡️ Chặn Quảng Cáo 100% (AdGuard DoH, Rule-Sets Ads/Tracking/Malware/HostsVN/QC App VN). 🎮 Gaming DIRECT (PUBG, Liên Quân, Genshin...). 📺 Streaming PROXY (Netflix, Disney+, HBO...). ⚡ Tối ưu DNS, Banking VN, GeoIP VN, Chặn iOS OTA & App Store Ads.
-#!version=2.8.1-stable
-#!date=2026-08-13
+#!version=2.9.0-stable
+#!date=2026-08-21
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/VIP.png
@@ -21,7 +21,7 @@ udp-policy-not-supported-behaviour = REJECT
 always-real-ip = *.srv.nintendo.net, *.stun.playstation.net, xbox.*.microsoft.com, *.xboxlive.com, *.turn.apple.com, *.stun.services.mozilla.com
 skip-proxy = %APPEND% 127.0.0.1, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, 100.64.0.0/10, 17.0.0.0/8, localhost, *.local, *.lan, captive.apple.com, detectportal.firefox.com, connectivitycheck.gstatic.com, clients3.google.com, www.msftconnecttest.com, www.msftncsi.com
 tun-excluded-routes = %APPEND% 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.0.0.0/24, 192.0.2.0/24, 192.88.99.0/24, 192.168.0.0/16, 198.51.100.0/24, 203.0.113.0/24, 224.0.0.0/4, 255.255.255.255/32, 239.255.255.250/32
-force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443, buy.itunes.apple.com:443, api.intsig.net:443, api-cs.intsig.net:443, vsco.co:443, h5.xiuxiu.meitu.com:443, api.xiuxiu.meitu.com:443, api-sub.meitu.com:443, user-snow-api.snow.me:443, api.mr.pixocial.com:443, newbeee-api.beautyplus.com:443, premium-api.truecaller.com:443, lapi.photomath.net:443, us-central1-alight-creative.cloudfunctions.net:443, api-account.kinemasters.com:443, www.xmind.app:443, www.xmind.net:443, www.xmind.cn:443, api.funimate.com:443, api.busuu.com:443, app.algoriddim.com:443, api.prod.headspace.com:443, api.picsart.com:443, lcs-mobile-cops.adobe.io:443, mb3admin.com:443, api-mobile.soundcloud.com:443, account.wps.com:443, account.wps.cn:443, v1.darkroom.co:443, server.yoyiapp.com:443, api.calm.com:443, com.zijayrate.analogcam:443, api.elsaspeak.com:443, api.photoroom.com:443, api.remini.ai:443, api.bazaart.me:443, youtubei.googleapis.com:443, www.youtube.com:443, s.youtube.com:443, spclient.wg.spotify.com:443, gads.current.spotify.com:443
+force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443, buy.itunes.apple.com:443, api.intsig.net:443, api-cs.intsig.net:443, vsco.co:443, h5.xiuxiu.meitu.com:443, api.xiuxiu.meitu.com:443, api-sub.meitu.com:443, user-snow-api.snow.me:443, api.mr.pixocial.com:443, newbeee-api.beautyplus.com:443, premium-api.truecaller.com:443, lapi.photomath.net:443, us-central1-alight-creative.cloudfunctions.net:443, api-account.kinemasters.com:443, www.xmind.app:443, www.xmind.net:443, www.xmind.cn:443, api.funimate.com:443, api.busuu.com:443, app.algoriddim.com:443, api.prod.headspace.com:443, api.picsart.com:443, lcs-mobile-cops.adobe.io:443, mb3admin.com:443, api-mobile.soundcloud.com:443, account.wps.com:443, account.wps.cn:443, v1.darkroom.co:443, server.yoyiapp.com:443, api.calm.com:443, com.zijayrate.analogcam:443, api.elsaspeak.com:443, api.photoroom.com:443, api.remini.ai:443, api.bazaart.me:443, youtubei.googleapis.com:443, www.youtube.com:443, s.youtube.com:443, spclient.wg.spotify.com:443, *-spclient.spotify.com:443, gads.current.spotify.com:443
 
 [Rule]
 # === SPOTIFY DIRECT DOMAINS (PERFECT PLAYBACK - NO AUDIO DROP) ===
@@ -137,6 +137,10 @@ FINAL,DIRECT
 ^https?:\/\/vsco\.co\/api\/subscriptions\/ header-del If-None-Match
 ^https?:\/\/vsco\.co\/api\/subscriptions\/ header-del If-Modified-Since
 
+# === SPOTIFY PROTO REMOVE CACHE HEADERS (CRITICAL for sp-proto script) ===
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/bootstrap\/v1\/bootstrap$ header-del if-none-match
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
+
 [URL Rewrite]
 # === YOUTUBE ADS ===
 ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad - reject-200
@@ -146,21 +150,25 @@ FINAL,DIRECT
 (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
 
 # === SPOTIFY ADS REJECT ===
-^https?:\/\/spclient\.wg\.spotify\.com\/ad-logic\/ - reject-200
-^https?:\/\/spclient\.wg\.spotify\.com\/ads\/ - reject-200
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/ad-logic\/ - reject-200
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/ads\/ - reject-200
 
 # === SPOTIFY CANVAS & STORYLINES BLOCK (Tiết kiệm data & pin) ===
-^https?:\/\/spclient\.wg\.spotify\.com\/canvaz-cache\/ - reject-200
-^https?:\/\/spclient\.wg\.spotify\.com\/storylines\/ - reject-200
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/canvaz-cache\/ - reject-200
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/storylines\/ - reject-200
 
 [Map Local]
 # === YOUTUBE - Block initplayback preroll ads ===
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data="" status-code=200
 
 [Script]
+# 🎵 Spotify Premium (app2smile — Proto + JSON handler: Mở khóa Premium, bỏ shuffle, chất lượng cao)
+Spotify_JSON = type=http-request, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(?:artistview\/v1\/artist|album-entity-view\/v2\/album)\/, requires-body=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-json.js
+Spotify_Proto = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$, requires-body=1, binary-body-mode=1, max-size=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-proto.js, script-update-interval=0
+
 # 👑 RevenueCat Multi-App Unlocker (Locket Gold + 70+ App VIP Quốc tế & Việt Nam)
-RevenueCat_Multi = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^\/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js, requires-body=1, max-size=-1, timeout=60
-RevenueCat_Multi_Backup = type=http-response, pattern=^https:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers\/[^\/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js, requires-body=1, max-size=-1, timeout=60
+RevenueCat_Multi = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js, requires-body=1, max-size=-1, timeout=60
+RevenueCat_Multi_Backup = type=http-response, pattern=^https:\/\/api\.rc-backup\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js, requires-body=1, max-size=-1, timeout=60
 
 # 📺 YouTube Premium — Full Response Handler (Chặn QC 100% + Nghe nhạc nền + PiP + Phụ đề Tiếng Việt)
 YouTube_Premium = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch), requires-body=1, max-size=-1, binary-body-mode=1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/youtube.response.js, argument={"lyricLang":"vi","captionLang":"vi","blockUpload":false,"blockImmersive":false,"blockShorts":false,"debug":false}
