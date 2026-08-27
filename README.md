@@ -16,7 +16,7 @@
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&duration=3000&pause=500&color=00FF00&background=00000000&center=false&vCenter=true&repeat=true&width=450&height=100&lines=%5B+%2B+%5D+Initializing+Premium+Unlocker+v2.8.1-stable...;%5B+%2B+%5D+Bypassing+security+checks+and+receipts...;%5B+%2B+%5D+Injecting+premium+payload+via+MITM...;%5B+%2B+%5D+Success!+350%2B+Applications+Unlocked." alt="Terminal Simulation" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&duration=3000&pause=500&color=00FF00&background=00000000&center=false&vCenter=true&repeat=true&width=450&height=100&lines=%5B+%2B+%5D+Initializing+Premium+Unlocker+v2.8.2-stable...;%5B+%2B+%5D+Bypassing+security+checks+and+receipts...;%5B+%2B+%5D+Injecting+premium+payload+via+MITM...;%5B+%2B+%5D+Success!+350%2B+Applications+Unlocked." alt="Terminal Simulation" />
 </a>
 
 <br>
@@ -47,7 +47,7 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <!-- HÀNG 1 — THÔNG TIN DỰ ÁN -->
-<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/releases"><img src="https://img.shields.io/badge/%E2%9A%A1_PHI%C3%8AN_B%E1%BA%A2N-v2.8.1--stable-00F0FF?style=for-the-badge&labelColor=0D1117" alt="version"/></a>
+<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/releases"><img src="https://img.shields.io/badge/%E2%9A%A1_PHI%C3%8AN_B%E1%BA%A2N-v2.8.2--stable-00F0FF?style=for-the-badge&labelColor=0D1117" alt="version"/></a>
 &nbsp;
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/LICENSE"><img src="https://img.shields.io/badge/%F0%9F%93%9C_GI%E1%BA%A4Y_PH%C3%89P-AGPL--3.0-FF007F?style=for-the-badge&labelColor=0D1117" alt="license"/></a>
 &nbsp;

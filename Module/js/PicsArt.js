@@ -42,7 +42,7 @@ let objc = {
 }
 
 // Handle storages endpoint
-if ($request.url.includes("/storages")) {
+if (($request && $request.url || "").includes("/storages")) {
     objc = {
         "status": "success",
         "response": {

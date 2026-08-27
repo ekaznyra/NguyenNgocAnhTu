@@ -13,7 +13,7 @@ if (!objc || typeof objc !== "object" || !objc.user || typeof objc.user !== "obj
     $done({});
 } else {
     objc.user.premium = true;
-    objc.user.premium_until = "9999-01-09T02:00:00Z";
+    objc.user.premium_until = "2099-12-31T23:59:59.000Z";
     objc.user.subscription_type = "premium_plus";
     objc.user.is_trial = false;
     objc.user.features = {

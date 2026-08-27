@@ -59,7 +59,8 @@ const GENERIC_ENTITLEMENT_KEYS = [
 ];
 
 // ========= Unified Constants (CRITICAL: dates MUST match) ========= //
-const EXPIRES    = "9999-07-18T10:10:14Z";
+// Dùng 2099 để đồng nhất với iTunes.js và claim "trọn đời (hết hạn 2099)" trên README.
+const EXPIRES    = "2099-12-31T10:10:14Z";
 const PURCHASED  = "2005-07-18T10:10:14Z";
 const MGMT_URL   = "https://apps.apple.com/account/subscriptions";
 

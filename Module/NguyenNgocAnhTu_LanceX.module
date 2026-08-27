@@ -1,7 +1,7 @@
 #!name=👑 Nguyễn Ngọc Anh Tú 🌸 ⁕ Ultimate Premium (LanceX) ⁕
 #!desc=🚀 Mở khóa 350+ App VIP (Locket Gold, Spotify, YouTube, Captions AI, iScreen, MD Vinyl, Moises, Structured, Remini, PhotoRoom, ELSA, OldRoll, iTunes 250+). 🛡️ Chặn Ads & Tracking. 🎮 Gaming DIRECT. 📺 Streaming PROXY. ⚡ Tối ưu DNS, Banking, GeoIP VN & Privacy.
-#!version=2.8.1-stable
-#!date=2026-08-13
+#!version=2.8.2-stable
+#!date=2026-08-27
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/VIP.png
@@ -116,6 +116,14 @@ GEOIP,VN,DIRECT
 # === SPOTIFY REMOVE CACHE HEADERS ===
 ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(?:user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap)$ header-del if-none-match
 
+# === SPOTIFY PREMIUM CACHE-BUST (giữ patch /v1/me & identity/v3/me không bị 304 cache đè) ===
+^https:\/\/api\.spotify\.com\/v1\/me$ header-del If-None-Match
+^https:\/\/api\.spotify\.com\/v1\/me$ header-del If-Modified-Since
+^https:\/\/api\.spotify\.com\/v1\/me$ header-del ETag
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/identity\/v3\/me$ header-del If-None-Match
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/identity\/v3\/me$ header-del If-Modified-Since
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/identity\/v3\/me$ header-del ETag
+
 # === ELSA SPEAK PRO (Universal Local Receipt) ===
 elsaspeak-response = type=http-response, pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/iTunes.js, requires-body=1, max-size=-1, timeout=60
 
@@ -145,6 +153,7 @@ youtube.response = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.
 # ===== Spotify iOS15 (app2smile) =====
 spotify-json = type=http-request, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/, requires-body=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-json.js
 spotify-proto = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$, requires-body=1, binary-body-mode=1, max-size=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-proto.js, script-update-interval=0
+Spotify_Premium = type=http-response, pattern=^https:\/\/(api\.spotify\.com\/v1\/me|.*spclient\.spotify\.com\/identity\/v3\/me), requires-body=1, max-size=-1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js
 
 # === SOUNDCLOUD GO+ - Marol62926/MarScrpt (yfamilys, 2026-05-19) ===
 soundcloud-response = type=http-response, pattern=^https?:\/\/api-mobile\.soundcloud\.com\/configuration\/ios, script-path=https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/soundcloud.js, requires-body=1, timeout=15
@@ -175,7 +184,7 @@ djay-response = type=http-response, pattern=^https:\/\/app\.algoriddim\.com\/api
 calm-response = type=http-response, pattern=^https?:\/\/api\.calm\.com\/(me|device|ios\/receipt), script-path=https://raw.githubusercontent.com/Alex0510/Eric/Alex0510/surge/surge/Script/caml.js, requires-body=1, max-size=0, timeout=10
 
 # === BUSUU PREMIUM - ekaznyra (2026-05-09) ===
-busuu-response = type=http-response, pattern=^https:\/\/api\.busuu\.com\/users\/me, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/bussu.js, requires-body=1, timeout=10, max-size=131072
+busuu-response = type=http-response, pattern=^https:\/\/api\.busuu\.com\/users\/me, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/busuu.js, requires-body=1, timeout=10, max-size=131072
 
 # === HEADSPACE PREMIUM - ekaznyra (2026-05-09) ===
 headspace-response = type=http-response, pattern=^https:\/\/api\.prod\.headspace\.com\/.*\/user-subscriptions, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/headspace.js, requires-body=1, timeout=10, max-size=131072
@@ -217,7 +226,7 @@ snow-response = type=http-response, pattern=^https?:\/\/user-snow-api\.snow\.me\
 b612-response = type=http-response, pattern=^https?:\/\/user-kaji-api\.b612kaji\.com\/v\d\/purchase\/subscription\/subscriber\/status, script-path=https://raw.githubusercontent.com/deezertidal/private/38b9581548b5070f2dc9c6bfa243cdacf0672d31/js-backup/Crack/612.js, requires-body=1, max-size=-1, timeout=60
 
 # === MEITU XIUXIU PREMIUM - ekaznyra (2026-05-09) ===
-meitu-response = type=http-response, pattern=^https?:\/\/(h5|api)\.xiuxiu\.meitu\.com\/v\d\/(h\d\/vip|vip|user)\/, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/MeiTuXiuXiu.js, requires-body=1, timeout=60
+meitu-response = type=http-response, pattern=^https?:\/\/(h5|api)\.xiuxiu\.meitu\.com\/v\d\/(h\d\/vip|vip|user)\/, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/meitu.js, requires-body=1, timeout=60
 
 # === WPS OFFICE PREMIUM - I-am-R-E (yfamilys, 2026-05-19) ===
 wps-response = type=http-response, pattern=^https?:\/\/.*?account\.wps\.(com|cn)(:\d+)?\/api\/users\/\w+\/overview$, script-path=https://raw.githubusercontent.com/I-am-R-E/Functional-Store-Hub/38f4fa9b9a963457d7ea5a93fdcd1cd44945a49e/WPSOffice/Script/WPS.js, requires-body=1, max-size=0, timeout=10
@@ -341,4 +350,4 @@ sorted-response = type=http-response, pattern=^https:\/\/api\.sortedapp\.com\/re
 
 [MITM]
 enable = true
-hostname = %APPEND% *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, spclient.wg.spotify.com, *-spclient.spotify.com, api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api.picsart.com, api.picsart.cn, api.meiease.com, api.meiease.cn, api-mobile.soundcloud.com, mb3admin.com, api-account.kinemasters.com, photos.adobe.io, lcs-mobile-cops.adobe.io, app.algoriddim.com, api.calm.com, api.busuu.com, api.prod.headspace.com, vsco.co, api.funimate.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, premium-*.truecaller.com, *.intsig.net, api.mr.pixocial.com, newbeee-api.beautyplus.com, user-snow-api.snow.me, user-kaji-api.b612kaji.com, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, account.wps.cn, *.account.wps.com, www.xmind.cn, www.xmind.net, www.xmind.app, ars.alar.my, subscription.grammarly.com, notability.com, lapi.photomath.net, pro.smallpdf.com, billing.peakcloud.org, api.polaxiong.com, premium-api.myfitnesspal.com, apic.musixmatch.com, server.yoyiapp.com, mid.zineapi.com, apimboom2.globaldelight.net, api.flexibits.com, api.craft.do, dayone.app, restore-access.indream.app, service.ilovepdf.com, api.mondlylanguages.com, api.memrise.com, api.alohaprofile.com, pre.dailyyoga.com, app-subscription-proxy.accuweather.com, api-production.endel.io, flomoapp.com, backend.getdrafts.com, api.gotokeep.com, payments.invideo.io, ssl-api.itranslateapp.com, payment-api.lingvist.com, *.oracle.bendingspoonsapps.com, app.bilibili.com, accounts.agenda.com, license.pdfexpert.com, api.sortedapp.com, sub.store
+hostname = %APPEND% *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, spclient.wg.spotify.com, *-spclient.spotify.com, api.spotify.com, api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api.picsart.com, api.picsart.cn, api.meiease.com, api.meiease.cn, api-mobile.soundcloud.com, mb3admin.com, api-account.kinemasters.com, photos.adobe.io, lcs-mobile-cops.adobe.io, app.algoriddim.com, api.calm.com, api.busuu.com, api.prod.headspace.com, vsco.co, api.funimate.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, premium-*.truecaller.com, *.intsig.net, api.mr.pixocial.com, newbeee-api.beautyplus.com, user-snow-api.snow.me, user-kaji-api.b612kaji.com, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, account.wps.cn, *.account.wps.com, www.xmind.cn, www.xmind.net, www.xmind.app, ars.alar.my, subscription.grammarly.com, notability.com, lapi.photomath.net, pro.smallpdf.com, billing.peakcloud.org, api.polaxiong.com, premium-api.myfitnesspal.com, apic.musixmatch.com, server.yoyiapp.com, mid.zineapi.com, apimboom2.globaldelight.net, api.flexibits.com, api.craft.do, dayone.app, restore-access.indream.app, service.ilovepdf.com, api.mondlylanguages.com, api.memrise.com, api.alohaprofile.com, pre.dailyyoga.com, app-subscription-proxy.accuweather.com, api-production.endel.io, flomoapp.com, backend.getdrafts.com, api.gotokeep.com, payments.invideo.io, ssl-api.itranslateapp.com, payment-api.lingvist.com, *.oracle.bendingspoonsapps.com, app.bilibili.com, accounts.agenda.com, license.pdfexpert.com, api.sortedapp.com, sub.store

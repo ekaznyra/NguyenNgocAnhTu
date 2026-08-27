@@ -1,5 +1,5 @@
 name: "👑 Nguyễn Ngọc Anh Tú 🌸 ⁕ Ultimate Premium (Egern) ⁕"
-description: "🚀 Mở khóa 350+ App VIP (Locket Gold, Spotify, YouTube, Captions AI, iScreen, MD Vinyl, Moises, Structured, Remini, PhotoRoom, ELSA, OldRoll, iTunes 250+). 🛡️ Chặn Ads & Tracking. 🎮 Gaming DIRECT. 📺 Streaming PROXY. ⚡ Tối ưu DNS, Banking, GeoIP VN & Privacy. | v2.8.1-stable (2026-08-13)"
+description: "🚀 Mở khóa 350+ App VIP (Locket Gold, Spotify, YouTube, Captions AI, iScreen, MD Vinyl, Moises, Structured, Remini, PhotoRoom, ELSA, OldRoll, iTunes 250+). 🛡️ Chặn Ads & Tracking. 🎮 Gaming DIRECT. 📺 Streaming PROXY. ⚡ Tối ưu DNS, Banking, GeoIP VN & Privacy. | v2.8.2-stable (2026-08-27)"
 author: "Nguyễn Ngọc Anh Tú (z3rokaze)"
 homepage: "https://github.com/ekaznyra/NguyenNgocAnhTu"
 icon: "lock.open.fill"
@@ -2184,6 +2184,25 @@ header_rewrites:
   - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/user-customization-service/v1/customize$"
     action: del
     field: "if-none-match"
+  # Spotify Premium Cache-Bust (giữ patch /v1/me & identity/v3/me không bị 304 cache đè)
+  - match: "^https://api\\.spotify\\.com/v1/me$"
+    action: del
+    field: "if-none-match"
+  - match: "^https://api\\.spotify\\.com/v1/me$"
+    action: del
+    field: "if-modified-since"
+  - match: "^https://api\\.spotify\\.com/v1/me$"
+    action: del
+    field: "etag"
+  - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/identity/v3/me$"
+    action: del
+    field: "if-none-match"
+  - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/identity/v3/me$"
+    action: del
+    field: "if-modified-since"
+  - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/identity/v3/me$"
+    action: del
+    field: "etag"
 
 scriptings:
   # 📦 Sub-Store
@@ -2242,6 +2261,12 @@ scriptings:
       body_required: true
       binary_body: true
       timeout: 10
+  - http_response:
+      name: "Spotify Premium JSON"
+      match: "^https://(api\\.spotify\\.com/v1/me|.*spclient\\.spotify\\.com(:443)?/identity/v3/me)"
+      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js"
+      body_required: true
+      timeout: 30
 
   # 🔐 RevenueCat Multi-App (Locket Gold)
   - http_response:
@@ -2339,7 +2364,7 @@ scriptings:
   - http_response:
       name: "Busuu Premium"
       match: "^https://api\\.busuu\\.com/users/me"
-      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/bussu.js"
+      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/busuu.js"
       body_required: true
       timeout: 10
 
@@ -2419,7 +2444,7 @@ scriptings:
   - http_response:
       name: "Meitu XiuXiu"
       match: "^https?://(h5|api)\\.xiuxiu\\.meitu\\.com/v\\d/(h\\d/vip|vip|user)/"
-      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/MeiTuXiuXiu.js"
+      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/meitu.js"
       body_required: true
       timeout: 60
 
@@ -2735,6 +2760,7 @@ mitm:
     - "s.youtube.com"
     - "spclient.wg.spotify.com"
     - "*-spclient.spotify.com"
+    - "api.spotify.com"
     - "api.revenuecat.com"
     - "api.rc-backup.com"
     - "buy.itunes.apple.com"

@@ -1,5 +1,5 @@
 name: ⚡ Anh Tú Premium - Stash
-desc: "🚀 Mở khóa 350+ App VIP (Locket Gold, Spotify, YouTube, Captions AI, iScreen, MD Vinyl, Moises, Structured, Remini, PhotoRoom, ELSA, OldRoll, iTunes 250+). 🛡️ Chặn Ads & Tracking. 🎮 Gaming DIRECT. 📺 Streaming PROXY. ⚡ Tối ưu DNS, Banking, GeoIP VN & Privacy. | v2.8.1-stable (2026-08-13)"
+desc: "🚀 Mở khóa 350+ App VIP (Locket Gold, Spotify, YouTube, Captions AI, iScreen, MD Vinyl, Moises, Structured, Remini, PhotoRoom, ELSA, OldRoll, iTunes 250+). 🛡️ Chặn Ads & Tracking. 🎮 Gaming DIRECT. 📺 Streaming PROXY. ⚡ Tối ưu DNS, Banking, GeoIP VN & Privacy. | v2.8.2-stable (2026-08-27)"
 author: Nguyễn Ngọc Anh Tú
 homepage: https://github.com/ekaznyra/NguyenNgocAnhTu
 icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
@@ -937,6 +937,7 @@ mitm:
   - "youtubei.googleapis.com"
   - "spclient.wg.spotify.com"
   - "*-spclient.spotify.com"
+  - "api.spotify.com"
   - "api.revenuecat.com"
   - "api.rc-backup.com"
   - "buy.itunes.apple.com"
@@ -1026,6 +1027,9 @@ script-providers:
   sp-proto:
     url: https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-proto.js
     interval: 86400
+  sp-premium-json:
+    url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js
+    interval: 86400
   rc-res:
     url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js
     interval: 86400
@@ -1063,7 +1067,7 @@ script-providers:
     url: https://raw.githubusercontent.com/Alex0510/Eric/Alex0510/surge/surge/Script/caml.js
     interval: 86400
   busuu-res:
-    url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/bussu.js
+    url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/busuu.js
     interval: 86400
   hs-res:
     url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/headspace.js
@@ -1093,7 +1097,7 @@ script-providers:
     url: https://raw.githubusercontent.com/deezertidal/private/38b9581548b5070f2dc9c6bfa243cdacf0672d31/js-backup/Crack/612.js
     interval: 86400
   meitu-res:
-    url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/MeiTuXiuXiu.js
+    url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/meitu.js
     interval: 86400
   fun-res:
     url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/funimate.js
@@ -1244,6 +1248,12 @@ scriptings:
       require-body: true
       binary-mode: true
       timeout: 10
+  - http-response:
+      name: sp-premium-json
+      match: ^https:\/\/(api\.spotify\.com\/v1\/me|.*spclient\.spotify\.com(:443)?\/identity\/v3\/me)
+      script-provider: sp-premium-json
+      require-body: true
+      timeout: 30
   - http-response:
       name: rc-res
       match: ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$)

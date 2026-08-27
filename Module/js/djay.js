@@ -21,7 +21,7 @@ var djayPatch = {
                 "original_transaction_id": "2000001108724193",
                 "purchase_date": "2024-01-09 02:00:00 Etc/GMT",
                 "original_purchase_date": "2024-01-09 02:00:00 Etc/GMT",
-                "expires_date": "9999-01-09 02:00:00 Etc/GMT",
+                "expires_date": "2099-12-31 23:59:59 Etc/GMT",
                 "is_trial_period": "false"
             }
         ]
@@ -34,7 +34,7 @@ var djayPatch = {
             "original_transaction_id": "2000001108724193",
             "purchase_date": "2024-01-09 02:00:00 Etc/GMT",
             "original_purchase_date": "2024-01-09 02:00:00 Etc/GMT",
-            "expires_date": "9999-01-09 02:00:00 Etc/GMT",
+            "expires_date": "2099-12-31 23:59:59 Etc/GMT",
             "is_trial_period": "false"
         }
     ]

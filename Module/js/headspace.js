@@ -18,7 +18,7 @@ if (!objc || typeof objc !== "object") {
             "status": "active",
             "store": "apple",
             "is_trial": false,
-            "expires_at": "9999-01-09T02:00:00Z",
+            "expires_at": "2099-12-31T23:59:59.000Z",
             "started_at": "2024-01-09T02:00:00Z",
             "product_id": "com.headspace.annual"
         }

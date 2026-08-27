@@ -1,8 +1,8 @@
 # ⚡ Anh Tú Premium - Quantumult X
-# v2.8.1-stable (2026-08-13)
+# v2.8.2-stable (2026-08-27)
 # https://github.com/ekaznyra/NguyenNgocAnhTu
 
-hostname=*.googlevideo.com,www.youtube.com,s.youtube.com,youtubei.googleapis.com,spclient.wg.spotify.com,*-spclient.spotify.com,api.revenuecat.com,api.rc-backup.com,buy.itunes.apple.com,api.picsart.com,api.picsart.cn,api.meiease.com,api.meiease.cn,api-mobile.soundcloud.com,api-account.kinemasters.com,photos.adobe.io,lcs-mobile-cops.adobe.io,app.algoriddim.com,api.calm.com,api.busuu.com,api.prod.headspace.com,vsco.co,mb3admin.com,api.funimate.com,us-central1-alight-creative.cloudfunctions.net,api-sub.meitu.com,premium-*.truecaller.com,*.intsig.net,api.mr.pixocial.com,newbeee-api.beautyplus.com,user-snow-api.snow.me,user-kaji-api.b612kaji.com,h5.xiuxiu.meitu.com,api.xiuxiu.meitu.com,account.wps.cn,*.account.wps.com,www.xmind.cn,www.xmind.net,www.xmind.app,ars.alar.my,subscription.grammarly.com,notability.com,lapi.photomath.net,pro.smallpdf.com,billing.peakcloud.org,api.polaxiong.com,premium-api.myfitnesspal.com,apic.musixmatch.com,server.yoyiapp.com,mid.zineapi.com,apimboom2.globaldelight.net,api.flexibits.com,api.craft.do,dayone.app,restore-access.indream.app,service.ilovepdf.com,api.mondlylanguages.com,api.memrise.com,api.alohaprofile.com,pre.dailyyoga.com,app-subscription-proxy.accuweather.com,api-production.endel.io,flomoapp.com,backend.getdrafts.com,api.gotokeep.com,payments.invideo.io,ssl-api.itranslateapp.com,payment-api.lingvist.com,*.oracle.bendingspoonsapps.com,app.bilibili.com,accounts.agenda.com,license.pdfexpert.com,api.sortedapp.com,com.zijayrate.analogcam,api.elsaspeak.com,api.photoroom.com,api.remini.ai,api.bazaart.me,sub.store
+hostname=*.googlevideo.com,www.youtube.com,s.youtube.com,youtubei.googleapis.com,spclient.wg.spotify.com,*-spclient.spotify.com,api.spotify.com,api.revenuecat.com,api.rc-backup.com,buy.itunes.apple.com,api.picsart.com,api.picsart.cn,api.meiease.com,api.meiease.cn,api-mobile.soundcloud.com,api-account.kinemasters.com,photos.adobe.io,lcs-mobile-cops.adobe.io,app.algoriddim.com,api.calm.com,api.busuu.com,api.prod.headspace.com,vsco.co,mb3admin.com,api.funimate.com,us-central1-alight-creative.cloudfunctions.net,api-sub.meitu.com,premium-*.truecaller.com,*.intsig.net,api.mr.pixocial.com,newbeee-api.beautyplus.com,user-snow-api.snow.me,user-kaji-api.b612kaji.com,h5.xiuxiu.meitu.com,api.xiuxiu.meitu.com,account.wps.cn,*.account.wps.com,www.xmind.cn,www.xmind.net,www.xmind.app,ars.alar.my,subscription.grammarly.com,notability.com,lapi.photomath.net,pro.smallpdf.com,billing.peakcloud.org,api.polaxiong.com,premium-api.myfitnesspal.com,apic.musixmatch.com,server.yoyiapp.com,mid.zineapi.com,apimboom2.globaldelight.net,api.flexibits.com,api.craft.do,dayone.app,restore-access.indream.app,service.ilovepdf.com,api.mondlylanguages.com,api.memrise.com,api.alohaprofile.com,pre.dailyyoga.com,app-subscription-proxy.accuweather.com,api-production.endel.io,flomoapp.com,backend.getdrafts.com,api.gotokeep.com,payments.invideo.io,ssl-api.itranslateapp.com,payment-api.lingvist.com,*.oracle.bendingspoonsapps.com,app.bilibili.com,accounts.agenda.com,license.pdfexpert.com,api.sortedapp.com,com.zijayrate.analogcam,api.elsaspeak.com,api.photoroom.com,api.remini.ai,api.bazaart.me,sub.store
 
 # === BLOCK QUIC FOR YOUTUBE MITM ===
 
@@ -1010,6 +1010,13 @@ geoip, vn, direct
 # 🎵 Spotify Premium (app2smile)
 ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/ url script-request-header https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-json.js
 ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$ url script-response-body https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-proto.js
+^https?:\/\/(api\.spotify\.com\/v1\/me|.*spclient\.spotify\.com\/identity\/v3\/me) url script-response-body https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js
+
+# === SPOTIFY PREMIUM CACHE-BUST (xoá request validator để server trả 200, không 304) ===
+^https?:\/\/api\.spotify\.com\/v1\/me url request-header (\r\n)If-None-Match:.+(\r\n) request-header $1
+^https?:\/\/api\.spotify\.com\/v1\/me url request-header (\r\n)If-Modified-Since:.+(\r\n) request-header $1
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/identity\/v3\/me url request-header (\r\n)If-None-Match:.+(\r\n) request-header $1
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/identity\/v3\/me url request-header (\r\n)If-Modified-Since:.+(\r\n) request-header $1
 
 # 🔐 RevenueCat Multi-App (Locket Gold)
 ^https:\/\/api\.revenuecat\.com\/.*\/(receipts$|subscribers\/[^/]+$) url script-response-body https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js
@@ -1042,7 +1049,7 @@ geoip, vn, direct
 ^https?:\/\/api\.calm\.com\/(me|device|ios\/receipt) url script-response-body https://raw.githubusercontent.com/Alex0510/Eric/Alex0510/surge/surge/Script/caml.js
 
 # 📚 Busuu
-^https:\/\/api\.busuu\.com\/users\/me url script-response-body https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/bussu.js
+^https:\/\/api\.busuu\.com\/users\/me url script-response-body https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/busuu.js
 
 # 🧘 Headspace
 ^https:\/\/api\.prod\.headspace\.com\/.*\/user-subscriptions url script-response-body https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/headspace.js
@@ -1072,7 +1079,7 @@ geoip, vn, direct
 ^https?:\/\/user-kaji-api\.b612kaji\.com\/v\d\/purchase\/subscription\/subscriber\/status url script-response-body https://raw.githubusercontent.com/deezertidal/private/38b9581548b5070f2dc9c6bfa243cdacf0672d31/js-backup/Crack/612.js
 
 # 🎨 Meitu XiuXiu
-^https?:\/\/(h5|api)\.xiuxiu\.meitu\.com\/v\d\/(h\d\/vip|vip|user)\/ url script-response-body https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/MeiTuXiuXiu.js
+^https?:\/\/(h5|api)\.xiuxiu\.meitu\.com\/v\d\/(h\d\/vip|vip|user)\/ url script-response-body https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/meitu.js
 
 # 🎬 Funimate Pro
 ^https:\/\/api\.funimate\.com\/users\/me url script-response-body https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/funimate.js

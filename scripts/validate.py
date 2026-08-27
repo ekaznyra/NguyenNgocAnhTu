@@ -11,13 +11,23 @@ Các kiểm tra:
   3. Rules/*.list không có dòng trùng lặp.
   4. Chính sách ghim SHA: không được nạp script .js bên thứ ba từ nhánh
      master/main (chỉ script tự host của ekaznyra mới được để master).
-  5. Các file được README tham chiếu phải tồn tại.
-"""
+   5. Các file được README tham chiếu phải tồn tại.
+   6. Mọi script Module/js/<tên>.js được tham chiếu trong module phải tồn tại
+      trên đĩa VỚI ĐÚNG phân biệt hoa/thường (bắt lỗi typo như bussu/MeiTu
+      và sai case như AlightMotion.js).
+ """
 from __future__ import annotations
 import json
 import re
 import sys
 from pathlib import Path
+
+# Đảm bảo stdout là UTF-8 (tránh UnicodeEncodeError trên Windows/cp1252).
+try:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+except Exception:  # noqa: BLE001
+    pass
 
 ROOT = Path(__file__).resolve().parent.parent
 MODULE_DIR = ROOT / "Module"
@@ -141,12 +151,31 @@ def check_referenced_files() -> None:
     print(f"[docs] OK — đã kiểm tra {len(required)} file được tham chiếu")
 
 
+def check_js_references() -> None:
+    js_dir = MODULE_DIR / "js"
+    on_disk = {p.name for p in js_dir.glob("*.js")} if js_dir.is_dir() else set()
+    ref_re = re.compile(r"Module/js/([A-Za-z0-9_]+\.js)")
+    missing: list[str] = []
+    for f in module_files():
+        for name in ref_re.findall(f.read_text(encoding="utf-8")):
+            if name not in on_disk:
+                missing.append(f"{f.name}: Module/js/{name}")
+    if missing:
+        errors.append(
+            "[js] Các script được tham chiếu nhưng KHÔNG tồn tại trên đĩa "
+            "(sai tên/sai hoa-thường): " + "; ".join(sorted(set(missing)))
+        )
+    else:
+        print(f"[js] OK — mọi tham chiếu Module/js/*.js đều tồn tại ({len(on_disk)} file)")
+
+
 def main() -> int:
     check_versions()
     check_json_arguments()
     check_rule_duplicates()
     check_sha_pinning()
     check_referenced_files()
+    check_js_references()
     print("\n" + "=" * 60)
     if warnings:
         print(f"⚠️  {len(warnings)} cảnh báo:")

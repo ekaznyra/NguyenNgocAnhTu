@@ -14,7 +14,7 @@ if (!objc || typeof objc !== "object") {
     if (objc.user) {
         objc.user.is_pro = true;
         objc.user.pro_status = "active";
-        objc.user.pro_expires_at = "9999-01-09T02:00:00Z";
+        objc.user.pro_expires_at = "2099-12-31T23:59:59.000Z";
         objc.user.subscription_type = "yearly";
     }
     $done({ body: JSON.stringify(objc) });

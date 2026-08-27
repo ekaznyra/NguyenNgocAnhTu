@@ -1,7 +1,7 @@
 #!name=👑 Nguyễn Ngọc Anh Tú 🌸 ⁕ Ultimate Premium & Best AdBlock ⁕
 #!desc=🚀 Mở khóa 350+ App VIP (Locket Gold, Spotify, YouTube Premium, Captions AI, iScreen, MD Vinyl, Moises, Structured, iTunes 250+, SoundCloud, WPS, Darkroom, OldRoll, Fimo, Calm, Remini, PhotoRoom, ELSA...). 🛡️ Chặn Quảng Cáo 100% (AdGuard DoH, Rule-Sets Ads/Tracking/Malware/HostsVN/QC App VN). 🎮 Gaming DIRECT (PUBG, Liên Quân, Genshin...). 📺 Streaming PROXY (Netflix, Disney+, HBO...). ⚡ Tối ưu DNS, Banking VN, GeoIP VN, Chặn iOS OTA & App Store Ads.
-#!version=2.9.0-stable
-#!date=2026-08-21
+#!version=2.8.2-stable
+#!date=2026-08-27
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/VIP.png
@@ -21,7 +21,7 @@ udp-policy-not-supported-behaviour = REJECT
 always-real-ip = *.srv.nintendo.net, *.stun.playstation.net, xbox.*.microsoft.com, *.xboxlive.com, *.turn.apple.com, *.stun.services.mozilla.com
 skip-proxy = %APPEND% 127.0.0.1, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, 100.64.0.0/10, 17.0.0.0/8, localhost, *.local, *.lan, captive.apple.com, detectportal.firefox.com, connectivitycheck.gstatic.com, clients3.google.com, www.msftconnecttest.com, www.msftncsi.com
 tun-excluded-routes = %APPEND% 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.0.0.0/24, 192.0.2.0/24, 192.88.99.0/24, 192.168.0.0/16, 198.51.100.0/24, 203.0.113.0/24, 224.0.0.0/4, 255.255.255.255/32, 239.255.255.250/32
-force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443, buy.itunes.apple.com:443, api.intsig.net:443, api-cs.intsig.net:443, vsco.co:443, h5.xiuxiu.meitu.com:443, api.xiuxiu.meitu.com:443, api-sub.meitu.com:443, user-snow-api.snow.me:443, api.mr.pixocial.com:443, newbeee-api.beautyplus.com:443, premium-api.truecaller.com:443, lapi.photomath.net:443, us-central1-alight-creative.cloudfunctions.net:443, api-account.kinemasters.com:443, www.xmind.app:443, www.xmind.net:443, www.xmind.cn:443, api.funimate.com:443, api.busuu.com:443, app.algoriddim.com:443, api.prod.headspace.com:443, api.picsart.com:443, lcs-mobile-cops.adobe.io:443, mb3admin.com:443, api-mobile.soundcloud.com:443, account.wps.com:443, account.wps.cn:443, v1.darkroom.co:443, server.yoyiapp.com:443, api.calm.com:443, com.zijayrate.analogcam:443, api.elsaspeak.com:443, api.photoroom.com:443, api.remini.ai:443, api.bazaart.me:443, youtubei.googleapis.com:443, www.youtube.com:443, s.youtube.com:443, spclient.wg.spotify.com:443, *-spclient.spotify.com:443, gads.current.spotify.com:443
+force-http-engine-hosts = %APPEND% api.revenuecat.com:443, api.rc-backup.com:443, buy.itunes.apple.com:443, api.intsig.net:443, api-cs.intsig.net:443, vsco.co:443, h5.xiuxiu.meitu.com:443, api.xiuxiu.meitu.com:443, api-sub.meitu.com:443, user-snow-api.snow.me:443, api.mr.pixocial.com:443, newbeee-api.beautyplus.com:443, premium-api.truecaller.com:443, lapi.photomath.net:443, us-central1-alight-creative.cloudfunctions.net:443, api-account.kinemasters.com:443, www.xmind.app:443, www.xmind.net:443, www.xmind.cn:443, api.funimate.com:443, api.busuu.com:443, app.algoriddim.com:443, api.prod.headspace.com:443, api.picsart.com:443, lcs-mobile-cops.adobe.io:443, mb3admin.com:443, api-mobile.soundcloud.com:443, account.wps.com:443, account.wps.cn:443, v1.darkroom.co:443, server.yoyiapp.com:443, api.calm.com:443, com.zijayrate.analogcam:443, api.elsaspeak.com:443, api.photoroom.com:443, api.remini.ai:443, api.bazaart.me:443, youtubei.googleapis.com:443, www.youtube.com:443, s.youtube.com:443, spclient.wg.spotify.com:443, *-spclient.spotify.com:443, gads.current.spotify.com:443, api.spotify.com:443
 
 [Rule]
 # === SPOTIFY DIRECT DOMAINS (PERFECT PLAYBACK - NO AUDIO DROP) ===
@@ -141,6 +141,14 @@ FINAL,DIRECT
 ^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/bootstrap\/v1\/bootstrap$ header-del if-none-match
 ^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/user-customization-service\/v1\/customize$ header-del if-none-match
 
+# === SPOTIFY PREMIUM CACHE-BUST (giữ patch /v1/me & identity/v3/me không bị 304 cache đè) ===
+^https?:\/\/api\.spotify\.com\/v1\/me$ header-del If-None-Match
+^https?:\/\/api\.spotify\.com\/v1\/me$ header-del If-Modified-Since
+^https?:\/\/api\.spotify\.com\/v1\/me$ header-del ETag
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/identity\/v3\/me$ header-del If-None-Match
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/identity\/v3\/me$ header-del If-Modified-Since
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/identity\/v3\/me$ header-del ETag
+
 [URL Rewrite]
 # === YOUTUBE ADS ===
 ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad - reject-200
@@ -165,6 +173,7 @@ FINAL,DIRECT
 # 🎵 Spotify Premium (app2smile — Proto + JSON handler: Mở khóa Premium, bỏ shuffle, chất lượng cao)
 Spotify_JSON = type=http-request, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(?:artistview\/v1\/artist|album-entity-view\/v2\/album)\/, requires-body=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-json.js
 Spotify_Proto = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$, requires-body=1, binary-body-mode=1, max-size=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-proto.js, script-update-interval=0
+Spotify_Premium = type=http-response, pattern=^https:\/\/(api\.spotify\.com\/v1\/me|.*spclient\.spotify\.com\/identity\/v3\/me), requires-body=1, max-size=-1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js
 
 # 👑 RevenueCat Multi-App Unlocker (Locket Gold + 70+ App VIP Quốc tế & Việt Nam)
 RevenueCat_Multi = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js, requires-body=1, max-size=-1, timeout=60
@@ -174,37 +183,37 @@ RevenueCat_Multi_Backup = type=http-response, pattern=^https:\/\/api\.rc-backup\
 YouTube_Premium = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch), requires-body=1, max-size=-1, binary-body-mode=1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/youtube.response.js, argument={"lyricLang":"vi","captionLang":"vi","blockUpload":false,"blockImmersive":false,"blockShorts":false,"debug":false}
 
 # 🛒 iTunes Premium Unlocker (Mở khóa 250+ App iOS mua gói In-App Purchase: Duolingo, Dazz Cam, Craft, Termius...)
-iTunes_Premium = type=http-response, pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/itunes.js, requires-body=1, max-size=-1, timeout=60
+iTunes_Premium = type=http-response, pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/iTunes.js, requires-body=1, max-size=-1, timeout=60
 
 # 📄 CamScanner Premium (Quét tài liệu HD, OCR nhận diện chữ Tiếng Việt, xuất Word/Excel/PDF VIP)
-CamScanner_Premium = type=http-response, pattern=^https:\/\/(api|api-cs.*)\.intsig\.net\/(purchase\/cs\/query_prop|queryProperty|getPrivilegeItem), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/camscanner.js, requires-body=1, max-size=0, timeout=15
+CamScanner_Premium = type=http-response, pattern=^https:\/\/(api|api-cs.*)\.intsig\.net\/(purchase\/cs\/query_prop|queryProperty|getPrivilegeItem), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/camScanner.js, requires-body=1, max-size=0, timeout=15
 
 # 📸 VSCO Membership (Mở khóa 200+ bộ lọc màu phim Preset VIP & công cụ chỉnh màu video)
-VSCO_Membership = type=http-response, pattern=^https:\/\/vsco\.co\/api\/subscriptions\/2\.1\/user-subscriptions, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/vsco.js, requires-body=1, timeout=10, max-size=131072
+VSCO_Membership = type=http-response, pattern=^https:\/\/vsco\.co\/api\/subscriptions\/2\.1\/user-subscriptions, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/VSCO.js, requires-body=1, timeout=10, max-size=131072
 
 # 👑 Meitu XiuXiu VIP (Trang điểm AI, mịn da 4K, chỉnh vóc dáng chuẩn VIP)
 Meitu_VIP = type=http-response, pattern=^https?:\/\/(h5|api)\.xiuxiu\.meitu\.com\/v\d\/(h\d\/vip|vip|user)\/, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/meitu.js, requires-body=1, max-size=0, timeout=60
 
 # 🎬 Wink Forever VIP (Làm nét video 4K 60fps, xóa watermark, làm đẹp video)
-Wink_VIP = type=http-response, pattern=^https?:\/\/api-sub\.meitu\.com\/.*vip, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/wink.js, requires-body=1, max-size=0, timeout=10
+Wink_VIP = type=http-response, pattern=^https?:\/\/api-sub\.meitu\.com\/.*vip, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Wink.js, requires-body=1, max-size=0, timeout=10
 
 # ❄️ SNOW / EPIK VIP (Filter & Sticker trang điểm VIP)
-Snow_VIP = type=http-response, pattern=^https?:\/\/user-snow-api\.snow\.me\/v\d\/purchase\/subscription\/subscriber\/status, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/snow.js, requires-body=1, max-size=-1, timeout=60
+Snow_VIP = type=http-response, pattern=^https?:\/\/user-snow-api\.snow\.me\/v\d\/purchase\/subscription\/subscriber\/status, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Snow.js, requires-body=1, max-size=-1, timeout=60
 
 # 💄 BeautyPlus Premium (Mỹ Đồ làm đẹp Pro)
-BeautyPlus_Premium = type=http-response, pattern=^https:\/\/(api\.mr\.pixocial\.com\/v1\/manual_unlock|newbeee-api\.beautyplus\.com\/api\/v1\/asset\/balance), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/beautyplus.js, requires-body=1, timeout=60, max-size=0
+BeautyPlus_Premium = type=http-response, pattern=^https:\/\/(api\.mr\.pixocial\.com\/v1\/manual_unlock|newbeee-api\.beautyplus\.com\/api\/v1\/asset\/balance), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/BeautyPlus.js, requires-body=1, timeout=60, max-size=0
 
 # 📞 Truecaller Gold (Chặn cuộc gọi rác & lừa đảo, nhận diện tên người gọi)
-Truecaller_Gold = type=http-response, pattern=^https:\/\/premium-(.+)\.truecaller\.com\/v\d\/(subscriptions|products\/apple), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/truecaller.js, requires-body=1, max-size=0, timeout=10
+Truecaller_Gold = type=http-response, pattern=^https:\/\/premium-(.+)\.truecaller\.com\/v\d\/(subscriptions|products\/apple), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/TrueCaller.js, requires-body=1, max-size=0, timeout=10
 
 # 🧮 Photomath Plus (Quét đề toán, giải chi tiết từng bước 2099)
 Photomath_Plus = type=http-response, pattern=^https?:\/\/lapi\.photomath\.net\/v4\/me, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/photomath.js, requires-body=1, max-size=0, timeout=10
 
 # 🎬 Alight Motion Pro (Edit video Motion Graphics, hiệu ứng Pro 4K)
-AlightMotion_Pro = type=http-response, pattern=^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/alightmotion.js, requires-body=1, max-size=0, timeout=10
+AlightMotion_Pro = type=http-response, pattern=^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/AlightMotion.js, requires-body=1, max-size=0, timeout=10
 
 # 🎬 KineMaster Premium (Biên tập video 4K nhiều lớp, xóa logo KineMaster)
-KineMaster_Premium = type=http-response, pattern=^https:\/\/api-account\.kinemasters\.com\/v\d\/user\/subscribe$, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/kinemaster.js, requires-body=1, timeout=10, max-size=0
+KineMaster_Premium = type=http-response, pattern=^https:\/\/api-account\.kinemasters\.com\/v\d\/user\/subscribe$, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/Kinemaster.js, requires-body=1, timeout=10, max-size=0
 
 # 🧠 XMind Pro (Sơ đồ tư duy Mindmap Pro, xuất PDF HD)
 XMind_Pro = type=http-response, pattern=^https?:\/\/www\.xmind\.(cn|net|app)\/_res\/devices, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/xmind.js, requires-body=1, max-size=0, timeout=10
@@ -222,7 +231,7 @@ djay_Pro = type=http-response, pattern=^https:\/\/app\.algoriddim\.com\/api\/v1\
 Headspace_Plus = type=http-response, pattern=^https:\/\/api\.prod\.headspace\.com\/.*\/user-subscriptions, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/headspace.js, requires-body=1, timeout=10, max-size=131072
 
 # 🎨 PicsArt Gold (Tách nền AI, sticker & font chữ Gold)
-PicsArt_Gold = type=http-response, pattern=^https:\/\/api\.picsart\.com\/gw-v2\/shop\/subscription\/apple\/purchases, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/picsart.js, requires-body=1, timeout=60, max-size=0
+PicsArt_Gold = type=http-response, pattern=^https:\/\/api\.picsart\.com\/gw-v2\/shop\/subscription\/apple\/purchases, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/PicsArt.js, requires-body=1, timeout=60, max-size=0
 
 # 🎨 Adobe Photoshop Express Premium (Chỉnh ảnh chuyên nghiệp, xóa nhiễu noise)
 Photoshop_Express = type=http-response, pattern=^https:\/\/lcs-mobile-cops\.adobe\.io\/mobile_profile, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/photoshop.js, requires-body=1, timeout=10, max-size=0
@@ -250,4 +259,4 @@ Calm_Premium = type=http-response, pattern=^https?:\/\/api\.calm\.com\/(me|devic
 
 [MITM]
 enable = true
-hostname = %APPEND% api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api.intsig.net, api-cs.intsig.net, vsco.co, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, api-sub.meitu.com, user-snow-api.snow.me, api.mr.pixocial.com, newbeee-api.beautyplus.com, *.truecaller.com, lapi.photomath.net, us-central1-alight-creative.cloudfunctions.net, api-account.kinemasters.com, www.xmind.app, www.xmind.net, www.xmind.cn, api.funimate.com, api.busuu.com, app.algoriddim.com, api.prod.headspace.com, api.picsart.com, lcs-mobile-cops.adobe.io, mb3admin.com, api-mobile.soundcloud.com, account.wps.com, account.wps.cn, v1.darkroom.co, server.yoyiapp.com, api.calm.com, com.zijayrate.analogcam, api.elsaspeak.com, api.photoroom.com, api.remini.ai, api.bazaart.me, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, spclient.wg.spotify.com, *-spclient.spotify.com, gads.current.spotify.com
+hostname = %APPEND% api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api.intsig.net, api-cs.intsig.net, vsco.co, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, api-sub.meitu.com, user-snow-api.snow.me, api.mr.pixocial.com, newbeee-api.beautyplus.com, *.truecaller.com, lapi.photomath.net, us-central1-alight-creative.cloudfunctions.net, api-account.kinemasters.com, www.xmind.app, www.xmind.net, www.xmind.cn, api.funimate.com, api.busuu.com, app.algoriddim.com, api.prod.headspace.com, api.picsart.com, lcs-mobile-cops.adobe.io, mb3admin.com, api-mobile.soundcloud.com, account.wps.com, account.wps.cn, v1.darkroom.co, server.yoyiapp.com, api.calm.com, com.zijayrate.analogcam, api.elsaspeak.com, api.photoroom.com, api.remini.ai, api.bazaart.me, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, spclient.wg.spotify.com, *-spclient.spotify.com, gads.current.spotify.com, api.spotify.com

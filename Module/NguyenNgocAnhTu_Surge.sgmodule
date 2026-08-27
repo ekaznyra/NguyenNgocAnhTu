@@ -1,7 +1,7 @@
 #!name=⚡ Anh Tú Premium - Surge
 #!desc=🚀 Mở khóa 350+ App VIP (Locket Gold, Spotify, YouTube, Captions AI, iScreen, MD Vinyl, Moises, Structured, Remini, PhotoRoom, ELSA, OldRoll, iTunes 250+). 🛡️ Chặn Ads & Tracking. 🎮 Gaming DIRECT. 📺 Streaming PROXY. ⚡ Tối ưu DNS, Banking, GeoIP VN & Privacy.
-#!version=2.8.1-stable
-#!date=2026-08-13
+#!version=2.8.2-stable
+#!date=2026-08-27
 #!author=Nguyễn Ngọc Anh Tú
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
@@ -114,6 +114,7 @@ yt-res=type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei
 # 🎵 Spotify Premium (app2smile)
 sp-json=type=http-request,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-json.js
 sp-proto=type=http-response,pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-proto.js,script-update-interval=0
+Spotify_Premium=type=http-response,pattern=^https:\/\/(api\.spotify\.com\/v1\/me|.*spclient\.spotify\.com\/identity\/v3\/me),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js,script-update-interval=0
 
 # 🔐 RevenueCat Multi-App (Locket Gold)
 rc-res=type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$),script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js,requires-body=true,max-size=-1,timeout=60
@@ -146,7 +147,7 @@ dj-res=type=http-response,pattern=^https:\/\/app\.algoriddim\.com\/api\/v1\/vali
 calm-res=type=http-response,pattern=^https?:\/\/api\.calm\.com\/(me|device|ios\/receipt),script-path=https://raw.githubusercontent.com/Alex0510/Eric/Alex0510/surge/surge/Script/caml.js,requires-body=true,max-size=0,timeout=10
 
 # 📚 Busuu Premium
-busuu-res=type=http-response,pattern=^https:\/\/api\.busuu\.com\/users\/me,script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/bussu.js,requires-body=true,max-size=131072,timeout=10
+busuu-res=type=http-response,pattern=^https:\/\/api\.busuu\.com\/users\/me,script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/busuu.js,requires-body=true,max-size=131072,timeout=10
 
 # 🧘 Headspace Premium
 hs-res=type=http-response,pattern=^https:\/\/api\.prod\.headspace\.com\/.*\/user-subscriptions,script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/headspace.js,requires-body=true,max-size=131072,timeout=10
@@ -176,7 +177,7 @@ snow-res=type=http-response,pattern=^https?:\/\/user-snow-api\.snow\.me\/v\d\/pu
 b612-res=type=http-response,pattern=^https?:\/\/user-kaji-api\.b612kaji\.com\/v\d\/purchase\/subscription\/subscriber\/status,script-path=https://raw.githubusercontent.com/deezertidal/private/38b9581548b5070f2dc9c6bfa243cdacf0672d31/js-backup/Crack/612.js,requires-body=true,max-size=-1,timeout=60
 
 # 🎨 Meitu XiuXiu Premium
-meitu-res=type=http-response,pattern=^https?:\/\/(h5|api)\.xiuxiu\.meitu\.com\/v\d\/(h\d\/vip|vip|user)\/,script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/MeiTuXiuXiu.js,requires-body=true,timeout=60
+meitu-res=type=http-response,pattern=^https?:\/\/(h5|api)\.xiuxiu\.meitu\.com\/v\d\/(h\d\/vip|vip|user)\/,script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/meitu.js,requires-body=true,timeout=60
 
 # 🎬 Funimate Pro
 fun-res=type=http-response,pattern=^https:\/\/api\.funimate\.com\/users\/me,script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/funimate.js,requires-body=true,max-size=131072,timeout=10
@@ -306,6 +307,14 @@ sorted-response = type=http-response,pattern=^https:\/\/api\.sortedapp\.com\/rec
 ^https?://api\.rc-backup\.com/.+/(receipts$|subscribers(/.*)?/?) header-del X-RevenueCat-ETag
 ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(user-customization-service\/v1\/customize|bootstrap\/v1\/bootstrap)$ header-del if-none-match
 
+# === SPOTIFY PREMIUM CACHE-BUST (giữ patch /v1/me & identity/v3/me không bị 304 cache đè) ===
+^https:\/\/api\.spotify\.com\/v1\/me$ header-del If-None-Match
+^https:\/\/api\.spotify\.com\/v1\/me$ header-del If-Modified-Since
+^https:\/\/api\.spotify\.com\/v1\/me$ header-del ETag
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/identity\/v3\/me$ header-del If-None-Match
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/identity\/v3\/me$ header-del If-Modified-Since
+^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/identity\/v3\/me$ header-del ETag
+
 [MITM]
-hostname = %APPEND% -redirector*.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, spclient.wg.spotify.com, *-spclient.spotify.com, api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api.picsart.com, api.picsart.cn, api.meiease.com, api.meiease.cn, api-mobile.soundcloud.com, mb3admin.com, api-account.kinemasters.com, photos.adobe.io, lcs-mobile-cops.adobe.io, app.algoriddim.com, api.calm.com, api.busuu.com, api.prod.headspace.com, vsco.co, api.funimate.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, premium-*.truecaller.com, *.intsig.net, api.mr.pixocial.com, newbeee-api.beautyplus.com, user-snow-api.snow.me, user-kaji-api.b612kaji.com, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, account.wps.cn, *.account.wps.com, www.xmind.cn, www.xmind.net, www.xmind.app, ars.alar.my, subscription.grammarly.com, notability.com, lapi.photomath.net, pro.smallpdf.com, billing.peakcloud.org, api.polaxiong.com, premium-api.myfitnesspal.com, apic.musixmatch.com, server.yoyiapp.com, mid.zineapi.com, apimboom2.globaldelight.net, api.flexibits.com, api.craft.do, dayone.app, restore-access.indream.app, service.ilovepdf.com, api.mondlylanguages.com, api.memrise.com, api.alohaprofile.com, pre.dailyyoga.com, app-subscription-proxy.accuweather.com, api-production.endel.io, flomoapp.com, backend.getdrafts.com, api.gotokeep.com, payments.invideo.io, ssl-api.itranslateapp.com, payment-api.lingvist.com, *.oracle.bendingspoonsapps.com, app.bilibili.com, accounts.agenda.com, license.pdfexpert.com, api.sortedapp.com, sub.store
+hostname = %APPEND% -redirector*.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, spclient.wg.spotify.com, *-spclient.spotify.com, api.spotify.com, api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api.picsart.com, api.picsart.cn, api.meiease.com, api.meiease.cn, api-mobile.soundcloud.com, mb3admin.com, api-account.kinemasters.com, photos.adobe.io, lcs-mobile-cops.adobe.io, app.algoriddim.com, api.calm.com, api.busuu.com, api.prod.headspace.com, vsco.co, api.funimate.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, premium-*.truecaller.com, *.intsig.net, api.mr.pixocial.com, newbeee-api.beautyplus.com, user-snow-api.snow.me, user-kaji-api.b612kaji.com, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, account.wps.cn, *.account.wps.com, www.xmind.cn, www.xmind.net, www.xmind.app, ars.alar.my, subscription.grammarly.com, notability.com, lapi.photomath.net, pro.smallpdf.com, billing.peakcloud.org, api.polaxiong.com, premium-api.myfitnesspal.com, apic.musixmatch.com, server.yoyiapp.com, mid.zineapi.com, apimboom2.globaldelight.net, api.flexibits.com, api.craft.do, dayone.app, restore-access.indream.app, service.ilovepdf.com, api.mondlylanguages.com, api.memrise.com, api.alohaprofile.com, pre.dailyyoga.com, app-subscription-proxy.accuweather.com, api-production.endel.io, flomoapp.com, backend.getdrafts.com, api.gotokeep.com, payments.invideo.io, ssl-api.itranslateapp.com, payment-api.lingvist.com, *.oracle.bendingspoonsapps.com, app.bilibili.com, accounts.agenda.com, license.pdfexpert.com, api.sortedapp.com, sub.store
 enable = true
