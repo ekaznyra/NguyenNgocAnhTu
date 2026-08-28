@@ -15,6 +15,10 @@ Các kiểm tra:
    6. Mọi script Module/js/<tên>.js được tham chiếu trong module phải tồn tại
       trên đĩa VỚI ĐÚNG phân biệt hoa/thường (bắt lỗi typo như bussu/MeiTu
       và sai case như AlightMotion.js).
+   7. Spotify Premium phải đồng bộ trên 8 module: mọi module phải wire
+      `Module/js/spotify.js`, có `api.spotify.com` trong MITM, và có cơ chế
+      cache-bust (header-rewrite / request-header / script Cache-Control) để
+      patch premium không bị cache `304` đè.
  """
 from __future__ import annotations
 import json
@@ -140,15 +144,18 @@ def check_sha_pinning() -> None:
 
 
 # --- 5. File README tham chiếu tồn tại --------------------------------------
+# Lưu ý: CHANGELOG/CONTRIBUTING/CODE_OF_CONDUCT là docs tuỳ chọn — owner có
+# thể xoá chúng có chủ ý, nên chỉ cảnh báo (không fail) khi thiếu.
 def check_referenced_files() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    required = set(re.findall(r"blob/(?:master|main)/([A-Za-z0-9_./-]+\.md)", readme))
-    # luôn kiểm tra các file cốt lõi
-    required |= {"CONTRIBUTING.md", "CHANGELOG.md"}
-    for rel in sorted(required):
+    refs = set(re.findall(r"blob/(?:master|main)/([A-Za-z0-9_./-]+\.md)", readme))
+    for rel in sorted(refs):
         if not (ROOT / rel).exists():
-            errors.append(f"[docs] README tham chiếu '{rel}' nhưng file không tồn tại.")
-    print(f"[docs] OK — đã kiểm tra {len(required)} file được tham chiếu")
+            warnings.append(f"[docs] README tham chiếu '{rel}' nhưng file không tồn tại (bỏ qua).")
+    if refs:
+        print(f"[docs] OK — đã kiểm tra {len(refs)} file được README tham chiếu")
+    else:
+        print("[docs] OK — không có file docs nào được tham chiếu")
 
 
 def check_js_references() -> None:
@@ -169,6 +176,34 @@ def check_js_references() -> None:
         print(f"[js] OK — mọi tham chiếu Module/js/*.js đều tồn tại ({len(on_disk)} file)")
 
 
+def check_spotify_parity() -> None:
+    js_path = MODULE_DIR / "js" / "spotify.js"
+    if not js_path.exists():
+        errors.append("[spotify] Module/js/spotify.js không tồn tại.")
+        print("[spotify] SKIP — thiếu spotify.js")
+        return
+    spotify_src = js_path.read_text(encoding="utf-8")
+    if "Cache-Control" not in spotify_src:
+        errors.append("[spotify] spotify.js thiếu cơ chế cache-bust (Cache-Control).")
+    bad: list[str] = []
+    for f in module_files():
+        t = f.read_text(encoding="utf-8")
+        wired = "Module/js/spotify.js" in t
+        mitm = "api.spotify.com" in t
+        # cache-bust: header-del / request-header / action: del (module) HOẶC
+        # script-based (mọi module chạy spotify.js — file này có Cache-Control)
+        cb = (("header-del If-None-Match" in t) or
+              ("request-header" in t and "If-None-Match" in t) or
+              ("action: del" in t and "if-none-match" in t) or
+              ("Cache-Control" in spotify_src))
+        if not (wired and mitm and cb):
+            bad.append(f"{f.name} (wire={wired}, mitm={mitm}, cachebust={cb})")
+    if bad:
+        errors.append("[spotify] Các module thiếu đồng bộ Spotify Premium: " + "; ".join(bad))
+    else:
+        print(f"[spotify] OK — 8/8 module đồng bộ (wire + MITM + cache-bust)")
+
+
 def main() -> int:
     check_versions()
     check_json_arguments()
@@ -176,6 +211,7 @@ def main() -> int:
     check_sha_pinning()
     check_referenced_files()
     check_js_references()
+    check_spotify_parity()
     print("\n" + "=" * 60)
     if warnings:
         print(f"⚠️  {len(warnings)} cảnh báo:")

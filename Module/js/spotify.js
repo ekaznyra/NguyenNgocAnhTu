@@ -29,6 +29,12 @@
       body.type = "premium";
       changed = true;
     }
+    // Xoá restrictions để mở khoá tính năng premium (tải nhạc, chất lượng cao...)
+    // chỉ act khi response thật sự có field này (fail-safe).
+    if (body.restrictions) {
+      body.restrictions = [];
+      changed = true;
+    }
   }
 
   // spclient .../identity/v3/me : account type
