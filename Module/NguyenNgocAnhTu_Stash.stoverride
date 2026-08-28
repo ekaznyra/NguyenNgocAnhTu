@@ -34,6 +34,7 @@ rules:
   - DOMAIN-SUFFIX,heads-ak-spotify-com.akamaized.net,REJECT
   - DOMAIN-SUFFIX,heads4-ak-spotify-com.akamaized.net,REJECT
   - DOMAIN,spclient.wg.spotify.com,DIRECT
+  - DOMAIN,api.spotify.com,DIRECT
   - DOMAIN-KEYWORD,spotify-ads,REJECT
   - DOMAIN-SUFFIX,ads-fa.spotify.com,REJECT
   - DOMAIN-SUFFIX,analytics.spotify.com,REJECT
@@ -937,6 +938,7 @@ mitm:
   - "youtubei.googleapis.com"
   - "spclient.wg.spotify.com"
   - "*-spclient.spotify.com"
+  - "gads.current.spotify.com"
   - "api.spotify.com"
   - "api.revenuecat.com"
   - "api.rc-backup.com"

@@ -61,6 +61,9 @@ rules:
   - domain:
       match: "spclient.wg.spotify.com"
       policy: DIRECT
+  - domain:
+      match: "api.spotify.com"
+      policy: DIRECT
   - domain_keyword:
       match: "spotify-ads"
       policy: REJECT
@@ -2760,11 +2763,13 @@ mitm:
     - "s.youtube.com"
     - "spclient.wg.spotify.com"
     - "*-spclient.spotify.com"
+    - "gads.current.spotify.com"
     - "api.spotify.com"
     - "api.revenuecat.com"
     - "api.rc-backup.com"
     - "buy.itunes.apple.com"
-    - "api.picsart.c*"
+    - "api.picsart.com"
+    - "api.picsart.cn"
     - "api.meiease.c*"
     - "api-mobile.soundcloud.com"
     - "mb3admin.com"

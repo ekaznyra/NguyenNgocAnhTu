@@ -29,6 +29,7 @@ DOMAIN,accounts.spotify.com,DIRECT
 DOMAIN,login5.spotify.com,DIRECT
 DOMAIN,auth.spotify.com,DIRECT
 DOMAIN,apresolve.spotify.com,DIRECT
+DOMAIN,api.spotify.com,DIRECT
 DOMAIN-SUFFIX,scdn.co,DIRECT
 DOMAIN-SUFFIX,spotifycdn.net,DIRECT
 DOMAIN-SUFFIX,spotifycdn.com,DIRECT
