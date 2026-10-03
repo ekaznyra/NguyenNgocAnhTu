@@ -144,14 +144,14 @@ def check_sha_pinning() -> None:
 
 
 # --- 5. File README tham chiếu tồn tại --------------------------------------
-# Lưu ý: CHANGELOG/CONTRIBUTING/CODE_OF_CONDUCT là docs tuỳ chọn — owner có
-# thể xoá chúng có chủ ý, nên chỉ cảnh báo (không fail) khi thiếu.
+# Các tài liệu được README liên kết là một phần của giao diện dự án; thiếu file
+# sẽ làm liên kết hỏng nên phải làm validator thất bại.
 def check_referenced_files() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     refs = set(re.findall(r"blob/(?:master|main)/([A-Za-z0-9_./-]+\.md)", readme))
     for rel in sorted(refs):
         if not (ROOT / rel).exists():
-            warnings.append(f"[docs] README tham chiếu '{rel}' nhưng file không tồn tại (bỏ qua).")
+            errors.append(f"[docs] README tham chiếu '{rel}' nhưng file không tồn tại.")
     if refs:
         print(f"[docs] OK — đã kiểm tra {len(refs)} file được README tham chiếu")
     else:
