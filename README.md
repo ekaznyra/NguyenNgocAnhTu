@@ -1738,7 +1738,9 @@ https://github.com/ekaznyra/NguyenNgocAnhTu/tree/master/Module
 <br><br>
 
 <!-- CONTRIBUTION GRAPH -->
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=ekaznyra&theme=radical&hide_border=true&area=true&custom_title=Hoạt%20động%20đóng%20góp&bg_color=0D1117" width="95%" alt="activity"/>
+<a href="https://github.com/ekaznyra">
+  <img src="https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake-dark.svg" width="95%" alt="Contribution Activity"/>
+</a>
 
 <br><br>
 
