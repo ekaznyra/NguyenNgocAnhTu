@@ -35,6 +35,11 @@
       body.restrictions = [];
       changed = true;
     }
+    // Hỗ trợ các bản cập nhật endpoint có thuộc tính plan
+    if (body.plan && typeof body.plan === "object") {
+      body.plan.name = "premium";
+      changed = true;
+    }
   }
 
   // spclient .../identity/v3/me : account type
@@ -46,6 +51,17 @@
     }
   }
 
+  // spclient .../device-capabilities/v1/capabilities : license & HiFi capabilities (Spotify 2026)
+  if (url.indexOf("device-capabilities/v1/capabilities") !== -1) {
+    body.effective_license = "premium";
+    if (!body.supports_hifi || typeof body.supports_hifi !== "object") {
+      body.supports_hifi = {};
+    }
+    body.supports_hifi.fully_supported = true;
+    body.supports_hifi.user_eligible = true;
+    changed = true;
+  }
+
   if (changed) {
     var out = { body: JSON.stringify(body) };
     // Cache-bust: ngăn client lưu response premium vào cache (tránh 304 đè patch)
@@ -53,8 +69,11 @@
       if ($response && $response.headers) {
         var h = $response.headers;
         h["Cache-Control"] = "no-store";
+        h["Pragma"] = "no-cache";
         if (h["ETag"] !== undefined) delete h["ETag"];
         if (h["etag"] !== undefined) delete h["etag"];
+        if (h["If-None-Match"] !== undefined) delete h["If-None-Match"];
+        if (h["if-none-match"] !== undefined) delete h["if-none-match"];
         out.headers = h;
       }
     } catch (e) {}

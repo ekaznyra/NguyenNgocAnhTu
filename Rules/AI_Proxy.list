@@ -1,6 +1,7 @@
 # --- OpenAI / ChatGPT ---
 DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,sora.com
 DOMAIN-SUFFIX,oaistatic.com
 DOMAIN-SUFFIX,oaiusercontent.com
 DOMAIN-SUFFIX,chat.openai.com.cdn.cloudflare.net
@@ -12,6 +13,7 @@ DOMAIN-SUFFIX,anthropic.com
 
 # --- Google AI ---
 DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,gemini.google
 DOMAIN-SUFFIX,bard.google.com
 DOMAIN-SUFFIX,makersuite.google.com
 DOMAIN-SUFFIX,generativelanguage.googleapis.com
@@ -35,11 +37,14 @@ DOMAIN-SUFFIX,runway.com
 DOMAIN-SUFFIX,suno.ai
 DOMAIN-SUFFIX,udio.com
 DOMAIN-SUFFIX,cursor.sh
+DOMAIN-SUFFIX,cursor.com
 DOMAIN-SUFFIX,v0.dev
 
 # --- New AI Services (2025-2026) ---
 DOMAIN-SUFFIX,x.ai
 DOMAIN-SUFFIX,deepseek.com
+DOMAIN-SUFFIX,blackforestlabs.ai
+DOMAIN-SUFFIX,coze.com
 DOMAIN-SUFFIX,mistral.ai
 DOMAIN-SUFFIX,cohere.com
 DOMAIN-SUFFIX,together.ai

@@ -1,5 +1,5 @@
 name: "👑 Nguyễn Ngọc Anh Tú 🌸 ⁕ Ultimate Premium (Egern) ⁕"
-description: "🚀 Mở khóa 350+ App VIP (Locket Gold, Spotify, YouTube, Captions AI, iScreen, MD Vinyl, Moises, Structured, Remini, PhotoRoom, ELSA, OldRoll, iTunes 250+). 🛡️ Chặn Ads & Tracking. 🎮 Gaming DIRECT. 📺 Streaming PROXY. ⚡ Tối ưu DNS, Banking, GeoIP VN & Privacy. | v2.8.2-stable (2026-08-27)"
+description: "🚀 Mở khóa 350+ App VIP (Locket Gold, Spotify, YouTube, Captions AI, iScreen, MD Vinyl, Moises, Structured, Remini, PhotoRoom, ELSA, OldRoll, iTunes 250+). 🛡️ Chặn Ads & Tracking. 🎮 Gaming DIRECT. 📺 Streaming PROXY. ⚡ Tối ưu DNS, Banking, GeoIP VN & Privacy. | v2.8.3-stable (2026-10-06)"
 author: "Nguyễn Ngọc Anh Tú (z3rokaze)"
 homepage: "https://github.com/ekaznyra/NguyenNgocAnhTu"
 icon: "lock.open.fill"
@@ -2197,13 +2197,13 @@ header_rewrites:
   - match: "^https://api\\.spotify\\.com/v1/me$"
     action: del
     field: "etag"
-  - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/identity/v3/me$"
+  - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/(identity/v3/me|device-capabilities/v1/capabilities)$"
     action: del
     field: "if-none-match"
-  - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/identity/v3/me$"
+  - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/(identity/v3/me|device-capabilities/v1/capabilities)$"
     action: del
     field: "if-modified-since"
-  - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/identity/v3/me$"
+  - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/(identity/v3/me|device-capabilities/v1/capabilities)$"
     action: del
     field: "etag"
 
@@ -2266,7 +2266,7 @@ scriptings:
       timeout: 10
   - http_response:
       name: "Spotify Premium JSON"
-      match: "^https://(api\\.spotify\\.com/v1/me|.*spclient\\.spotify\\.com(:443)?/identity/v3/me)"
+      match: "^https://(api\\.spotify\\.com/v1/me|.*-?spclient\\.spotify\\.com(:443)?/(identity/v3/me|device-capabilities/v1/capabilities))"
       script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js"
       body_required: true
       timeout: 30

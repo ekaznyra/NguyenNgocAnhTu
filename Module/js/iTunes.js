@@ -7,7 +7,11 @@
  */
 
 (function () {
-let body = $response.body;
+let body = ($response && $response.body) || "";
+if (!body) {
+  $done({});
+  return;
+}
 let ddm = null, data = null, anchor = false;
 function tryParse(raw) {
   try {
@@ -37,8 +41,13 @@ if (!ddm) {
   $done({});
   return;
 }
-const ua = $request.headers["User-Agent"] || $request.headers["user-agent"];
-const bundle_id = ddm.receipt["bundle_id"] || ddm.receipt["Bundle_Id"];
+const reqHeaders = ($request && $request.headers) || {};
+const ua = reqHeaders["User-Agent"] || reqHeaders["user-agent"] || "";
+if (!ddm || typeof ddm !== "object" || !ddm.receipt) {
+  $done({});
+  return;
+}
+const bundle_id = ddm.receipt["bundle_id"] || ddm.receipt["Bundle_Id"] || "";
 
 // ===== App列表 =====
 const list = {

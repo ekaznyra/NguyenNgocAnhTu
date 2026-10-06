@@ -46,7 +46,23 @@ const mapping = {
   'AIMirror': ['premium', 'aimirror_premium_yearly'],
   'AI Mirror': ['premium', 'aimirror_premium_yearly'],
   'Widgetsmith': ['Premium', 'widgetsmith_premium_yearly'],
-  'Pixelup': ['pro', 'pixelup_pro_yearly']
+  'Pixelup': ['pro', 'pixelup_pro_yearly'],
+  'ScannerPro': ['pro', 'com.readdle.ScannerPro.SubscriptionYearly'],
+  'Scanner Pro': ['pro', 'com.readdle.ScannerPro.SubscriptionYearly'],
+  'iScanner': ['pro', 'iscanner_pro_yearly'],
+  'QuickScan': ['pro', 'quickscan_pro_yearly'],
+  'DocScanner': ['pro', 'docscanner_pro_yearly'],
+  'Photoroom': ['pro', 'photoroom_pro_yearly'],
+  'Epik': ['pro', 'com.snowcorp.epik.subscribe.yearly'],
+  'EPIK': ['pro', 'com.snowcorp.epik.subscribe.yearly'],
+  'Hypic': ['pro', 'hypic_pro_yearly'],
+  'Speak': ['premium', 'speak_premium_yearly'],
+  'Praktika': ['premium', 'praktika_premium_yearly'],
+  'Craft': ['pro', 'com.lukilabs.lukiapp.pro_yearly'],
+  'DayOne': ['premium', 'com.bloombuilt.dayone-ios.premium_yearly'],
+  'Day One': ['premium', 'com.bloombuilt.dayone-ios.premium_yearly'],
+  'DeepL': ['pro', 'deepl_pro_yearly'],
+  'Notability': ['premium', 'com.gingerlabs.Notability.premium_subscription']
 };
 
 // ========= Fallback entitlement keys ========= //
@@ -55,7 +71,8 @@ const GENERIC_ENTITLEMENT_KEYS = [
   "unlimited", "standard", "gold", "Gold", "lifetime", "all_access",
   "premium_access", "pro_access", "isPremium", "premiumUser",
   "member", "membership", "svip", "vip_access", "full_access",
-  "premium_yearly", "premium_lifetime", "unlimited_access", "paid", "Unlock"
+  "premium_yearly", "premium_lifetime", "unlimited_access", "paid", "Unlock",
+  "full_version", "full_unlock", "unlocked", "Subscriber", "subscriber", "active"
 ];
 
 // ========= Unified Constants (CRITICAL: dates MUST match) ========= //
@@ -66,11 +83,12 @@ const MGMT_URL   = "https://apps.apple.com/account/subscriptions";
 
 // =========  Core Logic  ========= //
 // =========  @z3rokaze  ========= //
-var ua = ($request.headers["User-Agent"] || $request.headers["user-agent"] || "");
+var reqHeaders = ($request && $request.headers) || {};
+var ua = (reqHeaders["User-Agent"] || reqHeaders["user-agent"] || "");
 var uaDecoded; try { uaDecoded = decodeURIComponent(ua); } catch (e) { uaDecoded = ua; }
 
 // Cũng kiểm tra X-RevenueCat-App-Bundle-ID header (nếu có)
-var bundleId = ($request.headers["X-RevenueCat-App-Bundle-ID"] || $request.headers["x-revenuecat-app-bundle-id"] || "");
+var bundleId = (reqHeaders["X-RevenueCat-App-Bundle-ID"] || reqHeaders["x-revenuecat-app-bundle-id"] || "");
 
 var obj;
 try { obj = JSON.parse($response.body); } catch (e) {}
@@ -85,7 +103,7 @@ var match = Object.keys(mapping).find(function(e) {
 
 // Fallback: nếu chưa match, thử detect Locket bằng URL path hoặc body content
 if (!match && obj.subscriber) {
-  var urlPath = ($request.url || "").toLowerCase();
+  var urlPath = (($request && $request.url) || "").toLowerCase();
   if (urlPath.includes("locket") || bundleId.toLowerCase().includes("locket")) {
     match = "Locket";
   }

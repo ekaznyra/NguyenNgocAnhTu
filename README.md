@@ -16,7 +16,7 @@
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&duration=3000&pause=500&color=00FF00&background=00000000&center=false&vCenter=true&repeat=true&width=450&height=100&lines=%5B+%2B+%5D+Initializing+Premium+Unlocker+v2.8.2-stable...;%5B+%2B+%5D+Bypassing+security+checks+and+receipts...;%5B+%2B+%5D+Injecting+premium+payload+via+MITM...;%5B+%2B+%5D+Success!+350%2B+Applications+Unlocked." alt="Terminal Simulation" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&duration=3000&pause=500&color=00FF00&background=00000000&center=false&vCenter=true&repeat=true&width=450&height=100&lines=%5B+%2B+%5D+Initializing+Premium+Unlocker+v2.8.3-stable...;%5B+%2B+%5D+Bypassing+security+checks+and+receipts...;%5B+%2B+%5D+Injecting+premium+payload+via+MITM...;%5B+%2B+%5D+Success!+350%2B+Applications+Unlocked." alt="Terminal Simulation" />
 </a>
 
 <br>
@@ -47,7 +47,9 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <!-- HÀNG 1 — THÔNG TIN DỰ ÁN -->
-<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/releases"><img src="https://img.shields.io/badge/%E2%9A%A1_PHI%C3%8AN_B%E1%BA%A2N-v2.8.2--stable-00F0FF?style=for-the-badge&labelColor=0D1117" alt="version"/></a>
+<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/releases"><img src="https://img.shields.io/badge/%E2%9A%A1_PHI%C3%8AN_B%E1%BA%A2N-v2.8.3--stable-00F0FF?style=for-the-badge&labelColor=0D1117" alt="version"/></a>
+&nbsp;
+<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/ekaznyra/NguyenNgocAnhTu/ci.yml?branch=master&style=for-the-badge&logo=githubactions&logoColor=00F0FF&label=%E2%9C%85+CI+TESTS&color=00FF88&labelColor=0D1117" alt="ci"/></a>
 &nbsp;
 <a href="https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/LICENSE"><img src="https://img.shields.io/badge/%F0%9F%93%9C_GI%E1%BA%A4Y_PH%C3%89P-AGPL--3.0-FF007F?style=for-the-badge&labelColor=0D1117" alt="license"/></a>
 &nbsp;
@@ -73,7 +75,7 @@
 &nbsp;
 <a href="https://github.com/ekaznyra"><img src="https://img.shields.io/badge/%F0%9F%91%A4_T%C3%A1c_Gi%E1%BA%A3-ekaznyra-00F0FF?style=for-the-badge&logo=github&logoColor=white&labelColor=0D1117" alt="author"/></a>
 &nbsp;
-<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/CONTRIBUTING.md"><img src="https://img.shields.io/badge/%F0%9F%A4%9D_%C4%90%C3%B3ng_G%C3%B3p-Welcome-FF007F?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=0D1117" alt="contributing"/></a>
+<a href="https://github.com/ekaznyra/NguyenNgocAnhTu/issues"><img src="https://img.shields.io/badge/%F0%9F%A4%9D_%C4%90%C3%B3ng_G%C3%B3p-Issues-FF007F?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=0D1117" alt="contributing"/></a>
 &nbsp;
 <img src="https://komarev.com/ghpvc/?username=ekaznyra-NguyenNgocAnhTu&style=for-the-badge&color=7b5ea7&labelColor=0D1117&label=%F0%9F%91%80+L%C6%AF%E1%BB%A2T+XEM" alt="views"/>
 
@@ -476,6 +478,9 @@
 
 | | Phiên bản | Ngày | Nội dung cập nhật | Số app |
 |:---:|:---:|:---:|:---|:---:|
+| 👑 | **`v2.8.3-stable`** | `06.10.2026` | 🎵 **Spotify 2026, Scanner Suite & Full Ecosystem Upgrade**: Tích hợp `/device-capabilities/v1/capabilities`, HiFi 24-bit audio & QUIC UDP block cho Spotify • Mở rộng trọn bộ Scanner (CamScanner, Scanner Pro, iScanner, QuickScan, DocScanner) • Mở rộng RevenueCat (Speak, Praktika, Craft, Day One, DeepL, Epik, Notability) • Cập nhật AI Proxy 2026 (Cursor, Sora, Flux, Coze, Gemini) • Bổ sung CI/CD tự động kiểm thử toàn diện & Dead-link Auditor • Vá triệt để lỗi Facebook Login & Messenger images trong `Ads.list` • Tối ưu định tuyến VTV Go, VieON, TV360 trong `Direct.list` • Bọc null-safety 100% cho 28 script JS. | **350+** |
+| 👑 | **`v2.8.2-stable`** | `27.08.2026` | 🎵 **Spotify Premium & 404 Parity**: Sửa lỗi 404 do sai tên/hoa-thường (`busuu.js`, `meitu.js`, 10 script case sensitivity) • Thêm Spotify Premium cache-bust (xoá If-None-Match/ETag chống 304 cache đè) • Đồng bộ `api.spotify.com` và `gads.current.spotify.com` trên đủ 8/8 module • Chuẩn hóa hạn 2099. | **350+** |
+| 👑 | **`v2.8.1-stable`** | `13.08.2026` | 💎 **Spotify Unlocker & Standalone JSON Handler**: Thêm `Module/js/spotify.js` JSON-only độc lập không phụ thuộc protobuf • Khắc phục lỗi script protobuf treo im lặng trên client không hỗ trợ • Đồng bộ toàn bộ 8 module lên v2.8.1. | **350+** |
 | 👑 | **`v2.8.0-stable`** | `03.08.2026` | 🎮 **Gaming DIRECT, Streaming PROXY & Enhanced Blocking**: Thêm `Gaming_Direct.list` (20+ game/platform đi DIRECT giảm ping) • Thêm `Streaming_Proxy.list` (Netflix, Disney+, HBO, Prime Video, Hulu, Crunchyroll) • Mở rộng chặn iOS OTA (appldnld, swcdn, xp.apple.com) • Chặn App Store Search Ads • Chặn Spotify Podcast Ads & Canvas • Thêm 13 domain QC app VN (Zalo, Báo Mới, VnExpress, Zing, Kenh14...) • 11 RevenueCat app mapping cụ thể • Đồng bộ 8/8 module lên v2.8.0. | **320+** |
 | 👑 | **`v2.7.0-stable`** | `25.07.2026` | 🚀 **Đồng bộ YFamily Standards & Mở rộng 320+ Apps VIP**: Sửa triệt để MITM OldRoll Camera (`com.zijayrate.analogcam`), mở rộng Remini, PhotoRoom, ELSA Speak, Bazaart • Khai tử cú pháp Surge-only trong Shadowrocket • Đồng bộ 8/8 client proxy formats lên `v2.7.0-stable`. | **320+** |
 | 👑 | **`v2.6.0-stable`** | `25.07.2026` | 💎 **Tích hợp 27 Standalone Scripts & DoH DNS**: Thêm 27 script tự host độc lập (CamScanner, VSCO, Meitu, Wink, BeautyPlus, Truecaller, Photomath, Alight Motion, KineMaster, XMind, Busuu, djay Pro, Headspace, PicsArt, Photoshop, Emby, SoundCloud, WPS Office, Darkroom, Fimo, Calm...). | **320+** |
@@ -1649,9 +1654,8 @@ https://github.com/ekaznyra/NguyenNgocAnhTu/tree/master/Module
 | 🐛 | **Báo lỗi** | [Issues](https://github.com/ekaznyra/NguyenNgocAnhTu/issues) | Gửi yêu cầu hoặc báo lỗi |
 | 📥 | **Phiên bản** | [Releases](https://github.com/ekaznyra/NguyenNgocAnhTu/releases) | Tải phiên bản mới nhất |
 | 👤 | **Tác giả** | [github.com/ekaznyra](https://github.com/ekaznyra) | Trang cá nhân tác giả |
-| 📝 | **Nhật ký** | [CHANGELOG.md](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/CHANGELOG.md) | Lịch sử thay đổi phiên bản |
-| 🤝 | **Đóng góp** | [CONTRIBUTING.md](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/CONTRIBUTING.md) | Hướng dẫn đóng góp |
-| 📜 | **Quy tắc** | [CODE_OF_CONDUCT.md](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/CODE_OF_CONDUCT.md) | Quy tắc ứng xử cộng đồng |
+| 📝 | **Nhật ký** | [Cập nhật mới nhất](#--cập-nhật-mới-nhất) | Lịch sử thay đổi phiên bản |
+| 📜 | **Giấy phép** | [LICENSE](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/LICENSE) | Điều khoản mã nguồn mở AGPL-3.0 |
 
 </div>
 
@@ -1680,9 +1684,8 @@ https://github.com/ekaznyra/NguyenNgocAnhTu/tree/master/Module
 
 | | Tài liệu | Mô tả |
 |:---:|:---|:---|
-| 🤝 | **[Hướng dẫn đóng góp](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/CONTRIBUTING.md)** | Cách thêm ứng dụng mới, quy ước commit, checklist PR |
-| 📜 | **[Quy tắc ứng xử](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/CODE_OF_CONDUCT.md)** | Quy tắc cộng đồng thân thiện, tôn trọng |
-| 📝 | **[Nhật ký thay đổi](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/CHANGELOG.md)** | Lịch sử phiên bản & thay đổi |
+| 🐛 | **[Báo lỗi & Yêu cầu](https://github.com/ekaznyra/NguyenNgocAnhTu/issues)** | Gửi yêu cầu ứng dụng mới hoặc báo cáo lỗi |
+| 📝 | **[Nhật ký thay đổi](#--cập-nhật-mới-nhất)** | Lịch sử phiên bản & chi tiết cập nhật theo dòng thời gian |
 | 📜 | **[Giấy phép AGPL-3.0](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/LICENSE)** | Điều khoản sử dụng mã nguồn mở |
 
 </div>
@@ -1691,8 +1694,7 @@ https://github.com/ekaznyra/NguyenNgocAnhTu/tree/master/Module
 
 <div align="center">
 
-> 💎 **Bạn muốn đóng góp?** Fork repo → Tạo nhánh mới → Thêm code → Tạo Pull Request!
-> Xem chi tiết tại [CONTRIBUTING.md](https://github.com/ekaznyra/NguyenNgocAnhTu/blob/master/CONTRIBUTING.md)
+> 💎 **Bạn muốn đóng góp?** Fork repo → Tạo nhánh mới → Thêm code → Tạo Pull Request qua GitHub!
 
 </div>
 

@@ -1,0 +1,24 @@
+name: Scheduled Dead Link Audit
+
+on:
+  schedule:
+    # Chạy vào 00:00 Chủ Nhật hàng tuần (UTC)
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+jobs:
+  audit-links:
+    name: Audit Remote Script & Rule Links
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Audit Remote Links
+        run: python scripts/audit_links.py

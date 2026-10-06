@@ -8,7 +8,7 @@
 var objc;
 try { objc = JSON.parse($response.body); } catch (e) { objc = null; }
 
-var url = $request.url;
+var url = ($request && $request.url) || "";
 if (/newbeee-api\.beautyplus\.com\/api\/v1\/asset\/balance/.test(url)) {
     // Endpoint asset/balance: chỉ ép điểm/số dư, giữ nguyên gid/created_at server cấp
     if (!objc || typeof objc !== "object") objc = { "message": "success", "data": {} };

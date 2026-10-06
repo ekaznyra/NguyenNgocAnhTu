@@ -5,7 +5,7 @@
  * @date: 2026-07-21
  *******************************/
 
-var body = $response.body;
+var body = ($response && $response.body) || null;
 if (!body) {
     $done({});
 } else {

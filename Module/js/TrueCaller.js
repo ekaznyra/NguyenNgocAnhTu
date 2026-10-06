@@ -6,8 +6,9 @@
  */
 
 function findUrl(_reg) {
-    if (_reg.test($request.url)) {
-        return $request.url;
+    var u = ($request && $request.url) || "";
+    if (_reg.test(u)) {
+        return u;
     }
 }
 
@@ -43,7 +44,7 @@ const features = [
 ];
 
 var obj;
-switch ($request.url) {
+switch (($request && $request.url) || "") {
     case findUrl(/subscriptions\/status/):
         obj = {
             expire: "2099-12-31T23:59:59.000Z",

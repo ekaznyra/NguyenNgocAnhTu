@@ -292,7 +292,6 @@ DOMAIN,audio-sp-lon.pscdn.co
 DOMAIN,podcastads.spotify.com
 
 # --- Meta / Facebook Ads bổ sung (08-2026) ---
-DOMAIN,graph.facebook.com
-DOMAIN-SUFFIX,fbsbx.com
-DOMAIN,web.facebook.com
-DOMAIN-SUFFIX,facebook-dns.com
+DOMAIN-SUFFIX,admarketing.facebook.com
+DOMAIN-SUFFIX,tr.facebook.com
+DOMAIN-SUFFIX,analytics.facebook.com

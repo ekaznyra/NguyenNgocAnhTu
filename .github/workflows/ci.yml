@@ -1,0 +1,39 @@
+name: CI & Integrity Checks
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate Modules & Rules
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Spotify Engine Tests
+        run: node scripts/test_spotify.js
+
+      - name: Run RevenueCat Engine Tests
+        run: node scripts/test_revenuecat.js
+
+      - name: Run JS Script Resilience Tests
+        run: node scripts/test_all_scripts.js
+
+      - name: Run Full Module & Rules Validation
+        run: python scripts/validate.py

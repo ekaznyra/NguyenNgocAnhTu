@@ -41,3 +41,9 @@ DOMAIN-SUFFIX,zing.vn
 DOMAIN-SUFFIX,kenh14.vn
 DOMAIN-SUFFIX,tuoitre.vn
 DOMAIN-SUFFIX,thanhnien.vn
+# --- Truyền hình & Giải trí VN (tránh geo-lock khi dùng proxy quốc tế) ---
+DOMAIN-SUFFIX,vtv.vn
+DOMAIN-SUFFIX,vtvgo.vn
+DOMAIN-SUFFIX,vieon.vn
+DOMAIN-SUFFIX,tv360.vn
+DOMAIN-SUFFIX,zingmp3.vn

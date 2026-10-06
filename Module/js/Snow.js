@@ -8,7 +8,8 @@
 
 var objc;
 try { objc = JSON.parse($response.body); } catch (e) {}
-const ua = $request.headers["User-Agent"] || $request.headers["user-agent"];
+const reqHeaders = ($request && $request.headers) || {};
+const ua = reqHeaders["User-Agent"] || reqHeaders["user-agent"] || "";
 const times = Date.now();
 
 const list = {

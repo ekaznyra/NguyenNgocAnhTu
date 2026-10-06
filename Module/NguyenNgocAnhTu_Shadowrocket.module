@@ -1,7 +1,7 @@
 #!name=🌸 Anh Tú • Ultimate VIP Bundle (Locket, Spotify, YouTube, iTunes 250+ & 70+ Apps Premium)
-#!desc=🚀 Mở khóa 350+ App VIP (Locket Gold, YouTube Premium, Spotify, Captions AI, iScreen, MD Vinyl, Moises, Structured, SoundCloud Go+, WPS Office VIP, Darkroom Pro, OldRoll, Fimo Camera, Calm Premium, Remini, PhotoRoom, ELSA, iTunes 250+ Apps VIP...). 🛡️ Tích hợp Pure AdBlock & Bảo vệ Ngân hàng VN.
+#!desc=🚀 Mở khóa 350+ App VIP (Locket Gold, YouTube Premium, Spotify, Captions AI, iScreen, MD Vinyl, Moises, Structured, SoundCloud Go+, WPS Office VIP, Darkroom Pro, OldRoll, Fimo Camera, Calm Premium, Remini, PhotoRoom, ELSA, iTunes 250+ Apps VIP...). 🛡️ Tích hợp Pure AdBlock & Bảo vệ Ngân hàng VN. | v2.8.3-stable (2026-10-06)
 #!version=1.10.0
-#!date=2026-08-27
+#!date=2026-10-06
 #!author=Nguyễn Ngọc Anh Tú (z3rokaze)
 #!homepage=https://github.com/ekaznyra/NguyenNgocAnhTu
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/VIP.png
@@ -79,9 +79,9 @@ RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/cd4d77094dd53290f24
 ^https?:\/\/api\.spotify\.com\/v1\/me$ header-del If-None-Match
 ^https?:\/\/api\.spotify\.com\/v1\/me$ header-del If-Modified-Since
 ^https?:\/\/api\.spotify\.com\/v1\/me$ header-del ETag
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/identity\/v3\/me$ header-del If-None-Match
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/identity\/v3\/me$ header-del If-Modified-Since
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/identity\/v3\/me$ header-del ETag
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(identity\/v3\/me|device-capabilities\/v1\/capabilities)$ header-del If-None-Match
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(identity\/v3\/me|device-capabilities\/v1\/capabilities)$ header-del If-Modified-Since
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(identity\/v3\/me|device-capabilities\/v1\/capabilities)$ header-del ETag
 
 [URL Rewrite]
 # === YOUTUBE ADS ===
@@ -103,7 +103,7 @@ RULE-SET,https://raw.githubusercontent.com/bigdargon/hostsVN/cd4d77094dd53290f24
 # 🎵 Spotify Premium (app2smile — Proto + JSON handler: Mở khóa Premium, bỏ shuffle, chất lượng cao)
 Spotify_JSON = type=http-request, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(?:artistview\/v1\/artist|album-entity-view\/v2\/album)\/, requires-body=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-json.js
 Spotify_Proto = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$, requires-body=1, binary-body-mode=1, max-size=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-proto.js, script-update-interval=0
-Spotify_Premium = type=http-response, pattern=^https:\/\/(api\.spotify\.com\/v1\/me|.*spclient\.spotify\.com\/identity\/v3\/me), requires-body=1, max-size=-1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js
+Spotify_Premium = type=http-response, pattern=^https:\/\/(api\.spotify\.com\/v1\/me|.*-?spclient\.spotify\.com(:443)?\/(identity\/v3\/me|device-capabilities\/v1\/capabilities)), requires-body=1, max-size=-1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js
 
 # 👑 RevenueCat Multi-App Unlocker (Locket Gold + 70+ App VIP Quốc tế & Việt Nam)
 RevenueCat_Multi = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js, requires-body=1, max-size=-1, timeout=60
@@ -189,4 +189,4 @@ Calm_Premium = type=http-response, pattern=^https?:\/\/api\.calm\.com\/(me|devic
 
 [MITM]
 enable = true
-hostname = %APPEND% api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api.intsig.net, api-cs.intsig.net, vsco.co, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, api-sub.meitu.com, user-snow-api.snow.me, api.mr.pixocial.com, newbeee-api.beautyplus.com, *.truecaller.com, lapi.photomath.net, us-central1-alight-creative.cloudfunctions.net, api-account.kinemasters.com, www.xmind.app, www.xmind.net, www.xmind.cn, api.funimate.com, api.busuu.com, app.algoriddim.com, api.prod.headspace.com, api.picsart.com, lcs-mobile-cops.adobe.io, mb3admin.com, api-mobile.soundcloud.com, account.wps.com, account.wps.cn, v1.darkroom.co, server.yoyiapp.com, api.calm.com, com.zijayrate.analogcam, api.elsaspeak.com, api.photoroom.com, api.remini.ai, api.bazaart.me, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, spclient.wg.spotify.com, *-spclient.spotify.com, gads.current.spotify.com, api.spotify.com
+hostname = %APPEND% api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api.intsig.net, api-cs.intsig.net, *.intsig.net, vsco.co, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, api-sub.meitu.com, user-snow-api.snow.me, api.mr.pixocial.com, newbeee-api.beautyplus.com, *.truecaller.com, lapi.photomath.net, us-central1-alight-creative.cloudfunctions.net, api-account.kinemasters.com, www.xmind.app, www.xmind.net, www.xmind.cn, api.funimate.com, api.busuu.com, app.algoriddim.com, api.prod.headspace.com, api.picsart.com, lcs-mobile-cops.adobe.io, mb3admin.com, api-mobile.soundcloud.com, account.wps.com, account.wps.cn, v1.darkroom.co, server.yoyiapp.com, api.calm.com, com.zijayrate.analogcam, api.elsaspeak.com, api.photoroom.com, api.remini.ai, api.bazaart.me, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, spclient.wg.spotify.com, *-spclient.spotify.com, gads.current.spotify.com, api.spotify.com

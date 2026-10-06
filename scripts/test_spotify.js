@@ -91,5 +91,18 @@ console.log("== spotify.js unit test ==");
   check("non-object body: fail-safe", out !== null && Object.keys(out).length === 0, JSON.stringify(out));
 }
 
+// 8. device-capabilities/v1/capabilities -> effective_license=premium + supports_hifi (2026 update)
+{
+  const inBody = JSON.stringify({
+    effective_license: "free",
+    supports_hifi: { fully_supported: false, user_eligible: false }
+  });
+  const out = run("https://spclient.wg.spotify.com/device-capabilities/v1/capabilities", inBody, { ETag: "W/\"cap\"" });
+  const b = JSON.parse(out.body);
+  check("device-capabilities: effective_license=premium", b.effective_license === "premium", out.body);
+  check("device-capabilities: supports_hifi=true", b.supports_hifi && b.supports_hifi.fully_supported === true && b.supports_hifi.user_eligible === true, out.body);
+  check("device-capabilities: cache-bust", out.headers && out.headers["Cache-Control"] === "no-store");
+}
+
 console.log("\n== KẾT QUẢ: " + pass + " PASS / " + fail + " FAIL ==");
 process.exit(fail === 0 ? 0 : 1);
