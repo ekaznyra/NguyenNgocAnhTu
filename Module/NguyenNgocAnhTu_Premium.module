@@ -146,9 +146,9 @@ FINAL,DIRECT
 ^https?:\/\/api\.spotify\.com\/v1\/me$ header-del If-None-Match
 ^https?:\/\/api\.spotify\.com\/v1\/me$ header-del If-Modified-Since
 ^https?:\/\/api\.spotify\.com\/v1\/me$ header-del ETag
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(identity\/v3\/me|device-capabilities\/v1\/capabilities)$ header-del If-None-Match
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(identity\/v3\/me|device-capabilities\/v1\/capabilities)$ header-del If-Modified-Since
-^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(identity\/v3\/me|device-capabilities\/v1\/capabilities)$ header-del ETag
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(identity\/v3\/me|device-capabilities\/v1\/capabilities|user-attributes\/v\d+\/attributes)$ header-del If-None-Match
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(identity\/v3\/me|device-capabilities\/v1\/capabilities|user-attributes\/v\d+\/attributes)$ header-del If-Modified-Since
+^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(identity\/v3\/me|device-capabilities\/v1\/capabilities|user-attributes\/v\d+\/attributes)$ header-del ETag
 
 [URL Rewrite]
 # === YOUTUBE ADS ===
@@ -174,7 +174,7 @@ FINAL,DIRECT
 # 🎵 Spotify Premium (app2smile — Proto + JSON handler: Mở khóa Premium, bỏ shuffle, chất lượng cao)
 Spotify_JSON = type=http-request, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(?:artistview\/v1\/artist|album-entity-view\/v2\/album)\/, requires-body=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-json.js
 Spotify_Proto = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(?:bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$, requires-body=1, binary-body-mode=1, max-size=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-proto.js, script-update-interval=0
-Spotify_Premium = type=http-response, pattern=^https:\/\/(api\.spotify\.com\/v1\/me|.*-?spclient\.spotify\.com(:443)?\/(identity\/v3\/me|device-capabilities\/v1\/capabilities)), requires-body=1, max-size=-1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js
+Spotify_Premium = type=http-response, pattern=^https:\/\/(api\.spotify\.com\/v1\/me|.*-?spclient\.spotify\.com(:443)?\/(identity\/v3\/me|device-capabilities\/v1\/capabilities|user-attributes\/v\d+\/attributes)), requires-body=1, max-size=-1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js
 
 # 👑 RevenueCat Multi-App Unlocker (Locket Gold + 70+ App VIP Quốc tế & Việt Nam)
 RevenueCat_Multi = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js, requires-body=1, max-size=-1, timeout=60
@@ -224,6 +224,15 @@ Funimate_Pro = type=http-response, pattern=^https:\/\/api\.funimate\.com\/users\
 
 # 📖 Busuu Premium (Học ngoại ngữ Anh/Nhật/Trung/Hàn & nhận chứng chỉ)
 Busuu_Premium = type=http-response, pattern=^https:\/\/api\.busuu\.com\/users\/me, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/busuu.js, requires-body=1, timeout=10, max-size=0
+
+# 🦉 Duolingo Super / Max (Vô hạn tim, Không Ads, Max AI)
+Duolingo_Super = type=http-response, pattern=^https?:\/\/(api|ios-api-cdn)\.duolingo\.com\/(2017-06-30\/users\/|users\/), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/duolingo.js, requires-body=1, timeout=10, max-size=0
+
+# 🍰 Cake English Plus (Luyện nói giao tiếp, video song ngữ)
+Cake_Plus = type=http-response, pattern=^https?:\/\/api\.mycake\.me\/v\d+\/users\/me, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/cake.js, requires-body=1, timeout=10, max-size=0
+
+# 📑 Quizlet Plus (Flashcards, học Offline, giải thích chuyên sâu)
+Quizlet_Plus = type=http-response, pattern=^https?:\/\/quizlet\.com\/webapi\/3\.4\/users\/, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/quizlet.js, requires-body=1, timeout=10, max-size=0
 
 # 🎵 djay Pro AI (Mix nhạc DJ chuyên nghiệp, Neural Mix tách nhạc AI)
 djay_Pro = type=http-response, pattern=^https:\/\/app\.algoriddim\.com\/api\/v1\/validate-receipt, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/djay.js, requires-body=1, timeout=10, max-size=0
@@ -359,4 +368,4 @@ Boom_3D = type=http-response, pattern=^https:\/\/apimboom2\.globaldelight\.net\/
 
 [MITM]
 enable = true
-hostname = %APPEND% api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api.intsig.net, api-cs.intsig.net, *.intsig.net, vsco.co, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, api-sub.meitu.com, user-snow-api.snow.me, api.mr.pixocial.com, newbeee-api.beautyplus.com, *.truecaller.com, lapi.photomath.net, us-central1-alight-creative.cloudfunctions.net, api-account.kinemasters.com, www.xmind.app, www.xmind.net, www.xmind.cn, api.funimate.com, api.busuu.com, app.algoriddim.com, api.prod.headspace.com, api.picsart.com, lcs-mobile-cops.adobe.io, mb3admin.com, api-mobile.soundcloud.com, account.wps.com, account.wps.cn, v1.darkroom.co, server.yoyiapp.com, api.calm.com, com.zijayrate.analogcam, api.elsaspeak.com, api.photoroom.com, api.remini.ai, api.bazaart.me, *.oracle.bendingspoonsapps.com, license.pdfexpert.com, app.bilibili.com, api.flexibits.com, ssl-api.itranslateapp.com, payment-api.lingvist.com, accounts.agenda.com, service.ilovepdf.com, api.mondlylanguages.com, api.memrise.com, api.alohaprofile.com, pre.dailyyoga.com, app-subscription-proxy.accuweather.com, api-production.endel.io, flomoapp.com, backend.getdrafts.com, api.gotokeep.com, payments.invideo.io, restore-access.indream.app, photos.adobe.io, user-kaji-api.b612kaji.com, ars.alar.my, subscription.grammarly.com, notability.com, pro.smallpdf.com, billing.peakcloud.org, api.polaxiong.com, premium-api.myfitnesspal.com, apic.musixmatch.com, mid.zineapi.com, apimboom2.globaldelight.net, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, spclient.wg.spotify.com, *-spclient.spotify.com, gads.current.spotify.com, api.spotify.com
+hostname = %APPEND% api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api.intsig.net, api-cs.intsig.net, *.intsig.net, vsco.co, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, api-sub.meitu.com, user-snow-api.snow.me, api.mr.pixocial.com, newbeee-api.beautyplus.com, *.truecaller.com, lapi.photomath.net, us-central1-alight-creative.cloudfunctions.net, api-account.kinemasters.com, www.xmind.app, www.xmind.net, www.xmind.cn, api.funimate.com, api.busuu.com, app.algoriddim.com, api.prod.headspace.com, api.picsart.com, lcs-mobile-cops.adobe.io, mb3admin.com, api-mobile.soundcloud.com, account.wps.com, account.wps.cn, v1.darkroom.co, server.yoyiapp.com, api.calm.com, com.zijayrate.analogcam, api.elsaspeak.com, api.photoroom.com, api.remini.ai, api.bazaart.me, *.oracle.bendingspoonsapps.com, license.pdfexpert.com, app.bilibili.com, api.flexibits.com, ssl-api.itranslateapp.com, payment-api.lingvist.com, accounts.agenda.com, service.ilovepdf.com, api.mondlylanguages.com, api.memrise.com, api.alohaprofile.com, pre.dailyyoga.com, app-subscription-proxy.accuweather.com, api-production.endel.io, flomoapp.com, backend.getdrafts.com, api.gotokeep.com, payments.invideo.io, restore-access.indream.app, photos.adobe.io, user-kaji-api.b612kaji.com, ars.alar.my, subscription.grammarly.com, notability.com, pro.smallpdf.com, billing.peakcloud.org, api.polaxiong.com, premium-api.myfitnesspal.com, apic.musixmatch.com, mid.zineapi.com, apimboom2.globaldelight.net, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, spclient.wg.spotify.com, *-spclient.spotify.com, gads.current.spotify.com, api.spotify.com, api.duolingo.com, ios-api-cdn.duolingo.com, api.mycake.me, quizlet.com

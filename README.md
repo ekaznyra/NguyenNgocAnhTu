@@ -1145,6 +1145,10 @@ https://github.com/ekaznyra/NguyenNgocAnhTu/tree/master/Module
 | 30 | 🎨 | **Mojo** | Tạo Story Instagram & Reels | `Pro` | *Generic Fallback 🚀* |
 | 31 | 🎨 | **Relens** | Hiệu ứng xoá phông DSLR | `Pro` | *Generic Fallback 🚀* |
 | 32 | 🎨 | **TouchRetouch** | Xoá vật thể thừa trong ảnh | `Pro` | *Generic Fallback 🚀* |
+| 33 | 🎨 | **Dazz Cam** | Máy ảnh Film cổ điển vintage | `Pro` | *In-App Purchase / RC* |
+| 34 | 🎨 | **ProCCD** | Camera kỹ thuật số CCD retro 2000s | `Pro` | *RevenueCat / IAP* |
+| 35 | 🎨 | **EE35 Film** | Máy ảnh cơ khí retro 1960s | `Pro` | *In-App Purchase / RC* |
+| 36 | 🎨 | **NOMO CAM** | Máy ảnh film tức thì Instant Camera | `Pro` | *In-App Purchase / RC* |
 
 </details>
 
@@ -1177,7 +1181,7 @@ https://github.com/ekaznyra/NguyenNgocAnhTu/tree/master/Module
 <details open>
 <summary>
 
-#### 📚 Học Tập & Ngôn Ngữ — 5 ứng dụng
+#### 📚 Học Tập & Ngôn Ngữ — 8 ứng dụng
 
 </summary>
 
@@ -1185,11 +1189,14 @@ https://github.com/ekaznyra/NguyenNgocAnhTu/tree/master/Module
 
 | # | | Ứng dụng | Mô tả chi tiết | Gói mở khoá | Engine xử lý |
 |:---:|:---:|:---|:---|:---:|:---:|
-| 45 | 📚 | **Busuu** | Học ngoại ngữ chuẩn CEFR | `Premium` | *Premium API* |
-| 46 | 📚 | **Photomath** | Giải toán bằng camera | `Plus` | *Premium API* |
-| 47 | 📚 | **Mondly** | Học ngôn ngữ với 33 thứ tiếng | `Premium` | *Premium API* |
-| 48 | 📚 | **Memrise** | Học từ vựng siêu nhanh | `Pro` | *Premium API* |
-| 49 | 📚 | **Beelinguapp** | Học ngôn ngữ qua truyện song ngữ | `Premium` | *Generic Fallback 🚀* |
+| 45 | 📚 | **Duolingo** | Học ngoại ngữ số 1 thế giới (Vô hạn tim, Max AI) | `Super / Max` | *Premium API* |
+| 46 | 📚 | **Cake** | Luyện nói tiếng Anh & Hàn qua video | `Plus` | *Premium API* |
+| 47 | 📚 | **Quizlet** | Ôn thi, flashcard & giải thích bài tập | `Plus` | *Premium API* |
+| 48 | 📚 | **Busuu** | Học ngoại ngữ chuẩn CEFR | `Premium` | *Premium API* |
+| 49 | 📚 | **Photomath** | Giải toán bằng camera | `Plus` | *Premium API* |
+| 50 | 📚 | **Mondly** | Học ngôn ngữ với 33 thứ tiếng | `Premium` | *Premium API* |
+| 51 | 📚 | **Memrise** | Học từ vựng siêu nhanh | `Pro` | *Premium API* |
+| 52 | 📚 | **Beelinguapp** | Học ngôn ngữ qua truyện song ngữ | `Premium` | *Generic Fallback 🚀* |
 
 </details>
 

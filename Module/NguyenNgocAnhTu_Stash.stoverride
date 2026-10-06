@@ -1007,6 +1007,10 @@ mitm:
   - "accounts.agenda.com"
   - "license.pdfexpert.com"
   - "api.sortedapp.com"
+  - "api.duolingo.com"
+  - "ios-api-cdn.duolingo.com"
+  - "api.mycake.me"
+  - "quizlet.com"
 
 force-http-engine:
   - "api.revenuecat.com:443"
@@ -1070,6 +1074,15 @@ script-providers:
     interval: 86400
   busuu-res:
     url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/busuu.js
+    interval: 86400
+  duolingo-res:
+    url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/duolingo.js
+    interval: 86400
+  cake-res:
+    url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/cake.js
+    interval: 86400
+  quizlet-res:
+    url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/quizlet.js
     interval: 86400
   hs-res:
     url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/headspace.js
@@ -1252,7 +1265,7 @@ scriptings:
       timeout: 10
   - http-response:
       name: sp-premium-json
-      match: ^https:\/\/(api\.spotify\.com\/v1\/me|.*-?spclient\.spotify\.com(:443)?\/(identity\/v3\/me|device-capabilities\/v1\/capabilities))
+      match: ^https:\/\/(api\.spotify\.com\/v1\/me|.*-?spclient\.spotify\.com(:443)?\/(identity\/v3\/me|device-capabilities\/v1\/capabilities|user-attributes\/v\d+\/attributes))
       script-provider: sp-premium-json
       require-body: true
       timeout: 30
@@ -1332,6 +1345,24 @@ scriptings:
       name: busuu-res
       match: ^https:\/\/api\.busuu\.com\/users\/me
       script-provider: busuu-res
+      require-body: true
+      timeout: 10
+  - http-response:
+      name: duolingo-res
+      match: ^https?:\/\/(api|ios-api-cdn)\.duolingo\.com\/(2017-06-30\/users\/|users\/)
+      script-provider: duolingo-res
+      require-body: true
+      timeout: 10
+  - http-response:
+      name: cake-res
+      match: ^https?:\/\/api\.mycake\.me\/v\d+\/users\/me
+      script-provider: cake-res
+      require-body: true
+      timeout: 10
+  - http-response:
+      name: quizlet-res
+      match: ^https?:\/\/quizlet\.com\/webapi\/3\.4\/users\/
+      script-provider: quizlet-res
       require-body: true
       timeout: 10
   - http-response:

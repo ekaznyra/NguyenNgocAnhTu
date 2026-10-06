@@ -62,7 +62,17 @@ const mapping = {
   'DayOne': ['premium', 'com.bloombuilt.dayone-ios.premium_yearly'],
   'Day One': ['premium', 'com.bloombuilt.dayone-ios.premium_yearly'],
   'DeepL': ['pro', 'deepl_pro_yearly'],
-  'Notability': ['premium', 'com.gingerlabs.Notability.premium_subscription']
+  'Notability': ['premium', 'com.gingerlabs.Notability.premium_subscription'],
+  'ProCCD': ['pro', 'com.yengshine.proccd.yearly'],
+  'proccd': ['pro', 'com.yengshine.proccd.yearly'],
+  'com.yengshine.proccd': ['pro', 'com.yengshine.proccd.yearly'],
+  'Dazz': ['pro', 'com.haocai.dazzcam.pro'],
+  'DazzCam': ['pro', 'com.haocai.dazzcam.pro'],
+  'dazz': ['pro', 'com.haocai.dazzcam.pro'],
+  'EE35': ['pro', 'com.eightivedesign.ee35.pro'],
+  'ee35': ['pro', 'com.eightivedesign.ee35.pro'],
+  'NOMO': ['pro', 'com.farlens.nomo.pro'],
+  'nomo': ['pro', 'com.farlens.nomo.pro']
 };
 
 // ========= Fallback entitlement keys ========= //
@@ -233,11 +243,40 @@ if (!match) {
   }
 }
 
+// Locket Gold: Inject toàn bộ danh mục product ID của Locket để tương thích mọi phiên bản / currency
+if (isLocket) {
+  var locketProds = ['locket_1600_1y', 'locket_3600_1y', 'locket_gold_yearly', 'locket_gold_monthly', 'locket_199_1m', 'locket_399_1m'];
+  for (var lp = 0; lp < locketProds.length; lp++) {
+    var pid = locketProds[lp];
+    obj.subscriber.subscriptions[pid] = Object.assign({}, obj.subscriber.subscriptions[pid] || {}, subTemplate, {
+      product_identifier: pid,
+      product_plan_identifier: pid
+    });
+  }
+}
+
 // Cấp quyền dưới các entitlement key mục tiêu
 for (var j = 0; j < entKeys.length; j++) {
   var ek2 = entKeys[j];
   obj.subscriber.entitlements[ek2] = Object.assign({}, obj.subscriber.entitlements[ek2] || {}, entTemplate);
 }
 
-$done({ body: JSON.stringify(obj) });
+var out = { body: JSON.stringify(obj) };
+// Cache-bust: ngăn client lưu cache response (tránh 304 Not Modified đè patch)
+try {
+  if ($response && $response.headers) {
+    var h = Object.assign({}, $response.headers);
+    h["Cache-Control"] = "no-store, no-cache, must-revalidate";
+    h["Pragma"] = "no-cache";
+    delete h["ETag"];
+    delete h["etag"];
+    delete h["X-RevenueCat-ETag"];
+    delete h["x-revenuecat-etag"];
+    delete h["If-None-Match"];
+    delete h["if-none-match"];
+    out.headers = h;
+  }
+} catch (e) {}
+
+$done(out);
 }

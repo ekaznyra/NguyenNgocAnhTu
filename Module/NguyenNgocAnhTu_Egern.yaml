@@ -2197,13 +2197,13 @@ header_rewrites:
   - match: "^https://api\\.spotify\\.com/v1/me$"
     action: del
     field: "etag"
-  - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/(identity/v3/me|device-capabilities/v1/capabilities)$"
+  - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/(identity/v3/me|device-capabilities/v1/capabilities|user-attributes/v\\d+/attributes)$"
     action: del
     field: "if-none-match"
-  - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/(identity/v3/me|device-capabilities/v1/capabilities)$"
+  - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/(identity/v3/me|device-capabilities/v1/capabilities|user-attributes/v\\d+/attributes)$"
     action: del
     field: "if-modified-since"
-  - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/(identity/v3/me|device-capabilities/v1/capabilities)$"
+  - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/(identity/v3/me|device-capabilities/v1/capabilities|user-attributes/v\\d+/attributes)$"
     action: del
     field: "etag"
 
@@ -2266,7 +2266,7 @@ scriptings:
       timeout: 10
   - http_response:
       name: "Spotify Premium JSON"
-      match: "^https://(api\\.spotify\\.com/v1/me|.*-?spclient\\.spotify\\.com(:443)?/(identity/v3/me|device-capabilities/v1/capabilities))"
+      match: "^https://(api\\.spotify\\.com/v1/me|.*-?spclient\\.spotify\\.com(:443)?/(identity/v3/me|device-capabilities/v1/capabilities|user-attributes/v\\d+/attributes))"
       script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js"
       body_required: true
       timeout: 30
@@ -2368,6 +2368,30 @@ scriptings:
       name: "Busuu Premium"
       match: "^https://api\\.busuu\\.com/users/me"
       script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/busuu.js"
+      body_required: true
+      timeout: 10
+
+  # 🦉 Duolingo
+  - http_response:
+      name: "Duolingo Super"
+      match: "^https?://(api|ios-api-cdn)\\.duolingo\\.com/(2017-06-30/users/|users/)"
+      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/duolingo.js"
+      body_required: true
+      timeout: 10
+
+  # 🍰 Cake
+  - http_response:
+      name: "Cake English Plus"
+      match: "^https?://api\\.mycake\\.me/v\\d+/users/me"
+      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/cake.js"
+      body_required: true
+      timeout: 10
+
+  # 📑 Quizlet
+  - http_response:
+      name: "Quizlet Plus"
+      match: "^https?://quizlet\\.com/webapi/3\\.4/users/"
+      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/quizlet.js"
       body_required: true
       timeout: 10
 
@@ -2831,3 +2855,7 @@ mitm:
     - "accounts.agenda.com"
     - "license.pdfexpert.com"
     - "api.sortedapp.com"
+    - "api.duolingo.com"
+    - "ios-api-cdn.duolingo.com"
+    - "api.mycake.me"
+    - "quizlet.com"

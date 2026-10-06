@@ -38,6 +38,10 @@ testApp('Day One', 'DayOne/6.0', 'premium');
 testApp('DeepL Pro', 'DeepL/4.0', 'pro');
 testApp('Notability', 'Notability/14.0', 'premium');
 testApp('Epik AI', 'Epik/4.0', 'pro');
+testApp('ProCCD Camera', 'ProCCD/2.0', 'pro');
+testApp('Dazz Cam', 'DazzCam/3.0', 'pro');
+testApp('EE35 Film', 'EE35/1.0', 'pro');
+testApp('NOMO CAM', 'NOMO/2.0', 'pro');
 testApp('Generic Fallback', 'RandomApp/1.0', 'pro');
 
 console.log('\n== KẾT QUẢ: ' + pass + ' PASS / ' + fail + ' FAIL ==');

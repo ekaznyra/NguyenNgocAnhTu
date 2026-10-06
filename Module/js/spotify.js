@@ -35,6 +35,11 @@
       body.restrictions = [];
       changed = true;
     }
+    // Mở khoá Explicit Content filter (không bị khoá theo vùng)
+    if (body.explicit_content && typeof body.explicit_content === "object") {
+      body.explicit_content.filter_locked = false;
+      changed = true;
+    }
     // Hỗ trợ các bản cập nhật endpoint có thuộc tính plan
     if (body.plan && typeof body.plan === "object") {
       body.plan.name = "premium";
@@ -60,6 +65,23 @@
     body.supports_hifi.fully_supported = true;
     body.supports_hifi.user_eligible = true;
     changed = true;
+  }
+
+  // spclient .../user-attributes/v1/attributes : stream quality, ads, mobile playback
+  if (url.indexOf("user-attributes") !== -1) {
+    if (body.values && typeof body.values === "object") {
+      body.values.type = "premium";
+      body.values.license = "premium";
+      body.values["financial-product"] = "pr:premium,du:12";
+      body.values.ads = "false";
+      body.values["high-bitrate"] = "true";
+      body.values.mobile = "true";
+      body.values.can_stream = "true";
+      body.values.unlimited = "true";
+      body.values["catalogue-exclusive"] = "true";
+      body.values["loudness-levels"] = "1";
+      changed = true;
+    }
   }
 
   if (changed) {

@@ -32,6 +32,9 @@ jobs:
       - name: Run RevenueCat Engine Tests
         run: node scripts/test_revenuecat.js
 
+      - name: Run Education Suite Engine Tests
+        run: node scripts/test_education.js
+
       - name: Run JS Script Resilience Tests
         run: node scripts/test_all_scripts.js
 

@@ -51,6 +51,15 @@ const bundle_id = ddm.receipt["bundle_id"] || ddm.receipt["Bundle_Id"] || "";
 
 // ===== App列表 =====
 const list = {
+  'dazz': { tp: 'timeb', hx: 'hxpda', id: "com.haocai.dazzcam.forever" }, // Dazz Cam
+  'com.haocai.DazzCam': { tp: 'timeb', hx: 'hxpda', id: "com.haocai.dazzcam.forever" }, // Dazz Cam
+  'dazz.camera': { tp: 'timeb', hx: 'hxpda', id: "com.haocai.dazzcam.forever" }, // Dazz Cam
+  'ProCCD': { tp: 'timeb', hx: 'hxpda', id: "com.yengshine.proccd.yearly" }, // ProCCD
+  'com.yengshine.proccd': { tp: 'timeb', hx: 'hxpda', id: "com.yengshine.proccd.yearly" }, // ProCCD
+  'EE35': { tp: 'timeb', hx: 'hxpda', id: "com.eightivedesign.ee35.lifetime" }, // EE35 Film
+  'com.eightivedesign.ee35': { tp: 'timeb', hx: 'hxpda', id: "com.eightivedesign.ee35.lifetime" }, // EE35 Film
+  'NOMO': { tp: 'timeb', hx: 'hxpda', id: "com.farlens.nomo.pro" }, // NOMO CAM
+  'com.farlens.nomo': { tp: 'timeb', hx: 'hxpda', id: "com.farlens.nomo.pro" }, // NOMO CAM
   'bazaart': { tp: 'timea', hx: 'hxpda', id: "Bazaart_Super_Three_Months_v4" }, //Bazaart百色特
   'SHScan': { tp: 'timea', hx: 'hxpda', id: "com.ws.SHScanFree.Year" }, //扫描王
   'EnglishTalent': { tp: 'timea', hx: 'hxpda', id: "com.mango.newYearVip", strict: "auto" }, //英语演讲

@@ -104,5 +104,34 @@ console.log("== spotify.js unit test ==");
   check("device-capabilities: cache-bust", out.headers && out.headers["Cache-Control"] === "no-store");
 }
 
+// 9. user-attributes/v1/attributes -> type=premium, high-bitrate=true, ads=false
+{
+  const inBody = JSON.stringify({
+    values: {
+      type: "free",
+      ads: "true",
+      "high-bitrate": "false"
+    }
+  });
+  const out = run("https://spclient.wg.spotify.com/user-attributes/v1/attributes", inBody, { ETag: "W/\"attr\"" });
+  const b = JSON.parse(out.body);
+  check("user-attributes: type=premium", b.values && b.values.type === "premium", out.body);
+  check("user-attributes: high-bitrate=true", b.values && b.values["high-bitrate"] === "true", out.body);
+  check("user-attributes: ads=false", b.values && b.values.ads === "false", out.body);
+  check("user-attributes: cache-bust", out.headers && out.headers["Cache-Control"] === "no-store");
+}
+
+// 10. /v1/me explicit_content filter_locked unlocked
+{
+  const inBody = JSON.stringify({
+    product: "free",
+    type: "user",
+    explicit_content: { filter_enabled: false, filter_locked: true }
+  });
+  const out = run("https://api.spotify.com/v1/me", inBody, {});
+  const b = JSON.parse(out.body);
+  check("v1/me: explicit_content filter_locked=false", b.explicit_content && b.explicit_content.filter_locked === false, out.body);
+}
+
 console.log("\n== KẾT QUẢ: " + pass + " PASS / " + fail + " FAIL ==");
 process.exit(fail === 0 ? 0 : 1);

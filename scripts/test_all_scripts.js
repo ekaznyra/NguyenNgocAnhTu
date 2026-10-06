@@ -58,6 +58,6 @@ if (failures.length > 0) {
   }
   process.exit(1);
 } else {
-  console.log('✅ TẤT CẢ 28/28 SCRIPT ĐẠT ĐỘ BỀN VỮNG NULL-SAFETY 100%');
+  console.log(`✅ TẤT CẢ ${files.length}/${files.length} SCRIPT ĐẠT ĐỘ BỀN VỮNG NULL-SAFETY 100%`);
   process.exit(0);
 }
