@@ -20,32 +20,35 @@ const list = {
 if (!objc || typeof objc !== "object") {
     $done({});
 } else {
-    for (const key of Object.keys(list)) {
-        if (new RegExp(`^${key}`, "i").test(ua)) {
-            objc.result = Object.assign({}, objc.result, {
-                "products": [
-                    {
-                        "managed": true,
-                        "status": "ACTIVE",
-                        "startDate": times,
-                        "productId": list[key].id,
-                        "expireDate": 32662137600000
-                    }
-                ],
-                "tickets": [
-                    {
-                        "managed": true,
-                        "status": "ACTIVE",
-                        "startDate": times,
-                        "productId": list[key].id,
-                        "expireDate": 32662137600000
-                    }
-                ],
-                "activated": true
-            });
-            console.log("✅ Unlock thành công — z3rokaze");
-            break;
-        }
+    let targetKey = "iphoneapp.snow";
+    if (/epik/i.test(ua)) {
+        targetKey = "iphoneapp.epik";
+    } else if (/snow/i.test(ua)) {
+        targetKey = "iphoneapp.snow";
     }
+    const targetItem = list[targetKey] || list["iphoneapp.snow"];
+
+    objc.result = Object.assign({}, objc.result, {
+        "products": [
+            {
+                "managed": true,
+                "status": "ACTIVE",
+                "startDate": times,
+                "productId": targetItem.id,
+                "expireDate": 32662137600000
+            }
+        ],
+        "tickets": [
+            {
+                "managed": true,
+                "status": "ACTIVE",
+                "startDate": times,
+                "productId": targetItem.id,
+                "expireDate": 32662137600000
+            }
+        ],
+        "activated": true
+    });
+    console.log("✅ Unlock thành công — z3rokaze (" + targetKey + ")");
     $done({ body: JSON.stringify(objc) });
 }

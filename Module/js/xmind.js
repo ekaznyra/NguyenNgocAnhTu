@@ -14,6 +14,6 @@ if (!obj || typeof obj !== "object") {
 } else {
     obj.license = obj.license || {};
     obj.license.status = "sub";
-    obj.license.expireTime = 1893456000000; // 2030-01-01 ms
+    obj.license.expireTime = 4071600000000; // 2099-01-01 ms
     $done({ body: JSON.stringify(obj) });
 }

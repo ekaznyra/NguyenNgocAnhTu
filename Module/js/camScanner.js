@@ -7,7 +7,7 @@
 
 var banhsbao;
 try { banhsbao = JSON.parse($response.body); } catch (e) {}
-const vipa = '/purchase/cs/query_property';
+const vipa = '/purchase/cs/query_prop';
 const vipb = '/queryProperty';
 const tqzx = '/getPrivilegeItem';
 const vip = {
