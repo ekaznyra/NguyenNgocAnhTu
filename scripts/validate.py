@@ -204,6 +204,20 @@ def check_spotify_parity() -> None:
         print(f"[spotify] OK — 8/8 module đồng bộ (wire + MITM + cache-bust)")
 
 
+def check_education_parity() -> None:
+    bad: list[str] = []
+    edu_scripts = ["duolingo.js", "cake.js", "quizlet.js"]
+    for f in module_files():
+        t = f.read_text(encoding="utf-8")
+        missing = [s for s in edu_scripts if f"Module/js/{s}" not in t]
+        if missing:
+            bad.append(f"{f.name} (thiếu: {', '.join(missing)})")
+    if bad:
+        errors.append("[education] Các module thiếu đồng bộ Education Suite: " + "; ".join(bad))
+    else:
+        print(f"[education] OK — 8/8 module đồng bộ (Duolingo, Cake, Quizlet)")
+
+
 def main() -> int:
     check_versions()
     check_json_arguments()
@@ -212,6 +226,7 @@ def main() -> int:
     check_referenced_files()
     check_js_references()
     check_spotify_parity()
+    check_education_parity()
     print("\n" + "=" * 60)
     if warnings:
         print(f"⚠️  {len(warnings)} cảnh báo:")

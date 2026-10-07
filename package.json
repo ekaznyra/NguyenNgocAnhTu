@@ -1,0 +1,18 @@
+{
+  "name": "nguyen-ngoc-anh-tu-rules",
+  "version": "2.8.3",
+  "description": "Premium bypass modules, rewrite rules, and security testing harnesses for Surge, Loon, Shadowrocket, Quantumult X, Egern, LanceX, and Stash.",
+  "author": "Nguyễn Ngọc Anh Tú (z3rokaze)",
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/ekaznyra/NguyenNgocAnhTu",
+  "scripts": {
+    "test": "node scripts/test_spotify.js && node scripts/test_revenuecat.js && node scripts/test_education.js && node scripts/test_all_scripts.js && node scripts/test_all_functional.js && python scripts/validate.py",
+    "test:spotify": "node scripts/test_spotify.js",
+    "test:revenuecat": "node scripts/test_revenuecat.js",
+    "test:education": "node scripts/test_education.js",
+    "test:resilience": "node scripts/test_all_scripts.js",
+    "test:functional": "node scripts/test_all_functional.js",
+    "validate": "python scripts/validate.py",
+    "audit:links": "python scripts/audit_links.py"
+  }
+}
