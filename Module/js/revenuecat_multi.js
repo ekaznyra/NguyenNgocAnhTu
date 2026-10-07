@@ -72,7 +72,15 @@ const mapping = {
   'EE35': ['pro', 'com.eightivedesign.ee35.pro'],
   'ee35': ['pro', 'com.eightivedesign.ee35.pro'],
   'NOMO': ['pro', 'com.farlens.nomo.pro'],
-  'nomo': ['pro', 'com.farlens.nomo.pro']
+  'nomo': ['pro', 'com.farlens.nomo.pro'],
+  'NOMO Point': ['pro', 'com.farlens.point.pro'],
+  'nomo point': ['pro', 'com.farlens.point.pro'],
+  'KUNI': ['pro', 'com.ginnypix.kunicam.forever'],
+  'kuni': ['pro', 'com.ginnypix.kunicam.forever'],
+  '1998 Cam': ['pro', 'com.canhtran.1998cam.yearly'],
+  '1998cam': ['pro', 'com.canhtran.1998cam.yearly'],
+  'LoFi Cam': ['pro', 'com.loficam.pro'],
+  'loficam': ['pro', 'com.loficam.pro']
 };
 
 // ========= Fallback entitlement keys ========= //

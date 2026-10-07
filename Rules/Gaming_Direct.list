@@ -76,3 +76,15 @@ DOMAIN-SUFFIX,playstationnetwork.com
 DOMAIN-SUFFIX,xboxlive.com
 DOMAIN-SUFFIX,netease.com
 DOMAIN-SUFFIX,neteasegames.com
+# --- Bổ sung (10-2026): VNG, Riot, Discord Voice RTC & Battle.net ---
+DOMAIN-SUFFIX,vnggames.com
+DOMAIN-SUFFIX,vnggames.vn
+DOMAIN-SUFFIX,zing.vn
+DOMAIN-SUFFIX,pvp.net
+DOMAIN-SUFFIX,val.riotcdn.net
+DOMAIN-SUFFIX,discord.gg
+DOMAIN-SUFFIX,discord.media
+DOMAIN-SUFFIX,discordapp.net
+DOMAIN-SUFFIX,battle.net
+DOMAIN-SUFFIX,blizzard.com
+DOMAIN-SUFFIX,vivox.com

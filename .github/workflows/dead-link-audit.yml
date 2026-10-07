@@ -6,6 +6,10 @@ on:
     - cron: '0 0 * * 0'
   workflow_dispatch:
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   audit-links:
     name: Audit Remote Script & Rule Links
@@ -22,3 +26,15 @@ jobs:
 
       - name: Audit Remote Links
         run: python scripts/audit_links.py
+
+      - name: Alert Issue on Dead Links
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🚨 Cảnh báo: Phát hiện liên kết bị chết (404 Dead Link) trong Module/Rules',
+              body: 'Hệ thống tự động phát hiện một hoặc nhiều liên kết script/rule bên thứ ba bị 404 hoặc không phản hồi trong lần kiểm toán định kỳ.\n\nVui lòng kiểm tra log workflow của job `Audit Remote Script & Rule Links` để ghim lại commit SHA hoặc thay thế link dự phòng.'
+            });

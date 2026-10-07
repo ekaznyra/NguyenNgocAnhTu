@@ -54,12 +54,22 @@ const list = {
   'dazz': { tp: 'timeb', hx: 'hxpda', id: "com.haocai.dazzcam.forever" }, // Dazz Cam
   'com.haocai.DazzCam': { tp: 'timeb', hx: 'hxpda', id: "com.haocai.dazzcam.forever" }, // Dazz Cam
   'dazz.camera': { tp: 'timeb', hx: 'hxpda', id: "com.haocai.dazzcam.forever" }, // Dazz Cam
+  'com.haocai.dazz': { tp: 'timeb', hx: 'hxpda', id: "com.haocai.dazzcam.forever" }, // Dazz Cam
   'ProCCD': { tp: 'timeb', hx: 'hxpda', id: "com.yengshine.proccd.yearly" }, // ProCCD
   'com.yengshine.proccd': { tp: 'timeb', hx: 'hxpda', id: "com.yengshine.proccd.yearly" }, // ProCCD
+  'com.yengshine.proccd.lifetime': { tp: 'timeb', hx: 'hxpda', id: "com.yengshine.proccd.yearly" }, // ProCCD Lifetime
   'EE35': { tp: 'timeb', hx: 'hxpda', id: "com.eightivedesign.ee35.lifetime" }, // EE35 Film
   'com.eightivedesign.ee35': { tp: 'timeb', hx: 'hxpda', id: "com.eightivedesign.ee35.lifetime" }, // EE35 Film
   'NOMO': { tp: 'timeb', hx: 'hxpda', id: "com.farlens.nomo.pro" }, // NOMO CAM
   'com.farlens.nomo': { tp: 'timeb', hx: 'hxpda', id: "com.farlens.nomo.pro" }, // NOMO CAM
+  'NOMO Point': { tp: 'timeb', hx: 'hxpda', id: "com.farlens.point.pro" }, // NOMO Point
+  'com.farlens.point': { tp: 'timeb', hx: 'hxpda', id: "com.farlens.point.pro" }, // NOMO Point
+  'kuni': { tp: 'timeb', hx: 'hxpda', id: "com.ginnypix.kunicam.forever" }, // KUNI Cam
+  'com.ginnypix.kunicam': { tp: 'timeb', hx: 'hxpda', id: "com.ginnypix.kunicam.forever" }, // KUNI Cam
+  '1998cam': { tp: 'timeb', hx: 'hxpda', id: "com.canhtran.1998cam.yearly" }, // 1998 Cam
+  'com.canhtran.1998cam': { tp: 'timeb', hx: 'hxpda', id: "com.canhtran.1998cam.yearly" }, // 1998 Cam
+  'loficam': { tp: 'timeb', hx: 'hxpda', id: "com.loficam.pro" }, // LoFi Cam
+  'com.loficam': { tp: 'timeb', hx: 'hxpda', id: "com.loficam.pro" }, // LoFi Cam
   'bazaart': { tp: 'timea', hx: 'hxpda', id: "Bazaart_Super_Three_Months_v4" }, //Bazaart百色特
   'SHScan': { tp: 'timea', hx: 'hxpda', id: "com.ws.SHScanFree.Year" }, //扫描王
   'EnglishTalent': { tp: 'timea', hx: 'hxpda', id: "com.mango.newYearVip", strict: "auto" }, //英语演讲
