@@ -38,5 +38,8 @@ jobs:
       - name: Run JS Script Resilience Tests
         run: node scripts/test_all_scripts.js
 
+      - name: Run Standalone Functional Positive Tests
+        run: node scripts/test_all_functional.js
+
       - name: Run Full Module & Rules Validation
         run: python scripts/validate.py
