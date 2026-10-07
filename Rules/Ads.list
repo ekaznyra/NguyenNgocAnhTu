@@ -284,12 +284,15 @@ DOMAIN-SUFFIX,minero.cc
 DOMAIN-SUFFIX,jsecoin.com
 DOMAIN-SUFFIX,coinhive-manager.com
 
-# --- Spotify Podcast Ads (08-2026) ---
+# --- Spotify Podcast Ads & Audio Segments ---
 DOMAIN,audio-sp-sto.pscdn.co
 DOMAIN,audio-sp-ash.pscdn.co
 DOMAIN,audio-sp-dca.pscdn.co
 DOMAIN,audio-sp-lon.pscdn.co
 DOMAIN,podcastads.spotify.com
+DOMAIN-SUFFIX,audio-ak-spotify-com.akamaized.net
+DOMAIN-SUFFIX,heads-ak-spotify-com.akamaized.net
+DOMAIN,adeventtracker.spotify.com
 
 # --- Meta / Facebook Ads bổ sung (08-2026) ---
 DOMAIN-SUFFIX,admarketing.facebook.com
