@@ -157,10 +157,10 @@ youtube.response = type=http-response, pattern=^https:\/\/youtubei\.googleapis\.
 # ===== Spotify iOS15 (app2smile) =====
 spotify-json = type=http-request, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/, requires-body=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-json.js
 spotify-proto = type=http-response, pattern=^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$, requires-body=1, binary-body-mode=1, max-size=0, script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-proto.js, script-update-interval=0
-Spotify_Premium = type=http-response, pattern=^https:\/\/(api\.spotify\.com\/v1\/me|.*-?spclient\.spotify\.com(:443)?\/(identity\/v3\/me|device-capabilities\/v1\/capabilities|user-attributes\/v\d+\/attributes)), requires-body=1, max-size=-1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js
+Spotify_Premium = type=http-response, pattern=^https?:\/\/(api\.spotify\.com\/v1\/me|.*spclient.*\.spotify\.com(:443)?\/(identity\/v3\/me|device-capabilities\/v1\/capabilities|user-attributes\/v\d+\/attributes|bootstrap\/v1\/bootstrap|melody\/v1\/check_license)), requires-body=1, max-size=-1, timeout=30, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js
 
-# === SOUNDCLOUD GO+ - Marol62926/MarScrpt (yfamilys, 2026-05-19) ===
-soundcloud-response = type=http-response, pattern=^https?:\/\/api-mobile\.soundcloud\.com\/configuration\/ios, script-path=https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/soundcloud.js, requires-body=1, timeout=15
+# === SOUNDCLOUD GO+ - ekaznyra (2026-05-19) ===
+soundcloud-response = type=http-response, pattern=^https?:\/\/api-mobile\.soundcloud\.com\/configuration\/ios, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/soundcloud.js, requires-body=1, timeout=15
 
 # === PICSART GOLD - ekaznyra (2026-04-21) ===
 picsart-response = type=http-response, pattern=^https:\/\/api\.picsart\.com\/gw-v2\/shop\/subscription\/apple\/purchases, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/PicsArt.js, requires-body=1, max-size=0, timeout=60
@@ -184,8 +184,8 @@ kinemaster-response = type=http-response, pattern=^https:\/\/api-account\.kinema
 # === DJAY PRO - ekaznyra (2026-05-09) ===
 djay-response = type=http-response, pattern=^https:\/\/app\.algoriddim\.com\/api\/v1\/validate-receipt, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/djay.js, requires-body=1, timeout=10, max-size=131072
 
-# === CALM PREMIUM - Alex0510/Eric (yfamilys, 2026-05-19) ===
-calm-response = type=http-response, pattern=^https?:\/\/api\.calm\.com\/(me|device|ios\/receipt), script-path=https://raw.githubusercontent.com/Alex0510/Eric/Alex0510/surge/surge/Script/caml.js, requires-body=1, max-size=0, timeout=10
+# === CALM PREMIUM - ekaznyra ===
+calm-response = type=http-response, pattern=^https?:\/\/api\.calm\.com\/(me|device|ios\/receipt), script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/calm.js, requires-body=1, max-size=0, timeout=10
 
 # === BUSUU PREMIUM - ekaznyra (2026-05-09) ===
 busuu-response = type=http-response, pattern=^https:\/\/api\.busuu\.com\/users\/me, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/busuu.js, requires-body=1, timeout=10, max-size=131072
@@ -241,8 +241,14 @@ b612-response = type=http-response, pattern=^https?:\/\/user-kaji-api\.b612kaji\
 # === MEITU XIUXIU PREMIUM - ekaznyra (2026-05-09) ===
 meitu-response = type=http-response, pattern=^https?:\/\/(h5|api)\.xiuxiu\.meitu\.com\/v\d\/(h\d\/vip|vip|user)\/, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/meitu.js, requires-body=1, timeout=60
 
-# === WPS OFFICE PREMIUM - I-am-R-E (yfamilys, 2026-05-19) ===
-wps-response = type=http-response, pattern=^https?:\/\/.*?account\.wps\.(com|cn)(:\d+)?\/api\/users\/\w+\/overview$, script-path=https://raw.githubusercontent.com/I-am-R-E/Functional-Store-Hub/38f4fa9b9a963457d7ea5a93fdcd1cd44945a49e/WPSOffice/Script/WPS.js, requires-body=1, max-size=0, timeout=10
+# === WPS OFFICE PREMIUM - ekaznyra ===
+wps-response = type=http-response, pattern=^https?:\/\/.*?account\.wps\.(com|cn)(:\d+)?\/api\/users\/\w+\/overview$, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/wps.js, requires-body=1, max-size=0, timeout=10
+
+# === DARKROOM PRO - ekaznyra ===
+darkroom-response = type=http-response, pattern=^https:\/\/v1\.darkroom\.co\/v1\/receipts\/apple, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/darkroom.js, requires-body=1, timeout=10
+
+# === OLDROLL CAMERA VIP - ekaznyra ===
+oldroll-response = type=http-response, pattern=^https?:\/\/com\.zijayrate\.analogcam\/vipforever10, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/oldroll.js, requires-body=1, timeout=10
 
 # === XMIND PREMIUM - ekaznyra (2026-05-09) ===
 xmind-response = type=http-response, pattern=^https?:\/\/www\.xmind\.(cn|net|app)\/_res\/devices, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/xmind.js, requires-body=1, max-size=0, timeout=10
@@ -274,8 +280,8 @@ mfp-res=type=http-response, pattern=^https?:\/\/premium-api\.myfitnesspal\.com\/
 # === MUSIXMATCH PREMIUM - Marol62926 (yfamilys, 2026-05-19) ===
 mxm-res=type=http-response, pattern=^https?:\/\/apic\.musixmatch\.com\/ws\/1\.1\/config\.get, script-path=https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/musixmatch.js, requires-body=1, timeout=10
 
-# === FIMO CAMERA - ddgksf2013 (yfamilys, 2026-05-19) ===
-fimo-res=type=http-response, pattern=^https:\/\/server\.yoyiapp\.com\/fimo-user\/user$, script-path=https://raw.githubusercontent.com/deezertidal/private/38b9581548b5070f2dc9c6bfa243cdacf0672d31/js-backup/Crack/fimo.js, requires-body=1, timeout=10
+# === FIMO CAMERA - ekaznyra (2026-05-19) ===
+fimo-res=type=http-response, pattern=^https:\/\/server\.yoyiapp\.com\/fimo-user\/user$, script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/fimo.js, requires-body=1, timeout=10
 
 # === VARLENS PREMIUM - I-am-R-E (yfamilys, 2026-05-19) ===
 varlens-res=type=http-response, pattern=^https:\/\/mid\.zineapi\.com\/@varlens\/api\/user\/info\/, script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/Varlens.js, requires-body=1, timeout=10
@@ -363,4 +369,4 @@ sorted-response = type=http-response, pattern=^https:\/\/api\.sortedapp\.com\/re
 
 [MITM]
 enable = true
-hostname = %APPEND% *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, spclient.wg.spotify.com, *-spclient.spotify.com, gads.current.spotify.com, api.spotify.com, api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api.picsart.com, api.picsart.cn, api.meiease.com, api.meiease.cn, api-mobile.soundcloud.com, mb3admin.com, api-account.kinemasters.com, photos.adobe.io, lcs-mobile-cops.adobe.io, app.algoriddim.com, api.calm.com, api.busuu.com, api.prod.headspace.com, vsco.co, api.funimate.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, premium-*.truecaller.com, *.intsig.net, api.mr.pixocial.com, newbeee-api.beautyplus.com, user-snow-api.snow.me, user-kaji-api.b612kaji.com, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, account.wps.cn, *.account.wps.com, www.xmind.cn, www.xmind.net, www.xmind.app, ars.alar.my, subscription.grammarly.com, notability.com, lapi.photomath.net, pro.smallpdf.com, billing.peakcloud.org, api.polaxiong.com, premium-api.myfitnesspal.com, apic.musixmatch.com, server.yoyiapp.com, mid.zineapi.com, apimboom2.globaldelight.net, api.flexibits.com, api.craft.do, dayone.app, restore-access.indream.app, service.ilovepdf.com, api.mondlylanguages.com, api.memrise.com, api.alohaprofile.com, pre.dailyyoga.com, app-subscription-proxy.accuweather.com, api-production.endel.io, flomoapp.com, backend.getdrafts.com, api.gotokeep.com, payments.invideo.io, ssl-api.itranslateapp.com, payment-api.lingvist.com, *.oracle.bendingspoonsapps.com, app.bilibili.com, accounts.agenda.com, license.pdfexpert.com, api.sortedapp.com, sub.store, api.duolingo.com, ios-api-cdn.duolingo.com, api.mycake.me, quizlet.com
+hostname = %APPEND% *.googlevideo.com, youtubei.googleapis.com, www.youtube.com, s.youtube.com, spclient.wg.spotify.com, *-spclient.spotify.com, gads.current.spotify.com, api.spotify.com, api.revenuecat.com, api.rc-backup.com, buy.itunes.apple.com, api.picsart.com, api.picsart.cn, api.meiease.com, api.meiease.cn, api-mobile.soundcloud.com, mb3admin.com, api-account.kinemasters.com, photos.adobe.io, lcs-mobile-cops.adobe.io, app.algoriddim.com, api.calm.com, api.busuu.com, api.prod.headspace.com, vsco.co, api.funimate.com, us-central1-alight-creative.cloudfunctions.net, api-sub.meitu.com, premium-*.truecaller.com, *.intsig.net, api.mr.pixocial.com, newbeee-api.beautyplus.com, user-snow-api.snow.me, user-kaji-api.b612kaji.com, h5.xiuxiu.meitu.com, api.xiuxiu.meitu.com, account.wps.cn, *.account.wps.com, www.xmind.cn, www.xmind.net, www.xmind.app, ars.alar.my, subscription.grammarly.com, notability.com, lapi.photomath.net, pro.smallpdf.com, billing.peakcloud.org, api.polaxiong.com, premium-api.myfitnesspal.com, apic.musixmatch.com, server.yoyiapp.com, mid.zineapi.com, apimboom2.globaldelight.net, api.flexibits.com, api.craft.do, dayone.app, restore-access.indream.app, service.ilovepdf.com, api.mondlylanguages.com, api.memrise.com, api.alohaprofile.com, pre.dailyyoga.com, app-subscription-proxy.accuweather.com, api-production.endel.io, flomoapp.com, backend.getdrafts.com, api.gotokeep.com, payments.invideo.io, ssl-api.itranslateapp.com, payment-api.lingvist.com, *.oracle.bendingspoonsapps.com, app.bilibili.com, accounts.agenda.com, license.pdfexpert.com, api.sortedapp.com, sub.store, api.duolingo.com, ios-api-cdn.duolingo.com, api.mycake.me, quizlet.com, v1.darkroom.co, com.zijayrate.analogcam, api.elsaspeak.com, api.photoroom.com, api.remini.ai, api.bazaart.me

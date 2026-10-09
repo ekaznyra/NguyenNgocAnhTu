@@ -1011,6 +1011,12 @@ mitm:
   - "ios-api-cdn.duolingo.com"
   - "api.mycake.me"
   - "quizlet.com"
+  - "v1.darkroom.co"
+  - "com.zijayrate.analogcam"
+  - "api.elsaspeak.com"
+  - "api.photoroom.com"
+  - "api.remini.ai"
+  - "api.bazaart.me"
 
 force-http-engine:
   - "api.revenuecat.com:443"
@@ -1043,7 +1049,7 @@ script-providers:
     url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js
     interval: 86400
   sc-res:
-    url: https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/soundcloud.js
+    url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/soundcloud.js
     interval: 86400
   pa-res:
     url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/PicsArt.js
@@ -1070,7 +1076,7 @@ script-providers:
     url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/djay.js
     interval: 86400
   calm-res:
-    url: https://raw.githubusercontent.com/Alex0510/Eric/Alex0510/surge/surge/Script/caml.js
+    url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/calm.js
     interval: 86400
   busuu-res:
     url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/busuu.js
@@ -1121,7 +1127,13 @@ script-providers:
     url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/iTunes.js
     interval: 86400
   wps-res:
-    url: https://raw.githubusercontent.com/I-am-R-E/Functional-Store-Hub/38f4fa9b9a963457d7ea5a93fdcd1cd44945a49e/WPSOffice/Script/WPS.js
+    url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/wps.js
+    interval: 86400
+  darkroom-res:
+    url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/darkroom.js
+    interval: 86400
+  oldroll-res:
+    url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/oldroll.js
     interval: 86400
   xmind-res:
     url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/xmind.js
@@ -1154,7 +1166,7 @@ script-providers:
     url: https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/musixmatch.js
     interval: 86400
   fimo-res:
-    url: https://raw.githubusercontent.com/deezertidal/private/38b9581548b5070f2dc9c6bfa243cdacf0672d31/js-backup/Crack/fimo.js
+    url: https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/fimo.js
     interval: 86400
   varlens-res:
     url: https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/Varlens.js
@@ -1265,7 +1277,7 @@ scriptings:
       timeout: 10
   - http-response:
       name: sp-premium-json
-      match: ^https:\/\/(api\.spotify\.com\/v1\/me|.*-?spclient\.spotify\.com(:443)?\/(identity\/v3\/me|device-capabilities\/v1\/capabilities|user-attributes\/v\d+\/attributes))
+      match: ^https?:\/\/(api\.spotify\.com\/v1\/me|.*spclient.*\.spotify\.com(:443)?\/(identity\/v3\/me|device-capabilities\/v1\/capabilities|user-attributes\/v\d+\/attributes|bootstrap\/v1\/bootstrap|melody\/v1\/check_license))
       script-provider: sp-premium-json
       require-body: true
       timeout: 30
@@ -1441,6 +1453,18 @@ scriptings:
       name: wps-res
       match: ^https?:\/\/.*?account\.wps\.(com|cn)(:\d+)?\/api\/users\/\w+\/overview$
       script-provider: wps-res
+      require-body: true
+      timeout: 10
+  - http-response:
+      name: darkroom-res
+      match: ^https:\/\/v1\.darkroom\.co\/v1\/receipts\/apple
+      script-provider: darkroom-res
+      require-body: true
+      timeout: 10
+  - http-response:
+      name: oldroll-res
+      match: ^https?:\/\/com\.zijayrate\.analogcam\/vipforever10
+      script-provider: oldroll-res
       require-body: true
       timeout: 10
   - http-response:

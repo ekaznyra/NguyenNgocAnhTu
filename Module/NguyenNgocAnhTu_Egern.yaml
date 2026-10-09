@@ -2266,7 +2266,7 @@ scriptings:
       timeout: 10
   - http_response:
       name: "Spotify Premium JSON"
-      match: "^https://(api\\.spotify\\.com/v1/me|.*-?spclient\\.spotify\\.com(:443)?/(identity/v3/me|device-capabilities/v1/capabilities|user-attributes/v\\d+/attributes))"
+      match: "^https?://(api\\.spotify\\.com/v1/me|.*spclient.*\\.spotify\\.com(:443)?/(identity/v3/me|device-capabilities/v1/capabilities|user-attributes/v\\d+/attributes|bootstrap/v1/bootstrap|melody/v1/check_license))"
       script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js"
       body_required: true
       timeout: 30
@@ -2287,11 +2287,11 @@ scriptings:
       body_required: true
       timeout: 60
 
-  # 🎧 SoundCloud Go+ (yfamilys)
+  # 🎧 SoundCloud Go+ (ekaznyra)
   - http_response:
       name: "SoundCloud Go+"
       match: "^https?://api-mobile\\.soundcloud\\.com/configuration/ios"
-      script_url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/soundcloud.js"
+      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/soundcloud.js"
       body_required: true
       timeout: 15
 
@@ -2355,11 +2355,11 @@ scriptings:
       body_required: true
       timeout: 10
 
-  # 🧘 Calm (yfamilys)
+  # 🧘 Calm (ekaznyra)
   - http_response:
       name: "Calm Premium"
       match: "^https?://api\\.calm\\.com/(me|device|ios/receipt)"
-      script_url: "https://raw.githubusercontent.com/Alex0510/Eric/Alex0510/surge/surge/Script/caml.js"
+      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/calm.js"
       body_required: true
       timeout: 10
 
@@ -2491,11 +2491,27 @@ scriptings:
       body_required: true
       timeout: 60
 
-  # 📝 WPS Office (yfamilys)
+  # 📝 WPS Office (ekaznyra)
   - http_response:
       name: "WPS Office"
       match: "^https?://.*?account\\.wps\\.(com|cn)(:\\d+)?/api/users/\\w+/overview$"
-      script_url: "https://raw.githubusercontent.com/I-am-R-E/Functional-Store-Hub/38f4fa9b9a963457d7ea5a93fdcd1cd44945a49e/WPSOffice/Script/WPS.js"
+      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/wps.js"
+      body_required: true
+      timeout: 10
+
+  # 🎨 Darkroom Pro (ekaznyra)
+  - http_response:
+      name: "Darkroom Pro"
+      match: "^https://v1\\.darkroom\\.co/v1/receipts/apple"
+      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/darkroom.js"
+      body_required: true
+      timeout: 10
+
+  # 📷 OldRoll Camera VIP (ekaznyra)
+  - http_response:
+      name: "OldRoll Camera"
+      match: "^https?://com\\.zijayrate\\.analogcam/vipforever10"
+      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/oldroll.js"
       body_required: true
       timeout: 10
 
@@ -2579,11 +2595,11 @@ scriptings:
       body_required: true
       timeout: 10
 
-  # 📷 Fimo Camera (yfamilys)
+  # 📷 Fimo Camera (ekaznyra)
   - http_response:
       name: "Fimo Camera"
       match: "^https://server\\.yoyiapp\\.com/fimo-user/user$"
-      script_url: "https://raw.githubusercontent.com/deezertidal/private/38b9581548b5070f2dc9c6bfa243cdacf0672d31/js-backup/Crack/fimo.js"
+      script_url: "https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/fimo.js"
       body_required: true
       timeout: 10
 
@@ -2794,7 +2810,8 @@ mitm:
     - "buy.itunes.apple.com"
     - "api.picsart.com"
     - "api.picsart.cn"
-    - "api.meiease.c*"
+    - "api.meiease.com"
+    - "api.meiease.cn"
     - "api-mobile.soundcloud.com"
     - "mb3admin.com"
     - "api-account.kinemasters.com"
@@ -2859,3 +2876,9 @@ mitm:
     - "ios-api-cdn.duolingo.com"
     - "api.mycake.me"
     - "quizlet.com"
+    - "v1.darkroom.co"
+    - "com.zijayrate.analogcam"
+    - "api.elsaspeak.com"
+    - "api.photoroom.com"
+    - "api.remini.ai"
+    - "api.bazaart.me"

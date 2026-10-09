@@ -185,23 +185,50 @@ def check_spotify_parity() -> None:
     spotify_src = js_path.read_text(encoding="utf-8")
     if "Cache-Control" not in spotify_src:
         errors.append("[spotify] spotify.js thiếu cơ chế cache-bust (Cache-Control).")
+
+    test_endpoints = [
+        "https://api.spotify.com/v1/me",
+        "https://spclient.wg.spotify.com/identity/v3/me",
+        "https://spclient.wg.spotify.com/device-capabilities/v1/capabilities",
+        "https://spclient.wg.spotify.com/user-attributes/v1/attributes",
+        "https://spclient.wg.spotify.com/bootstrap/v1/bootstrap",
+        "https://spclient.wg.spotify.com/melody/v1/check_license",
+    ]
+
     bad: list[str] = []
     for f in module_files():
         t = f.read_text(encoding="utf-8")
         wired = "Module/js/spotify.js" in t
-        mitm = "api.spotify.com" in t
-        # cache-bust: header-del / request-header / action: del (module) HOẶC
-        # script-based (mọi module chạy spotify.js — file này có Cache-Control)
+        mitm = "api.spotify.com" in t and "spclient.wg.spotify.com" in t
         cb = (("header-del If-None-Match" in t) or
               ("request-header" in t and "If-None-Match" in t) or
               ("action: del" in t and "if-none-match" in t) or
               ("Cache-Control" in spotify_src))
-        if not (wired and mitm and cb):
-            bad.append(f"{f.name} (wire={wired}, mitm={mitm}, cachebust={cb})")
+        
+        # Trích xuất regex pattern của Spotify_Premium
+        pat_match = (
+            re.search(r'Spotify_Premium\s*=\s*[^,\n]+,\s*pattern=([^\s,]+)', t) or
+            re.search(r'name:\s*"Spotify Premium JSON"\s*\n\s*match:\s*"([^"\n]+)"', t) or
+            re.search(r'name:\s*sp-premium-json\s*\n\s*match:\s*([^\s\n]+)', t) or
+            re.search(r'http-response\s+([^\s]+)\s+script-path=[^\n]+spotify\.js', t) or
+            re.search(r'(\^[^\s]+)\s+url\s+script-response-body[^\n]+spotify\.js', t)
+        )
+        regex_ok = False
+        if pat_match:
+            raw_pat = pat_match.group(1).strip('"')
+            clean_pat = raw_pat.replace(r'\/', '/').replace(r'\\', '\\')
+            try:
+                comp_pat = re.compile(clean_pat)
+                regex_ok = all(bool(comp_pat.match(u)) for u in test_endpoints)
+            except Exception:
+                regex_ok = False
+
+        if not (wired and mitm and cb and regex_ok):
+            bad.append(f"{f.name} (wire={wired}, mitm={mitm}, cb={cb}, regex_ok={regex_ok})")
     if bad:
-        errors.append("[spotify] Các module thiếu đồng bộ Spotify Premium: " + "; ".join(bad))
+        errors.append("[spotify] Các module thiếu đồng bộ Spotify Premium hoặc regex hỏng: " + "; ".join(bad))
     else:
-        print(f"[spotify] OK — 8/8 module đồng bộ (wire + MITM + cache-bust)")
+        print("[spotify] OK — 8/8 module đồng bộ (wire + MITM spclient.wg + cache-bust + regex test 100%)")
 
 
 def check_education_parity() -> None:
@@ -215,7 +242,48 @@ def check_education_parity() -> None:
     if bad:
         errors.append("[education] Các module thiếu đồng bộ Education Suite: " + "; ".join(bad))
     else:
-        print(f"[education] OK — 8/8 module đồng bộ (Duolingo, Cake, Quizlet)")
+        print("[education] OK — 8/8 module đồng bộ (Duolingo, Cake, Quizlet)")
+
+
+def check_all_local_js_parity() -> None:
+    js_dir = MODULE_DIR / "js"
+    js_files = sorted(p.name for p in js_dir.glob("*.js")) if js_dir.is_dir() else []
+    missing_map: dict[str, list[str]] = {}
+    for f in module_files():
+        t = f.read_text(encoding="utf-8")
+        for j in js_files:
+            if f"Module/js/{j}" not in t:
+                missing_map.setdefault(f.name, []).append(j)
+    if missing_map:
+        for mod, miss in missing_map.items():
+            errors.append(f"[parity] {mod} thiếu tham chiếu local scripts ({len(miss)}): {', '.join(miss)}")
+    else:
+        print(f"[parity] OK — 8/8 module wire đầy đủ cả {len(js_files)}/31 local scripts (calm, wps, darkroom, oldroll...)")
+
+
+def check_mitm_essential_parity() -> None:
+    essential_hosts = [
+        "v1.darkroom.co",
+        "com.zijayrate.analogcam",
+        "api.craft.do",
+        "api.sortedapp.com",
+        "dayone.app",
+        "api.elsaspeak.com",
+        "api.photoroom.com",
+        "api.remini.ai",
+        "api.bazaart.me",
+    ]
+    missing_hosts: dict[str, list[str]] = {}
+    for f in module_files():
+        t = f.read_text(encoding="utf-8")
+        for h in essential_hosts:
+            if h not in t:
+                missing_hosts.setdefault(f.name, []).append(h)
+    if missing_hosts:
+        for mod, miss in missing_hosts.items():
+            errors.append(f"[mitm] {mod} thiếu hostnames quan trọng ({len(miss)}): {', '.join(miss)}")
+    else:
+        print(f"[mitm] OK — 8/8 module đồng bộ đầy đủ các MITM hostnames quan trọng ({len(essential_hosts)} hosts)")
 
 
 def main() -> int:
@@ -227,6 +295,8 @@ def main() -> int:
     check_js_references()
     check_spotify_parity()
     check_education_parity()
+    check_all_local_js_parity()
+    check_mitm_essential_parity()
     print("\n" + "=" * 60)
     if warnings:
         print(f"⚠️  {len(warnings)} cảnh báo:")

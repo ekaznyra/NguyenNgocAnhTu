@@ -113,14 +113,14 @@ http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|p
 # 🎵 Spotify Premium (app2smile)
 http-request ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/ script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-json.js,tag=SP-JSON
 http-response ^https:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$ script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/spotify-proto.js,requires-body=true,binary-body-mode=true,tag=SP-Proto
-http-response ^https?:\/\/(api\.spotify\.com\/v1\/me|.*-?spclient\.spotify\.com(:443)?\/(identity\/v3\/me|device-capabilities\/v1\/capabilities|user-attributes\/v\d+\/attributes)) script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js, requires-body=true, timeout=30, tag=Spotify-Premium-JSON
+http-response ^https?:\/\/(api\.spotify\.com\/v1\/me|.*spclient.*\.spotify\.com(:443)?\/(identity\/v3\/me|device-capabilities\/v1\/capabilities|user-attributes\/v\d+\/attributes|bootstrap\/v1\/bootstrap|melody\/v1\/check_license)) script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/spotify.js, requires-body=true, timeout=30, tag=Spotify-Premium-JSON
 
 # 🔐 RevenueCat Multi-App (Locket Gold)
 http-response ^https:\/\/api\.revenuecat\.com\/.*\/(receipts$|subscribers\/[^/]+$) script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js,requires-body=true,timeout=15,tag=RC-Multi
 http-response ^https:\/\/api\.rc-backup\.com\/.*\/(receipts$|subscribers\/[^/]+$) script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js,requires-body=true,timeout=15,tag=RC-Backup
 
-# 🎧 SoundCloud Go+ (yfamilys)
-http-response ^https?:\/\/api-mobile\.soundcloud\.com\/configuration\/ios script-path=https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/soundcloud.js,requires-body=true,timeout=15,tag=SC-Res
+# 🎧 SoundCloud Go+ (ekaznyra)
+http-response ^https?:\/\/api-mobile\.soundcloud\.com\/configuration\/ios script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/soundcloud.js,requires-body=true,timeout=15,tag=SC-Res
 
 # 🎨 PicsArt Gold
 http-response ^https:\/\/api\.picsart\.com\/gw-v2\/shop\/subscription\/apple\/purchases script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/PicsArt.js,requires-body=true,timeout=60,tag=PA-Res
@@ -142,8 +142,8 @@ http-response ^https:\/\/api-account\.kinemasters\.com\/v\d\/user\/subscribe$ sc
 # 🎵 Djay Pro
 http-response ^https:\/\/app\.algoriddim\.com\/api\/v1\/validate-receipt script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/djay.js,requires-body=true,timeout=10,tag=DJ-Res
 
-# 🧘 Calm (yfamilys)
-http-response ^https?:\/\/api\.calm\.com\/(me|device|ios\/receipt) script-path=https://raw.githubusercontent.com/Alex0510/Eric/Alex0510/surge/surge/Script/caml.js,requires-body=true,timeout=10,tag=Calm-Res
+# 🧘 Calm (ekaznyra)
+http-response ^https?:\/\/api\.calm\.com\/(me|device|ios\/receipt) script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/calm.js,requires-body=true,timeout=10,tag=Calm-Res
 
 # 📚 Busuu
 http-response ^https:\/\/api\.busuu\.com\/users\/me script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/busuu.js,requires-body=true,timeout=10,tag=Busuu-Res
@@ -193,8 +193,14 @@ http-response ^https:\/\/api\.funimate\.com\/users\/me script-path=https://raw.g
 # 🍎 iTunes Premium (250+ Apps)
 http-response ^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/iTunes.js,requires-body=true,timeout=60,tag=iTunes-Res
 
-# 📝 WPS Office (yfamilys)
-http-response ^https?:\/\/.*?account\.wps\.(com|cn)(:\d+)?\/api\/users\/\w+\/overview$ script-path=https://raw.githubusercontent.com/I-am-R-E/Functional-Store-Hub/38f4fa9b9a963457d7ea5a93fdcd1cd44945a49e/WPSOffice/Script/WPS.js,requires-body=true,timeout=10,tag=WPS-Res
+# 📝 WPS Office (ekaznyra)
+http-response ^https?:\/\/.*?account\.wps\.(com|cn)(:\d+)?\/api\/users\/\w+\/overview$ script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/wps.js,requires-body=true,timeout=10,tag=WPS-Res
+
+# 🎨 Darkroom Pro (ekaznyra)
+http-response ^https:\/\/v1\.darkroom\.co\/v1\/receipts\/apple script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/darkroom.js,requires-body=true,timeout=10,tag=Darkroom-Res
+
+# 📷 OldRoll Camera VIP (ekaznyra)
+http-response ^https?:\/\/com\.zijayrate\.analogcam\/vipforever10 script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/oldroll.js,requires-body=true,timeout=10,tag=OldRoll-Res
 
 # 🧠 Xmind
 http-response ^https?:\/\/www\.xmind\.(cn|net|app)\/_res\/devices script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/xmind.js,requires-body=true,timeout=10,tag=Xmind-Res
@@ -226,8 +232,8 @@ http-response ^https?:\/\/premium-api\.myfitnesspal\.com\/v3\/subscriptions\/MFP
 # 🎼 Musixmatch Premium (yfamilys)
 http-response ^https?:\/\/apic\.musixmatch\.com\/ws\/1\.1\/config\.get script-path=https://raw.githubusercontent.com/Marol62926/MarScrpt/3ac7413fbcf58e2ca3e4a2b9353bccc9e4df6cce/musixmatch.js,requires-body=true,timeout=10,tag=MXM-Res
 
-# 📷 Fimo Camera (yfamilys)
-http-response ^https:\/\/server\.yoyiapp\.com\/fimo-user\/user$ script-path=https://raw.githubusercontent.com/deezertidal/private/38b9581548b5070f2dc9c6bfa243cdacf0672d31/js-backup/Crack/fimo.js,requires-body=true,timeout=10,tag=Fimo-Res
+# 📷 Fimo Camera (ekaznyra)
+http-response ^https:\/\/server\.yoyiapp\.com\/fimo-user\/user$ script-path=https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/fimo.js,requires-body=true,timeout=10,tag=Fimo-Res
 
 # 📷 Varlens Premium (yfamilys)
 http-response ^https:\/\/mid\.zineapi\.com\/@varlens\/api\/user\/info\/ script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/5fc9502f3ff98b331a068729cb4b922eccc84bcd/ycdz/Varlens.js,requires-body=true,timeout=10,tag=Varlens-Res
@@ -299,4 +305,4 @@ http-response ^https:\/\/api\.sortedapp\.com\/receipts\/verify script-path=https
 ^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:\d+)?)\/(identity\/v3\/me|device-capabilities\/v1\/capabilities|user-attributes\/v\d+\/attributes)$ header-del ETag
 
 [MITM]
-hostname=-redirector*.googlevideo.com,*.googlevideo.com,www.youtube.com,s.youtube.com,youtubei.googleapis.com,spclient.wg.spotify.com,*-spclient.spotify.com,gads.current.spotify.com,api.spotify.com,api.revenuecat.com,api.rc-backup.com,buy.itunes.apple.com,api.picsart.com, api.picsart.cn,api.meiease.com, api.meiease.cn,api-mobile.soundcloud.com,mb3admin.com,api-account.kinemasters.com,photos.adobe.io,lcs-mobile-cops.adobe.io,app.algoriddim.com,api.calm.com,api.busuu.com,api.prod.headspace.com,vsco.co,api.funimate.com,us-central1-alight-creative.cloudfunctions.net,api-sub.meitu.com,premium-*.truecaller.com,*.intsig.net,api.mr.pixocial.com,newbeee-api.beautyplus.com,user-snow-api.snow.me,user-kaji-api.b612kaji.com,h5.xiuxiu.meitu.com,api.xiuxiu.meitu.com,account.wps.cn,*.account.wps.com,www.xmind.cn,www.xmind.net,www.xmind.app,ars.alar.my,subscription.grammarly.com,notability.com,lapi.photomath.net,pro.smallpdf.com,billing.peakcloud.org,api.polaxiong.com,premium-api.myfitnesspal.com,apic.musixmatch.com,server.yoyiapp.com,mid.zineapi.com,apimboom2.globaldelight.net,api.flexibits.com,api.craft.do,dayone.app,restore-access.indream.app,service.ilovepdf.com,api.mondlylanguages.com,api.memrise.com,api.alohaprofile.com,pre.dailyyoga.com,app-subscription-proxy.accuweather.com,api-production.endel.io,flomoapp.com,backend.getdrafts.com,api.gotokeep.com,payments.invideo.io,ssl-api.itranslateapp.com,payment-api.lingvist.com,*.oracle.bendingspoonsapps.com,app.bilibili.com,accounts.agenda.com,license.pdfexpert.com,api.sortedapp.com,sub.store,api.duolingo.com,ios-api-cdn.duolingo.com,api.mycake.me,quizlet.com
+hostname=-redirector*.googlevideo.com,*.googlevideo.com,www.youtube.com,s.youtube.com,youtubei.googleapis.com,spclient.wg.spotify.com,*-spclient.spotify.com,gads.current.spotify.com,api.spotify.com,api.revenuecat.com,api.rc-backup.com,buy.itunes.apple.com,api.picsart.com, api.picsart.cn,api.meiease.com, api.meiease.cn,api-mobile.soundcloud.com,mb3admin.com,api-account.kinemasters.com,photos.adobe.io,lcs-mobile-cops.adobe.io,app.algoriddim.com,api.calm.com,api.busuu.com,api.prod.headspace.com,vsco.co,api.funimate.com,us-central1-alight-creative.cloudfunctions.net,api-sub.meitu.com,premium-*.truecaller.com,*.intsig.net,api.mr.pixocial.com,newbeee-api.beautyplus.com,user-snow-api.snow.me,user-kaji-api.b612kaji.com,h5.xiuxiu.meitu.com,api.xiuxiu.meitu.com,account.wps.cn,*.account.wps.com,www.xmind.cn,www.xmind.net,www.xmind.app,ars.alar.my,subscription.grammarly.com,notability.com,lapi.photomath.net,pro.smallpdf.com,billing.peakcloud.org,api.polaxiong.com,premium-api.myfitnesspal.com,apic.musixmatch.com,server.yoyiapp.com,mid.zineapi.com,apimboom2.globaldelight.net,api.flexibits.com,api.craft.do,dayone.app,restore-access.indream.app,service.ilovepdf.com,api.mondlylanguages.com,api.memrise.com,api.alohaprofile.com,pre.dailyyoga.com,app-subscription-proxy.accuweather.com,api-production.endel.io,flomoapp.com,backend.getdrafts.com,api.gotokeep.com,payments.invideo.io,ssl-api.itranslateapp.com,payment-api.lingvist.com,*.oracle.bendingspoonsapps.com,app.bilibili.com,accounts.agenda.com,license.pdfexpert.com,api.sortedapp.com,sub.store,api.duolingo.com,ios-api-cdn.duolingo.com,api.mycake.me,quizlet.com,v1.darkroom.co,com.zijayrate.analogcam,api.elsaspeak.com,api.photoroom.com,api.remini.ai,api.bazaart.me
