@@ -6,8 +6,9 @@
  * @date: 2026-05-09
  */
 
+let rawBody = ($response && $response.body) || "";
 let obj;
-try { obj = JSON.parse($response.body); } catch (e) {}
+try { obj = JSON.parse(rawBody); } catch (e) {}
 
 if (!obj || typeof obj !== "object") {
     $done({});

@@ -6,8 +6,9 @@
  * @date: 2026-05-09
  */
 
+var rawBody = ($response && $response.body) || "";
 var objc;
-try { objc = JSON.parse($response.body); } catch (e) {}
+try { objc = JSON.parse(rawBody); } catch (e) {}
 const reqHeaders = ($request && $request.headers) || {};
 const ua = reqHeaders["User-Agent"] || reqHeaders["user-agent"] || "";
 const times = Date.now();

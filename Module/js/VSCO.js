@@ -5,8 +5,9 @@
  * @date: 2026-07-25
  */
 
+var rawBody = ($response && $response.body) || "";
 var objc;
-try { objc = JSON.parse($response.body); } catch (e) {}
+try { objc = JSON.parse(rawBody); } catch (e) {}
 
 if (!objc || typeof objc !== "object") {
     // Non-JSON / lỗi / 304 -> để nguyên response

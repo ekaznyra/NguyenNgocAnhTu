@@ -5,8 +5,9 @@
  * @date: 2026-05-09
  */
 
+var rawBody = ($response && $response.body) || "";
 var objc;
-try { objc = JSON.parse($response.body); } catch (e) {}
+try { objc = JSON.parse(rawBody); } catch (e) {}
 
 if (!objc || typeof objc !== "object" || !objc.user || typeof objc.user !== "object") {
     // Không có user object -> để nguyên, KHÔNG bịa id/email (tránh hỏng đồng bộ/đăng nhập)

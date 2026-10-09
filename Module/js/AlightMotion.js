@@ -5,8 +5,9 @@
  * @date: 2026-04-21
  */
 
+var rawBody = ($response && $response.body) || "";
 var objc;
-try { objc = JSON.parse($response.body); } catch (e) {}
+try { objc = JSON.parse(rawBody); } catch (e) {}
 
 var amResult = {
         "result": "success",

@@ -991,9 +991,13 @@ geoip, vn, direct
 ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext url reject-200
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad url reject-dict
 
-# RevenueCat ETag Header strip
+# RevenueCat ETag & Cache-Bust Header strip (Locket Gold + all RC apps)
 ^https?://api\.revenuecat\.com/.+/(receipts$|subscribers(/.*)?/?) url request-header (\r\n)X-RevenueCat-ETag:.+(\r\n) request-header $1
+^https?://api\.revenuecat\.com/.+/(receipts$|subscribers(/.*)?/?) url request-header (\r\n)If-None-Match:.+(\r\n) request-header $1
+^https?://api\.revenuecat\.com/.+/(receipts$|subscribers(/.*)?/?) url request-header (\r\n)If-Modified-Since:.+(\r\n) request-header $1
 ^https?://api\.rc-backup\.com/.+/(receipts$|subscribers(/.*)?/?) url request-header (\r\n)X-RevenueCat-ETag:.+(\r\n) request-header $1
+^https?://api\.rc-backup\.com/.+/(receipts$|subscribers(/.*)?/?) url request-header (\r\n)If-None-Match:.+(\r\n) request-header $1
+^https?://api\.rc-backup\.com/.+/(receipts$|subscribers(/.*)?/?) url request-header (\r\n)If-Modified-Since:.+(\r\n) request-header $1
 
 # 📦 Sub-Store
 ^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))) url script-request-body https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js
@@ -1019,6 +1023,10 @@ geoip, vn, direct
 ^https?:\/\/api\.spotify\.com\/v1\/me url request-header (\r\n)If-Modified-Since:.+(\r\n) request-header $1
 ^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(identity\/v3\/me|device-capabilities\/v1\/capabilities|user-attributes\/v\d+\/attributes) url request-header (\r\n)If-None-Match:.+(\r\n) request-header $1
 ^https?:\/\/(spclient\.wg\.spotify\.com|.*-spclient\.spotify\.com(:443)?)\/(identity\/v3\/me|device-capabilities\/v1\/capabilities|user-attributes\/v\d+\/attributes) url request-header (\r\n)If-Modified-Since:.+(\r\n) request-header $1
+
+# === ITUNES REMOVE CACHE HEADERS ===
+^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url request-header (\r\n)If-None-Match:.+(\r\n) request-header $1
+^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url request-header (\r\n)If-Modified-Since:.+(\r\n) request-header $1
 
 # 🔐 RevenueCat Multi-App (Locket Gold)
 ^https:\/\/api\.revenuecat\.com\/.*\/(receipts$|subscribers\/[^/]+$) url script-response-body https://raw.githubusercontent.com/ekaznyra/NguyenNgocAnhTu/master/Module/js/revenuecat_multi.js

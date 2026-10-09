@@ -108,8 +108,9 @@ var uaDecoded; try { uaDecoded = decodeURIComponent(ua); } catch (e) { uaDecoded
 // Cũng kiểm tra X-RevenueCat-App-Bundle-ID header (nếu có)
 var bundleId = (reqHeaders["X-RevenueCat-App-Bundle-ID"] || reqHeaders["x-revenuecat-app-bundle-id"] || "");
 
+var rawBody = ($response && $response.body) || "";
 var obj;
-try { obj = JSON.parse($response.body); } catch (e) {}
+try { obj = JSON.parse(rawBody); } catch (e) {}
 if (!obj || typeof obj !== "object" || !obj.subscriber) {
   // Không parse được hoặc thiếu subscriber -> trả nguyên body, tránh làm hỏng app
   $done({});
@@ -216,16 +217,18 @@ obj.subscriber.entitlements = obj.subscriber.entitlements || {};
 obj.subscriber.non_subscriptions = obj.subscriber.non_subscriptions || {};
 
 // ===== Clean up any expired entitlements that could conflict ===== //
-// Xóa bất kỳ entitlement nào đã hết hạn (expires_date < now) để tránh xung đột
-for (var k in obj.subscriber.entitlements) {
-  if (obj.subscriber.entitlements.hasOwnProperty(k)) {
-    var existingExpiry = obj.subscriber.entitlements[k].expires_date;
-    if (existingExpiry && existingExpiry !== EXPIRES) {
-      try {
-        if (new Date(existingExpiry).getTime() < now.getTime()) {
-          delete obj.subscriber.entitlements[k];
-        }
-      } catch(e) {}
+// Đối với Locket Gold: Xóa các entitlement hết hạn không phải Gold để tránh xung đột
+if (isLocket) {
+  for (var k in obj.subscriber.entitlements) {
+    if (obj.subscriber.entitlements.hasOwnProperty(k)) {
+      var existingExpiry = obj.subscriber.entitlements[k].expires_date;
+      if (existingExpiry && existingExpiry !== EXPIRES) {
+        try {
+          if (new Date(existingExpiry).getTime() < now.getTime()) {
+            delete obj.subscriber.entitlements[k];
+          }
+        } catch(e) {}
+      }
     }
   }
 }
@@ -237,6 +240,7 @@ obj.subscriber.subscriptions[prodKey] = Object.assign({}, obj.subscriber.subscri
 if (!match) {
   for (var ek in obj.subscriber.entitlements) {
     if (obj.subscriber.entitlements.hasOwnProperty(ek)) {
+      var existingPid = (obj.subscriber.entitlements[ek] && obj.subscriber.entitlements[ek].product_identifier) || prodKey;
       obj.subscriber.entitlements[ek] = Object.assign({}, obj.subscriber.entitlements[ek], {
         expires_date: EXPIRES,
         purchase_date: PURCHASED,
@@ -244,8 +248,12 @@ if (!match) {
         grace_period_expires_date: null,
         store: "app_store",
         store_transaction_id: TXID,
-        product_identifier: (obj.subscriber.entitlements[ek] && obj.subscriber.entitlements[ek].product_identifier) || prodKey,
-        product_plan_identifier: (obj.subscriber.entitlements[ek] && obj.subscriber.entitlements[ek].product_plan_identifier) || prodKey
+        product_identifier: existingPid,
+        product_plan_identifier: existingPid
+      });
+      obj.subscriber.subscriptions[existingPid] = Object.assign({}, obj.subscriber.subscriptions[existingPid] || {}, subTemplate, {
+        product_identifier: existingPid,
+        product_plan_identifier: existingPid
       });
     }
   }
@@ -267,6 +275,18 @@ if (isLocket) {
 for (var j = 0; j < entKeys.length; j++) {
   var ek2 = entKeys[j];
   obj.subscriber.entitlements[ek2] = Object.assign({}, obj.subscriber.entitlements[ek2] || {}, entTemplate);
+}
+
+// Bổ sung non_subscriptions cho các app kiểm tra purchases trọn đời/IAP không gia hạn
+if (!obj.subscriber.non_subscriptions[prodKey]) {
+  obj.subscriber.non_subscriptions[prodKey] = [{
+    id: TXID,
+    is_sandbox: false,
+    original_purchase_date: PURCHASED,
+    purchase_date: PURCHASED,
+    store: "app_store",
+    store_transaction_id: TXID
+  }];
 }
 
 var out = { body: JSON.stringify(obj) };

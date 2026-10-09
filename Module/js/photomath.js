@@ -13,9 +13,10 @@
  *  - https://github.com/89996462/Quantumult-X  (thư mục ycdz - kiểm tra định kỳ)
  */
 
+let rawBody = ($response && $response.body) || "";
 let obj;
 try {
-  obj = JSON.parse($response.body);
+  obj = JSON.parse(rawBody);
 } catch (e) {
   // Không parse được -> để nguyên response ở cuối (tránh làm hỏng app)
   obj = null;

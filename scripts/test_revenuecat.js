@@ -48,5 +48,57 @@ testApp('1998 Cam', '1998 Cam/1.0', 'pro');
 testApp('LoFi Cam', 'LoFi Cam/1.0', 'pro');
 testApp('Generic Fallback', 'RandomApp/1.0', 'pro');
 
+// Test 22: Server existing entitlement sync to subscriptions
+{
+  let doneArg = null;
+  const sandbox = {
+    $request: { url: 'https://api.revenuecat.com/v1/subscribers/test', headers: { 'User-Agent': 'CustomUnmappedApp/1.0' } },
+    $response: {
+      headers: { 'ETag': '"123"', 'X-RevenueCat-ETag': '"abc"', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        subscriber: {
+          subscriptions: {},
+          entitlements: {
+            special_vip: { product_identifier: 'custom_lifetime_tier', expires_date: '2020-01-01T00:00:00Z' }
+          }
+        }
+      })
+    },
+    $done: (arg) => { doneArg = arg; },
+    console
+  };
+  const fn = new Function('$request', '$response', '$done', 'console', code);
+  fn(sandbox.$request, sandbox.$response, sandbox.$done, console);
+  const res = JSON.parse(doneArg.body);
+  const subOk = res.subscriber.subscriptions['custom_lifetime_tier'] && res.subscriber.subscriptions['custom_lifetime_tier'].expires_date === '2099-12-31T10:10:14Z';
+  const entOk = res.subscriber.entitlements['special_vip'] && res.subscriber.entitlements['special_vip'].expires_date === '2099-12-31T10:10:14Z';
+  const nonSubOk = res.subscriber.non_subscriptions && Object.keys(res.subscriber.non_subscriptions).length > 0;
+  const cacheBustOk = doneArg.headers && doneArg.headers['Cache-Control'] && !doneArg.headers['ETag'] && !doneArg.headers['X-RevenueCat-ETag'];
+
+  if (subOk && entOk) {
+    pass++;
+    console.log('  PASS  Existing server entitlement synced to subscriptions');
+  } else {
+    fail++;
+    console.log('  FAIL  Existing server entitlement failed to sync');
+  }
+
+  if (nonSubOk) {
+    pass++;
+    console.log('  PASS  non_subscriptions lifetime fallback populated');
+  } else {
+    fail++;
+    console.log('  FAIL  non_subscriptions lifetime fallback missing');
+  }
+
+  if (cacheBustOk) {
+    pass++;
+    console.log('  PASS  Response cache-bust headers & ETag strip');
+  } else {
+    fail++;
+    console.log('  FAIL  Response cache-bust headers missing');
+  }
+}
+
 console.log('\n== KẾT QUẢ: ' + pass + ' PASS / ' + fail + ' FAIL ==');
 process.exit(fail === 0 ? 0 : 1);

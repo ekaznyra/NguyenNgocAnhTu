@@ -2176,13 +2176,25 @@ header_rewrites:
   - match: ^https?://www\.youtube\.com/youtubei/v1/player
     header_replace:
       x-youtube-client-version: "2.20240101.00.00"
-  # RevenueCat Remove ETag
+  # RevenueCat Remove ETag & Cache-Bust (Locket Gold + all RC apps)
   - match: "^https?://api\\.revenuecat\\.com/.+/(receipts$|subscribers(\\/.*)?\\/?)"
+    action: del
+    field: "X-RevenueCat-ETag"
+  - match: "^https?://api\\.revenuecat\\.com/.+/(receipts$|subscribers(\\/.*)?\\/?)"
+    action: del
+    field: "if-none-match"
+  - match: "^https?://api\\.revenuecat\\.com/.+/(receipts$|subscribers(\\/.*)?\\/?)"
+    action: del
+    field: "if-modified-since"
+  - match: "^https?://api\\.rc-backup\\.com/.+/(receipts$|subscribers(\\/.*)?\\/?)"
     action: del
     field: "X-RevenueCat-ETag"
   - match: "^https?://api\\.rc-backup\\.com/.+/(receipts$|subscribers(\\/.*)?\\/?)"
     action: del
-    field: "X-RevenueCat-ETag"
+    field: "if-none-match"
+  - match: "^https?://api\\.rc-backup\\.com/.+/(receipts$|subscribers(\\/.*)?\\/?)"
+    action: del
+    field: "if-modified-since"
   # Spotify Remove Cache
   - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/user-customization-service/v1/customize$"
     action: del
@@ -2206,6 +2218,13 @@ header_rewrites:
   - match: "^https://(spclient\\.wg\\.spotify\\.com|.*-spclient\\.spotify\\.com(:443)?)/(identity/v3/me|device-capabilities/v1/capabilities|user-attributes/v\\d+/attributes)$"
     action: del
     field: "etag"
+  # iTunes Remove Cache Headers
+  - match: "^https?://buy\\.itunes\\.apple\\.com/verifyReceipt$"
+    action: del
+    field: "if-none-match"
+  - match: "^https?://buy\\.itunes\\.apple\\.com/verifyReceipt$"
+    action: del
+    field: "if-modified-since"
 
 scriptings:
   # 📦 Sub-Store

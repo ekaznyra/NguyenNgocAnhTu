@@ -5,8 +5,9 @@
  * @date: 2026-07-25
  */
 
+var rawBody = ($response && $response.body) || "";
 var banhsbao;
-try { banhsbao = JSON.parse($response.body); } catch (e) {}
+try { banhsbao = JSON.parse(rawBody); } catch (e) {}
 const vipa = '/purchase/cs/query_prop';
 const vipb = '/queryProperty';
 const tqzx = '/getPrivilegeItem';

@@ -5,8 +5,9 @@
  * @date: 2026-04-21
  */
 
+var rawBody = ($response && $response.body) || "";
 var objc;
-try { objc = JSON.parse($response.body); } catch (e) { objc = null; }
+try { objc = JSON.parse(rawBody); } catch (e) { objc = null; }
 
 var url = ($request && $request.url) || "";
 if (/newbeee-api\.beautyplus\.com\/api\/v1\/asset\/balance/.test(url)) {

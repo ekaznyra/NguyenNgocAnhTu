@@ -460,5 +460,18 @@ if (!anchor) {
   }
 }
 
-$done({ body: JSON.stringify(ddm || {}) });
+var out = { body: JSON.stringify(ddm || {}) };
+try {
+  if ($response && $response.headers) {
+    var h = Object.assign({}, $response.headers);
+    h["Cache-Control"] = "no-store, no-cache, must-revalidate";
+    h["Pragma"] = "no-cache";
+    delete h["ETag"];
+    delete h["etag"];
+    delete h["If-None-Match"];
+    delete h["if-none-match"];
+    out.headers = h;
+  }
+} catch (e) {}
+$done(out);
 })();
