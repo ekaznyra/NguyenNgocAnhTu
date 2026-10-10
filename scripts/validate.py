@@ -286,17 +286,85 @@ def check_mitm_essential_parity() -> None:
         print(f"[mitm] OK — 8/8 module đồng bộ đầy đủ các MITM hostnames quan trọng ({len(essential_hosts)} hosts)")
 
 
+def check_dns_profile() -> None:
+    dns_file = ROOT / "DNS.mobileconfig"
+    if not dns_file.exists():
+        errors.append("[dns] DNS.mobileconfig không tồn tại.")
+        return
+    try:
+        import xml.etree.ElementTree as ET
+        ET.parse(dns_file)
+        print("[dns] OK — DNS.mobileconfig tồn tại và cú pháp XML hợp lệ")
+    except Exception as e:
+        errors.append(f"[dns] DNS.mobileconfig lỗi cú pháp XML: {e}")
+
+
+def check_rules_syntax() -> None:
+    valid_types = {
+        "DOMAIN", "DOMAIN-SUFFIX", "DOMAIN-KEYWORD",
+        "IP-CIDR", "IP-CIDR6", "GEOIP", "USER-AGENT", "URL-REGEX"
+    }
+    rule_files = sorted(RULES_DIR.glob("*.list"))
+    bad_lines = []
+    for rf in rule_files:
+        lines = rf.read_text(encoding="utf-8").splitlines()
+        for idx, line in enumerate(lines, 1):
+            s = line.strip()
+            if not s or s.startswith("#"):
+                continue
+            parts = [x.strip() for x in s.split(",")]
+            if len(parts) not in (2, 3):
+                bad_lines.append(f"{rf.name}:{idx} (số phần tử không hợp lệ: {len(parts)})")
+                continue
+            rtype = parts[0].upper()
+            if rtype not in valid_types:
+                bad_lines.append(f"{rf.name}:{idx} (loại rule không hợp lệ: {parts[0]})")
+    if bad_lines:
+        errors.append(f"[rules-syntax] Phát hiện {len(bad_lines)} dòng rule sai cú pháp: {'; '.join(bad_lines[:5])}")
+    else:
+        print(f"[rules-syntax] OK — {len(rule_files)} files Rules/*.list có cú pháp chuẩn xác 100%")
+
+
+def check_header_del_parity() -> None:
+    target_modules = [
+        "NguyenNgocAnhTu_Surge.sgmodule",
+        "NguyenNgocAnhTu_Loon.plugin",
+        "NguyenNgocAnhTu_LanceX.module",
+        "NguyenNgocAnhTu_Egern.yaml",
+        "NguyenNgocAnhTu_QuantumultX.snippet",
+        "NguyenNgocAnhTu_Shadowrocket.module",
+        "NguyenNgocAnhTu_Premium.module"
+    ]
+    bad = []
+    for name in target_modules:
+        p = MODULE_DIR / name
+        if not p.exists():
+            continue
+        t = p.read_text(encoding="utf-8")
+        has_rc = ("api.revenuecat.com" in t and ("If-None-Match" in t or "if-none-match" in t))
+        has_itunes = ("buy.itunes.apple.com" in t and ("If-None-Match" in t or "if-none-match" in t))
+        if not (has_rc and has_itunes):
+            bad.append(f"{name} (rc={has_rc}, itunes={has_itunes})")
+    if bad:
+        errors.append(f"[header-del] Các module thiếu header-del cho RevenueCat hoặc iTunes: {'; '.join(bad)}")
+    else:
+        print(f"[header-del] OK — 7/7 module hỗ trợ đều có header-del cho RevenueCat & iTunes (chống 304 cache)")
+
+
 def main() -> int:
     check_versions()
     check_json_arguments()
     check_rule_duplicates()
+    check_rules_syntax()
     check_sha_pinning()
     check_referenced_files()
+    check_dns_profile()
     check_js_references()
     check_spotify_parity()
     check_education_parity()
     check_all_local_js_parity()
     check_mitm_essential_parity()
+    check_header_del_parity()
     print("\n" + "=" * 60)
     if warnings:
         print(f"⚠️  {len(warnings)} cảnh báo:")
