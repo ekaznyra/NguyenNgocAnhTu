@@ -26,18 +26,18 @@ if (!ddm) {
   let end = body.lastIndexOf("}");
   if (start !== -1 && end !== -1) {
     ddm = tryParse(body.substring(start, end + 1));
-    if (ddm) console.log("✅ 使用截断JSON解析成功");
+    if (ddm) console.log("✅ iTunes: JSON parsed via substring fallback");
   }
 }
 if (!ddm) {
   let match = body.match(/\{[\s\S]*\}/);
   if (match) {
     ddm = tryParse(match[0]);
-    if (ddm) console.log("✅ 使用正则JSON解析成功");
+    if (ddm) console.log("✅ iTunes: JSON parsed via regex fallback");
   }
 }
 if (!ddm) {
-  console.log("❌ JSON解析彻底失败，跳过脚本");
+  console.log("❌ iTunes: JSON parse failed, skipping rewrite");
   $done({});
   return;
 }
@@ -423,7 +423,7 @@ if (!anchor) {
     for (const item of inApp) {
       if (item.product_id) {
         if (!item.expires_date) {
-          console.log('✅ 存在永久订阅或无到期时间，跳过修改 🎉');
+          console.log('✅ iTunes: Lifetime or non-expiring subscription detected, skipping');
           $done({});
           return;
         }
@@ -437,9 +437,9 @@ if (!anchor) {
       }
     }
     if (updated) {
-      console.log('⚠️ 发现订阅已过期，已更新到期时间 🎉');
+      console.log('⚠️ iTunes: Expired subscription detected, updated expiry date to 2099');
     } else {
-      console.log('✅ 存在有效订阅，无需修改 🎉');
+      console.log('✅ iTunes: Active subscription detected, no modification needed');
     }
   } else {
     let fallbackId = AutoID.yearly(bundle_id);
@@ -456,7 +456,7 @@ if (!anchor) {
       "auto_renew_product_id": fallbackId,
       "auto_renew_status": "1"
     }];
-    console.log('❌ 未识别有效订阅，已使用备用方案🎉🎉🎉\n叮当猫の分享频道: https://github.com/ekaznyra/NguyenNgocAnhTu');
+    console.log('✅ iTunes Unlock: Fallback subscription applied — z3rokaze (https://github.com/ekaznyra/NguyenNgocAnhTu)');
   }
 }
 

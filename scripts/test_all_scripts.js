@@ -1,4 +1,4 @@
-// Full resilience test harness for all 28 scripts in Module/js
+// Full resilience test harness for all 31 scripts in Module/js
 const fs = require('fs');
 const path = require('path');
 
